@@ -6,7 +6,6 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.runtimeconfig.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.runtimeconfig.dev.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.dll
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\ref\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.Views.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.Views.pdb
@@ -78,8 +77,15 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.RazorTargetAssemblyInfo.cs
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.Views.pdb
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.csproj.CopyComplete
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\ref\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.genruntimeconfig.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.sourcelink.json
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\CrfDesign.Server.WebAPI.StaticWebAssets.Pack.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\msbuild.CrfDesign.Server.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\msbuild.build.CrfDesign.Server.WebAPI.props
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.CrfDesign.Server.WebAPI.props
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.CrfDesign.Server.WebAPI.props
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesig.6F6AD5F6.Up2Date
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\refint\CrfDesign.Server.WebAPI.dll
