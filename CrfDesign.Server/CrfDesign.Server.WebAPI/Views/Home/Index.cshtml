@@ -10,8 +10,12 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <h1 class="display-4">Welcome @User.Identity.Name</h1>
-        <p>Design <a>@Html.ActionLink("CRF Pages", "Index", "CrfPageComponent")</a>.</p>
-        <p>View and Define <a>@Html.ActionLink("CRF Pages", "Index", "CrfPage")</a>.</p>
+        <p>View and Define <a>@Html.ActionLink("CRF Pages", "Index", "CrfPages")</a>.</p>
+        <p>Design <a>@Html.ActionLink("CRF Page Components", "Index", "CrfPageComponents")</a>.</p>
+        <p>Design <a>@Html.ActionLink("CRF Options", "Index", "CrfOptions")</a>.</p>
+        <p>View and Define <a>@Html.ActionLink("CRF Question Types", "Index", "QuestionTypes")</a>.</p>
+        <p>Design <a>@Html.ActionLink("CRF something else1", "Index", "CrfPageComponents")</a>.</p>
+        <p>View and Define <a>@Html.ActionLink("CRF something else 2", "Index", "CrfPages")</a>.</p>
     }
     else
     {
