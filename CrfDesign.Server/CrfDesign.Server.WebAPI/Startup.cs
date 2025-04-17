@@ -30,6 +30,9 @@ namespace CrfDesign.Server.WebAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<CrfDesignContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("CrfDesignConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

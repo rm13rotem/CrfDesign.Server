@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CrfDesign.Server.WebAPI.props" />
-</Project>
