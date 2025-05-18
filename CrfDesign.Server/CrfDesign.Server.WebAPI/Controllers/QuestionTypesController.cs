@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Data;
-using CrfDesign.Server.WebAPI.Models;
+using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 
 namespace CrfDesign.Server.WebAPI.Controllers
@@ -55,7 +55,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,IsDeleted,ModifiedDateTime")] QuestionType questionType)
+        public async Task<IActionResult> Create(QuestionType questionType)
         {
             if (ModelState.IsValid)
             {

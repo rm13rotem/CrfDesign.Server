@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Data;
-using CrfDesign.Server.WebAPI.Models;
+using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 
 namespace CrfDesign.Server.WebAPI.Controllers
@@ -49,7 +49,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPageComponents/Create
         public IActionResult Create()
         {
-            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Id");
+            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name");
             return View();
         }
 
@@ -58,15 +58,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CRFPageId,QuestionText,RenderType,IsRequired,ValidationPattern")] CrfPageComponent crfPageComponent)
+        public async Task<IActionResult> Create(Models.CrfPageComponent UIcrfPageComponent)
         {
+            CrfPageComponent crfPageComponent = UIcrfPageComponent.FixAccordingToRenderType(_context);
             if (ModelState.IsValid)
-            {
+            {                
                 _context.Add(crfPageComponent);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Id", crfPageComponent.CRFPageId);
+            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             return View(crfPageComponent);
         }
 
@@ -83,7 +84,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
-            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Id", crfPageComponent.CRFPageId);
+            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             return View(crfPageComponent);
         }
 
@@ -92,7 +93,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CRFPageId,QuestionText,RenderType,IsRequired,ValidationPattern")] CrfPageComponent crfPageComponent)
+        public async Task<IActionResult> Edit(int id, CrfPageComponent crfPageComponent)
         {
             if (id != crfPageComponent.Id)
             {

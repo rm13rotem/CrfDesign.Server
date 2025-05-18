@@ -1,7 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Filters;
 using BuisnessLogic.Models.Managers;
-using CrfDesign.Server.WebAPI.Models;
+using BuisnessLogic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -15,16 +15,17 @@ namespace CrfDesign.Server.WebAPI.Controllers
         private readonly CrfDesignContext _context;
         private readonly CrfOptionsManager _manager;
 
-        public CrfOptionsController(CrfDesignContext context, CrfOptionsManager manager)
+        public CrfOptionsController(CrfDesignContext context)
         {
             _context = context;
-            _manager = manager;
+            _manager = new CrfOptionsManager(_context);
         }
 
         // GET: CrfOptions
         public async Task<IActionResult> Index(CrfOptionFilter crfOptionFilter)
         {
-            var results = _manager.GetCrfOptionsAsync(crfOptionFilter);
+            var results = await _manager.GetCrfOptionsAsync(crfOptionFilter);
+            //var result = dbresults.Select(x => new CrfOption(x)).ToList();
             return View(results);
         }
 
@@ -56,7 +57,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,IsDeleted,ModifiedDateTime,CrfQuestionId")] CrfOption crfOption)
+        public async Task<IActionResult> Create(CrfOption crfOption)
         {
             if (ModelState.IsValid)
             {

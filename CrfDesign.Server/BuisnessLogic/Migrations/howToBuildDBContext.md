@@ -1,0 +1,1 @@
+﻿dotnet ef update-database AddOptionCategories18may2025 --context BuisnessLogic.DataContext.CrfDesignContext

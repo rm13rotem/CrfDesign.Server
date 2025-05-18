@@ -1,3 +1,7 @@
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.csproj.AssemblyReference.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.AssemblyInfoInputs.cache
@@ -6,7 +10,6 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.RazorAssemblyInfo.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.RazorAssemblyInfo.cs
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\appsettings.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\CrfDesign.Server.WebAPI.StaticWebAssets.xml
@@ -29,7 +32,6 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
@@ -88,7 +90,6 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
@@ -125,10 +126,8 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
@@ -136,6 +135,7 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\BuisnessLogic.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\BuisnessLogic.pdb
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\CrfDesign.Server.WebAPI.StaticWebAssets.Manifest.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\staticwebassets\CrfDesign.Server.WebAPI.StaticWebAssets.xml
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\scopedcss\bundle\CrfDesign.Server.WebAPI.styles.css
@@ -179,3 +179,8 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\ref\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.genruntimeconfig.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\CrfOptionCategories\Create.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\CrfOptionCategories\Delete.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\CrfOptionCategories\Details.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\CrfOptionCategories\Edit.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\CrfOptionCategories\Index.cshtml.g.cs

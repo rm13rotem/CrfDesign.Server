@@ -12,6 +12,8 @@ namespace BuisnessLogic.Models
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
+        public int CrfOptionCategoryId { get; set; }
         public int CrfQuestionId { get; set; }  // Foreign key to CRFQuestion
+        public CrfOptionCategory OptionCategory { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace BuisnessLogic.DataContext
         public DbSet<CrfPage> CrfPages { get; set; }
         public DbSet<CrfPageComponent> CrfPageComponents { get; set; }
         public DbSet<CrfOption> CrfOptions { get; set; }
+        public DbSet<CrfOptionCategory> CrfOptionCategories { get; set; }
         public DbSet<QuestionType> QuestionTypes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
