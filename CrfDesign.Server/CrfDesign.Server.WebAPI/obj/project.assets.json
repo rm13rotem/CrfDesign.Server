@@ -2150,6 +2150,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BuisnessLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.17"
+        },
+        "compile": {
+          "bin/placeholder/BuisnessLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BuisnessLogic.dll": {}
+        }
       }
     }
   },
@@ -7566,10 +7579,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "BuisnessLogic/1.0.0": {
+      "type": "project",
+      "path": "../BuisnessLogic/BuisnessLogic.csproj",
+      "msbuildProject": "../BuisnessLogic/BuisnessLogic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BuisnessLogic >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.17",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.17",
@@ -7611,7 +7630,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\rm13r\\source\\repos\\CrfDesign.Server\\CrfDesign.Server\\BuisnessLogic\\BuisnessLogic.csproj": {
+              "projectPath": "C:\\Users\\rm13r\\source\\repos\\CrfDesign.Server\\CrfDesign.Server\\BuisnessLogic\\BuisnessLogic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

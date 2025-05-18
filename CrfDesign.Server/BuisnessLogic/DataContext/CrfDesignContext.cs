@@ -1,11 +1,7 @@
-﻿using CrfDesign.Server.WebAPI.Models;
+﻿using BuisnessLogic.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace CrfDesign.Server.WebAPI.Data
+namespace BuisnessLogic.DataContext
 {
     public class CrfDesignContext : DbContext
     {

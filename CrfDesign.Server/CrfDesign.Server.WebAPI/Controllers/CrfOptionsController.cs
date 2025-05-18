@@ -1,28 +1,31 @@
-﻿using System;
+﻿using BuisnessLogic.DataContext;
+using BuisnessLogic.Filters;
+using BuisnessLogic.Models.Managers;
+using CrfDesign.Server.WebAPI.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CrfDesign.Server.WebAPI.Data;
-using CrfDesign.Server.WebAPI.Models;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfOptionsController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly CrfOptionsManager _manager;
 
-        public CrfOptionsController(CrfDesignContext context)
+        public CrfOptionsController(CrfDesignContext context, CrfOptionsManager manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         // GET: CrfOptions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CrfOptionFilter crfOptionFilter)
         {
-            return View(await _context.CrfOptions.ToListAsync());
+            var results = _manager.GetCrfOptionsAsync(crfOptionFilter);
+            return View(results);
         }
 
         // GET: CrfOptions/Details/5
@@ -33,8 +36,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return NotFound();
             }
 
-            var crfOption = await _context.CrfOptions
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var crfOption = await _manager.GetById((int)id);
             if (crfOption == null)
             {
                 return NotFound();

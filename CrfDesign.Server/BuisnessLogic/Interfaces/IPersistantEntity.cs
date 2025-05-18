@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CrfDesign.Server.WebAPI.Models
+namespace BuisnessLogic.Interfaces
 {
     public interface IPersistantEntity
     {
@@ -8,5 +12,6 @@ namespace CrfDesign.Server.WebAPI.Models
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
+
     }
 }
