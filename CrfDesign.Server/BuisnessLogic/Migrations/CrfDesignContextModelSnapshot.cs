@@ -18,7 +18,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOption", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfOption", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfOptions");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOptionCategory", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfOptionCategory", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                 b.ToTable("CrfOptionCategories");
             });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPage", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfPage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,7 +101,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfPages");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfPageComponent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfPageComponents");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.QuestionType", b =>
+            modelBuilder.Entity("BuisnessLogic.QuestionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,22 +162,22 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("QuestionTypes");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOption", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfOption", b =>
                 {
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.CrfPageComponent", null)
+                    b.HasOne("BuisnessLogic.CrfPageComponent", null)
                         .WithMany("Options")
                         .HasForeignKey("CrfPageComponentId");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfPageComponent", b =>
                 {
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.CrfPage", "CrfPage")
+                    b.HasOne("BuisnessLogic.CrfPage", "CrfPage")
                         .WithMany("Questions")
                         .HasForeignKey("CRFPageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.QuestionType", "QuestionType")
+                    b.HasOne("BuisnessLogic.QuestionType", "QuestionType")
                         .WithMany()
                         .HasForeignKey("QuestionTypeId");
 
@@ -186,12 +186,12 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Navigation("QuestionType");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPage", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfPage", b =>
                 {
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.CrfPageComponent", b =>
                 {
                     b.Navigation("Options");
                 });

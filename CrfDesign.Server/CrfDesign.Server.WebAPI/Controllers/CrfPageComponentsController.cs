@@ -23,7 +23,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPageComponents
         public async Task<IActionResult> Index()
         {
-            var dblines = await _context.CrfPageComponents.Include(c => c.CrfPage).ToListAsync();
+            var dblines = await _context.CrfPageComponents.ToListAsync();
             var uiLines = dblines.Select(crfComponent => 
                         new CrfPageComponentViewModel(crfComponent, _context))
                 .ToList();

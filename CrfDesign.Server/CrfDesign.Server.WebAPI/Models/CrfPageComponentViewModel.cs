@@ -14,10 +14,11 @@ namespace CrfDesign.Server.WebAPI.Models
         {
             _context = context;
             Id = component.Id;
-            CRFPageName = component.CrfPage.Name;
+            CRFPageName = component.CrfPage?.Name;
             QuestionText = component.QuestionText;
             RenderType = component.RenderType;
-            QuestionType = component.QuestionType?.Name;
+            var _questionType = _context.QuestionTypes.FirstOrDefault(x => x.Id == component.QuestionTypeId);
+            QuestionType = _questionType?.Name ?? string.Empty;
             IsRequired = component.IsRequired;
             CategoryId = component.CategoryId ?? 0;
             CategoryName = component.CategoryName;

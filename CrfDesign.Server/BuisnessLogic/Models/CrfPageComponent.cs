@@ -11,7 +11,7 @@ namespace BuisnessLogic.Models
         public int CRFPageId { get; set; }  // Foreign key to CRFPage
         public string QuestionText { get; set; }
         public string RenderType { get; set; }
-        public QuestionType QuestionType { get; set; }
+        public int QuestionTypeId { get; set; }
         public int? CategoryId { get; set; }
         public string? CategoryName { get; set; }
         public bool IsRequired { get; set; }
@@ -25,8 +25,8 @@ namespace BuisnessLogic.Models
         public void FixByRenderType(DataContext.CrfDesignContext _context)
         {
             // figure out component type and fill fields
-            QuestionType = _context.QuestionTypes.FirstOrDefault(x => x.Name.ToLower() == RenderType.ToLower());
-            if (QuestionType == null)
+            var QuestionType = _context.QuestionTypes.FirstOrDefault(x => x.Name.ToLower() == RenderType.ToLower());
+            if (QuestionType == null  && QuestionTypeId == 0)
             {
                 QuestionType = _context.QuestionTypes
                     .FirstOrDefault(x => x.Name.ToLower() == "SingleChoice".ToLower());
