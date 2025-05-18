@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BuisnessLogic.Models.CrfPageComponent>
+﻿@model IEnumerable<CrfDesign.Server.WebAPI.Models.CrfPageComponentViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,19 +19,29 @@
                 @Html.DisplayNameFor(model => model.RenderType)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.QuestionType)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.IsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryOptions)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ValidationPattern)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CrfPage)
+                @Html.DisplayNameFor(model => model.CRFPageName)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionText)
@@ -40,20 +50,30 @@
                 @Html.DisplayFor(modelItem => item.RenderType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsRequired)
+                @Html.DisplayFor(modelItem => item.QuestionType)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.IsRequired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryOptions)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ValidationPattern)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CrfPage.Id)
+                @Html.DisplayFor(modelItem => item.CRFPageName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Duplicate" asp-route-id="@item.Id">Duplicate</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

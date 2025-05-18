@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CrfDesign.Server.WebAPI.Data;
+using CrfDesign.Server.WebAPI.Models;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 
@@ -23,8 +23,11 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPageComponents
         public async Task<IActionResult> Index()
         {
-            var crfDesignContext = _context.CrfPageComponents.Include(c => c.CrfPage);
-            return View(await crfDesignContext.ToListAsync());
+            var dblines = await _context.CrfPageComponents.Include(c => c.CrfPage).ToListAsync();
+            var uiLines = dblines.Select(crfComponent => 
+                        new CrfPageComponentViewModel(crfComponent, _context))
+                .ToList();
+            return View(uiLines);
         }
 
         // GET: CrfPageComponents/Details/5
@@ -58,9 +61,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Models.CrfPageComponent UIcrfPageComponent)
+        public async Task<IActionResult> Create(CrfPageComponent crfPageComponent)
         {
-            CrfPageComponent crfPageComponent = UIcrfPageComponent.FixAccordingToRenderType(_context);
             if (ModelState.IsValid)
             {                
                 _context.Add(crfPageComponent);
@@ -104,6 +106,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 try
                 {
+                    crfPageComponent.FixByRenderType(_context);
                     _context.Update(crfPageComponent);
                     await _context.SaveChangesAsync();
                 }

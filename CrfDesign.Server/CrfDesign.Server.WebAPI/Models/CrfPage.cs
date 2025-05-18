@@ -16,7 +16,7 @@ namespace CrfDesign.Server.WebAPI.Models
         public bool IsLockedForChanges { get; set; }
 
         // Navigation property to Questions
-        public ICollection<CrfPageComponent> Questions { get; set; }
+        public ICollection<CrfPageComponentViewModel> Questions { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
     }

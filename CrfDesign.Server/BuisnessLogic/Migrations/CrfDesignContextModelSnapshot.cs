@@ -47,6 +47,27 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfOptions");
                 });
 
+            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOptionCategory", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<bool>("IsDeleted")
+                    .HasColumnType("bit");
+
+                b.Property<DateTime>("ModifiedDateTime")
+                    .HasColumnType("datetime2");
+
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(100)");
+
+                b.HasKey("Id");
+
+                b.ToTable("CrfOptionCategories");
+            });
+
             modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPage", b =>
                 {
                     b.Property<int>("Id")
@@ -93,8 +114,14 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("CategoryId")
+                         .HasColumnType("int");
+
+                    b.Property<bool>("CategoryName")
+                         .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("QuestionText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int?>("QuestionTypeId")
                         .HasColumnType("int");

@@ -12,6 +12,8 @@ namespace BuisnessLogic.Models
         public string QuestionText { get; set; }
         public string RenderType { get; set; }
         public QuestionType QuestionType { get; set; }
+        public int? CategoryId { get; set; }
+        public string? CategoryName { get; set; }
         public bool IsRequired { get; set; }
 
         public ICollection<CrfOption> Options { get; set; }  // For multiple-choice questions
@@ -19,5 +21,21 @@ namespace BuisnessLogic.Models
 
         // Navigation properties
         public CrfPage CrfPage { get; set; }
+
+        public void FixByRenderType(DataContext.CrfDesignContext _context)
+        {
+            // figure out component type and fill fields
+            QuestionType = _context.QuestionTypes.FirstOrDefault(x => x.Name.ToLower() == RenderType.ToLower());
+            if (QuestionType == null)
+            {
+                QuestionType = _context.QuestionTypes
+                    .FirstOrDefault(x => x.Name.ToLower() == "SingleChoice".ToLower());
+                CategoryName = RenderType;
+                var category = _context.CrfOptionCategories
+                    .FirstOrDefault(x => x.Name == RenderType);
+                if (category != null)
+                    CategoryId = category.Id;
+            }
+        }
     }
 }
