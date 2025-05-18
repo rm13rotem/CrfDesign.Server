@@ -8,16 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Models;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
+using BuisnessLogic.Models.Managers;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfPageComponentsController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly Manager<CrfPageComponent> _manager;
 
         public CrfPageComponentsController(CrfDesignContext context)
         {
             _context = context;
+            _manager = new Manager<CrfPageComponent>(_context);
         }
 
         // GET: CrfPageComponents
@@ -72,9 +75,25 @@ namespace CrfDesign.Server.WebAPI.Controllers
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             return View(crfPageComponent);
         }
+        // GET: CrfPageComponents/Duplicate/5
+        public async Task<IActionResult> Duplicate(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var crfPageComponent = await _context.CrfPageComponents.FindAsync(id);
+            if (crfPageComponent == null)
+            {
+                return NotFound();
+            }
 
-        // GET: CrfPageComponents/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+            _manager.Duplicate(crfPageComponent);
+            return RedirectToAction("Index");
+        }
+
+            // GET: CrfPageComponents/Edit/5
+            public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BuisnessLogic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BuisnessLogic.Models
 {
-    public class CrfPageComponent
+    public class CrfPageComponent : IPersistantEntity
     {
         public int Id { get; set; }
         public int CRFPageId { get; set; }  // Foreign key to CRFPage
@@ -21,6 +22,9 @@ namespace BuisnessLogic.Models
 
         // Navigation properties
         public CrfPage CrfPage { get; set; }
+        public string Name { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime ModifiedDateTime { get; set; }
 
         public void FixByRenderType(DataContext.CrfDesignContext _context)
         {
