@@ -29,6 +29,8 @@ namespace BuisnessLogic.Models
         public void FixByRenderType(DataContext.CrfDesignContext _context)
         {
             // figure out component type and fill fields
+            if (RenderType == null)
+                return;
             var QuestionType = _context.QuestionTypes.FirstOrDefault(x => x.Name.ToLower() == RenderType.ToLower());
             if (QuestionType == null  && QuestionTypeId == 0)
             {

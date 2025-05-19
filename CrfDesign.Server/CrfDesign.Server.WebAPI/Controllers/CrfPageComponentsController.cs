@@ -56,6 +56,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public IActionResult Create()
         {
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name");
+            ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name");
             return View();
         }
 
@@ -73,6 +74,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
+            ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
             return View(crfPageComponent);
         }
         // GET: CrfPageComponents/Duplicate/5
@@ -106,6 +108,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return NotFound();
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
+            ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
             return View(crfPageComponent);
         }
 
@@ -142,7 +145,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Id", crfPageComponent.CRFPageId);
+            ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
+            ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
             return View(crfPageComponent);
         }
 
