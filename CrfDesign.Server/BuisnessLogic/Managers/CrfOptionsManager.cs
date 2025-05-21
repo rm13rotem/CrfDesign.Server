@@ -2,6 +2,8 @@
 using BuisnessLogic.Filters;
 using BuisnessLogic.Interfaces.Managers;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,9 +37,20 @@ namespace BuisnessLogic.Models.Managers
 
         public async Task<List<CrfOption>> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter)
         {
-            return await _context.CrfOptions
-                .Where(x => x.Name.Contains(crfOptionFilter.PartialName))
-                .ToListAsync();
+            var result = await _context.CrfOptions.ToListAsync();
+            if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialName))
+                result = result.Where(x => x.Name.Contains(crfOptionFilter.PartialName)).ToList();
+            if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialCategoryName))
+            {
+                var categories = _context.CrfOptionCategories.
+                    Where(x => x.Name.Contains(crfOptionFilter.PartialCategoryName))
+                    .Select(x => x.Id).ToList();
+                result = result.Where(x => categories.Contains(x.CrfOptionCategoryId)).ToList();
+            }
+            if (crfOptionFilter.CategoryId > 0)
+                result = result.Where(x => x.CrfOptionCategoryId == crfOptionFilter.CategoryId).ToList();
+
+            return result;
         }
 
         public async Task<bool> TryInsert(CrfOption entity)
@@ -66,7 +79,7 @@ namespace BuisnessLogic.Models.Managers
 
         private async Task<bool> Insert(CrfOption entity)
         {
-            entity.Id = _context.CrfOptions.Any() ? 
+            entity.Id = _context.CrfOptions.Any() ?
                 _context.CrfOptions.Max(x => x.Id) + 1 :
                 1;
             _context.CrfOptions.Add(entity);
@@ -84,9 +97,45 @@ namespace BuisnessLogic.Models.Managers
             return true;
         }
 
-        public Task<bool> Update(CrfOption entity)
+        public async Task<bool> DuplicateAsync(int? id)
         {
-            throw new System.NotImplementedException();
+            if (id == null)
+                return false;
+
+            try
+            {
+                var crfOption = await _context.CrfOptions.FindAsync(id);
+                if (crfOption == null)
+                    return false;
+
+                // var newId = _context.CrfOptions.Max(x => x.Id) + 1;
+                var crfOptionNew = new CrfOption()
+                {
+                    CrfOptionCategoryId = crfOption.CrfOptionCategoryId,
+                    Name = crfOption.Name,
+                    ModifiedDateTime = DateTime.Now,
+                    IsDeleted = false
+                };
+                _context.Add(crfOptionNew);
+                await _context.SaveChangesAsync();
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine("Failed to duplicate id" + id.ToString());
+                Console.WriteLine(e.Message);
+            }
+            return true;
+        }
+
+        public async Task<bool> Update(CrfOption entity)
+        {
+            var existingEntity = await GetById(entity.Id);
+            if (existingEntity == null)
+                return false;
+
+            _context.CrfOptions.Attach(entity);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CrfDesign.Server.WebAPI.Models;
+using BuisnessLogic.Repositories;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -24,8 +27,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfOptions
         public async Task<IActionResult> Index(CrfOptionFilter crfOptionFilter)
         {
-            var results = await _manager.GetCrfOptionsAsync(crfOptionFilter);
-            //var result = dbresults.Select(x => new CrfOption(x)).ToList();
+            var dbresults = await _manager.GetCrfOptionsAsync(crfOptionFilter);
+            var results = dbresults.Select(x => new CrfOptionViewModel(x, _context)).ToList();
             return View(results);
         }
 
@@ -49,6 +52,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfOptions/Create
         public IActionResult Create()
         {
+            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name");
+
             return View();
         }
 
@@ -65,10 +70,27 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name", crfOption.CrfOptionCategoryId);
+
             return View(crfOption);
         }
 
+
         // GET: CrfOptions/Edit/5
+        public async Task<IActionResult> Duplicate(int? id)
+        {
+            
+            bool isSuccess = await _manager.DuplicateAsync(id);
+             if (!isSuccess)
+            {
+                return NotFound();
+            }            
+            
+            return RedirectToAction("Index");
+        }
+
+        // GET: CrfOptions/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,6 +103,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
+            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name", crfOption.CrfOptionCategoryId);
+
             return View(crfOption);
         }
 
@@ -89,7 +113,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime,CrfQuestionId")] CrfOption crfOption)
+        public async Task<IActionResult> Edit(int id, CrfOption crfOption)
         {
             if (id != crfOption.Id)
             {
@@ -116,6 +140,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name", crfOption.CrfOptionCategoryId);
+
             return View(crfOption);
         }
 
@@ -143,7 +169,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var crfOption = await _context.CrfOptions.FindAsync(id);
-            _context.CrfOptions.Remove(crfOption);
+            crfOption.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

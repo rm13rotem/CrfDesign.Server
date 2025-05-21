@@ -1,0 +1,25 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Save Database";
+}
+
+<h1>Save Entire DB</h1>
+
+<h4>In JSON :</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <textarea class="form-control" rows="30" cols="220"
+                      style="width: 100%; scroll-behavior: auto;">
+                    @Model
+            </textarea>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -23,7 +23,7 @@
   <ItemGroup>
     <Folder Include="Interfaces\Filters\" />
     <Folder Include="Models\Filters\" />
-    <Folder Include="Models\NewFolder\" />
+    <Folder Include="Models\Backup\" />
   </ItemGroup>
 
   <ItemGroup>

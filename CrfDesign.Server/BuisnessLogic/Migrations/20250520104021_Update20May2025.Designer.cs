@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CrfDesign.Server.WebAPI.Migrations
+namespace BuisnessLogic.Migrations
 {
     [DbContext(typeof(CrfDesignContext))]
-    [Migration("20250417195454_InitTables17Apr2025")]
-    partial class InitTables17Apr2025
+    [Migration("20250520104021_Update20May2025")]
+    partial class Update20May2025
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,17 +21,17 @@ namespace CrfDesign.Server.WebAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOption", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfOption", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CrfPageComponentId")
+                    b.Property<int>("CrfOptionCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CrfQuestionId")
+                    b.Property<int?>("CrfPageComponentId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -49,7 +50,28 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfOptions");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPage", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfOptionCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CrfOptionCategories");
+                });
+
+            modelBuilder.Entity("BuisnessLogic.Models.CrfPage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +104,7 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("CrfPages");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfPageComponent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,13 +114,28 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<int>("CRFPageId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("QuestionTypeId")
+                    b.Property<int>("QuestionTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("RenderType")
@@ -111,12 +148,10 @@ namespace CrfDesign.Server.WebAPI.Migrations
 
                     b.HasIndex("CRFPageId");
 
-                    b.HasIndex("QuestionTypeId");
-
                     b.ToTable("CrfPageComponents");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.QuestionType", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.QuestionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,36 +172,30 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.ToTable("QuestionTypes");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfOption", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfOption", b =>
                 {
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.CrfPageComponent", null)
+                    b.HasOne("BuisnessLogic.Models.CrfPageComponent", null)
                         .WithMany("Options")
                         .HasForeignKey("CrfPageComponentId");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfPageComponent", b =>
                 {
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.CrfPage", "CrfPage")
+                    b.HasOne("BuisnessLogic.Models.CrfPage", "CrfPage")
                         .WithMany("Questions")
                         .HasForeignKey("CRFPageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CrfDesign.Server.WebAPI.Models.QuestionType", "QuestionType")
-                        .WithMany()
-                        .HasForeignKey("QuestionTypeId");
-
                     b.Navigation("CrfPage");
-
-                    b.Navigation("QuestionType");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPage", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfPage", b =>
                 {
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("CrfDesign.Server.WebAPI.Models.CrfPageComponent", b =>
+            modelBuilder.Entity("BuisnessLogic.Models.CrfPageComponent", b =>
                 {
                     b.Navigation("Options");
                 });

@@ -23,7 +23,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CrfPages.ToListAsync());
+            var pages = await _context.CrfPages.ToListAsync();
+            return View(pages);
         }
 
         // GET: CrfPages/Details/5
