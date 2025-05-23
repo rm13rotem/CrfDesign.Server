@@ -16,7 +16,7 @@ namespace CrfDesign.Server.WebAPI.Models
             Id = component.Id;
             var crfPage = _context.CrfPages.FirstOrDefault(x => x.Id == component.CRFPageId);
             if (crfPage != null)
-                CRFPageName = crfPage.Name;
+                CRFPageName = crfPage.Id.ToString() + " - " + crfPage.Name;
             QuestionText = component.QuestionText;
             RenderType = component.RenderType;
             var _questionType = _context.QuestionTypes.FirstOrDefault(x => x.Id == component.QuestionTypeId);
@@ -25,6 +25,7 @@ namespace CrfDesign.Server.WebAPI.Models
             CategoryId = component.CategoryId ?? 0;
             CategoryName = component.CategoryName;
             ValidationPattern = component.ValidationPattern;
+            Name = component.Name;
         }
         public string ToCategoryOptions()
         {
@@ -57,6 +58,7 @@ namespace CrfDesign.Server.WebAPI.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ValidationPattern { get; set; }
+        public string Name { get; private set; }
 
         public string CategoryOptions { get { return ToCategoryOptions(); } }
 

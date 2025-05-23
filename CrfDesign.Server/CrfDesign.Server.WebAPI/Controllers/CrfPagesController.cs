@@ -8,23 +8,59 @@ using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Data;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
+using BuisnessLogic.Managers;
+using CrfDesign.Server.WebAPI.Models.Filters;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfPagesController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly CrfPageManager _crfPageManager;
 
         public CrfPagesController(CrfDesignContext context)
         {
             _context = context;
+            _crfPageManager = new CrfPageManager(_context);
         }
 
         // GET: CrfPages
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CrfPageFilter crfPageFilter)
         {
             var pages = await _context.CrfPages.ToListAsync();
+            if (!string.IsNullOrEmpty(crfPageFilter.PartialName))
+                pages = pages.Where(x => x.Name.Contains(crfPageFilter.PartialName)).ToList();
             return View(pages);
+        }
+
+        // GET: CrfPages/GoToComponents/5
+        public async Task<IActionResult> GoToComponents(int id)
+        {
+            var crfPage = _crfPageManager.GetById(id);
+            if (crfPage == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Index", "CrfPageComponents", new { CrfPageId = crfPage.Id });
+        }
+
+        // GET: CrfPages/RenderHTML/5
+        public async Task<IActionResult> RenderHTML(int id)
+        {
+            var crfPage = _crfPageManager.GetById(id);
+            return View(crfPage);
+        }
+        
+
+        // GET: CrfPages/Duplicate/5
+        public async Task<IActionResult> Duplicate(int id)
+        {
+            var d = await _crfPageManager.GetById(id);
+            _crfPageManager.Duplicate(d);
+
+            var filter = new CrfPageFilter() { PartialName = d.Name };
+            return View("Index", filter);
         }
 
         // GET: CrfPages/Details/5

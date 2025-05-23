@@ -9,6 +9,7 @@ using CrfDesign.Server.WebAPI.Models;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 using BuisnessLogic.Models.Managers;
+using CrfDesign.Server.WebAPI.Models.Filters;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -24,12 +25,20 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfPageComponents
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CrfPageComponentFilter filter)
         {
             var dblines = await _context.CrfPageComponents.ToListAsync();
+            if (!string.IsNullOrEmpty(filter.PartialName))
+                dblines = dblines.Where(x => x.Name?.Contains(filter.PartialName) == true).ToList();
+            if (filter.CrfPageId > 0)
+                dblines = dblines.Where(x => x.CRFPageId == filter.CrfPageId).ToList();
             var uiLines = dblines.Select(crfComponent => 
                         new CrfPageComponentViewModel(crfComponent, _context))
                 .ToList();
+
+            var Options = _context.CrfPages.ToList();
+            Options.Add(new CrfPage() { Id = 0, Name = "All" });
+            ViewData["CRFPageId"] = new SelectList(Options, "Id", "Name", filter.CrfPageId);
             return View(uiLines);
         }
 
@@ -91,7 +100,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             }
 
             _manager.Duplicate(crfPageComponent);
-            return RedirectToAction("Index");
+            var crfPageFilter = new CrfPageComponentFilter() { PartialName = crfPageComponent.Name };
+            return RedirectToAction("Index", crfPageFilter);
         }
 
             // GET: CrfPageComponents/Edit/5
