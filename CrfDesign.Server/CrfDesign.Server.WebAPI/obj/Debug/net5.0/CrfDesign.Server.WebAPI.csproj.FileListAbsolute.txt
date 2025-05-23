@@ -186,3 +186,4 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\ref\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.genruntimeconfig.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Index.cshtml.g.cs

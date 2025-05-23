@@ -34,22 +34,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfPages/GoToComponents/5
-        public async Task<IActionResult> GoToComponents(int id)
+        public IActionResult GoToComponents(int id)
         {
-            var crfPage = _crfPageManager.GetById(id);
-            if (crfPage == null)
-            {
-                return NotFound();
-            }
-
-            return RedirectToAction("Index", "CrfPageComponents", new { CrfPageId = crfPage.Id });
+            return RedirectToAction("Index", "CrfPageComponents", new CrfPageComponentFilter { CrfPageId = id });
         }
 
         // GET: CrfPages/RenderHTML/5
-        public async Task<IActionResult> RenderHTML(int id)
+        public IActionResult RenderHTML(int id)
         {
-            var crfPage = _crfPageManager.GetById(id);
-            return View(crfPage);
+            return RedirectToAction("Index", "RenderCrfComponent", new { id });
         }
         
 
