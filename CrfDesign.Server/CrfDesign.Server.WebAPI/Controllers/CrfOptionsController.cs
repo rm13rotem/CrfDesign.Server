@@ -25,10 +25,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfOptions
-        public async Task<IActionResult> Index(CrfOptionFilter crfOptionFilter)
+        public async Task<IActionResult> Index(CrfOptionFilter filter)
         {
-            var dbresults = await _manager.GetCrfOptionsAsync(crfOptionFilter);
+            var dbresults = await _manager.GetCrfOptionsAsync(filter);
             var results = dbresults.Select(x => new CrfOptionViewModel(x, _context)).ToList();
+
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "All" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", filter.CategoryId);
             return View(results);
         }
 

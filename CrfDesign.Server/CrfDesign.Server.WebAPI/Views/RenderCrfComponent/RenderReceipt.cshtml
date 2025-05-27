@@ -1,0 +1,36 @@
+﻿@model RenderCrfPageViewModel
+
+@{
+    // property IEnumerable<BuisnessLogic.Models.CrfPageComponent>
+
+    ViewData["Title"] = $"Receipt {Model.CrfPage.Name}";
+}
+
+<h1>Rendered form : CRF Page Name = @Model.CrfPage.Name (CRF ID = @Model.CrfPage.Id)</h1>
+<h2> Table of variables</h2>
+<table class="table">
+    <tbody>
+        @foreach (var item in Model.CrfPageComponent)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionType)
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                    @Html.DisplayFor(modelItem => item.IsRequired)
+                    @Html.DisplayFor(modelItem => item.ValidationPattern)
+                    @Html.DisplayFor(modelItem => item.Name)
+
+
+                </td>
+                <td>
+                    <a asp-action="Lock" asp-route-id="@item.Id">Lock</a> |
+                    <a asp-action="Unlock" asp-route-id="@item.Id">Unlock</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

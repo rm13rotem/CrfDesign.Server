@@ -187,3 +187,13 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\CrfDesign.Server.WebAPI.genruntimeconfig.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Index.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Date.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Text.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Boolean.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\CheckBox.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\MultipleChoice.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\Numeric.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\SingleChoice.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\OpenSingleChoice.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\RenderCSharpClass.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\RenderReceipt.cshtml.g.cs

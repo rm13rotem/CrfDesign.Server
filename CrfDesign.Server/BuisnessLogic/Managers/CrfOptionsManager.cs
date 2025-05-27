@@ -50,7 +50,7 @@ namespace BuisnessLogic.Models.Managers
             if (crfOptionFilter.CategoryId > 0)
                 result = result.Where(x => x.CrfOptionCategoryId == crfOptionFilter.CategoryId).ToList();
 
-            return result;
+            return result.OrderBy(x=>x.CrfOptionCategoryId).ToList();
         }
 
         public async Task<bool> TryInsert(CrfOption entity)

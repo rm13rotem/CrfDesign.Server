@@ -8,13 +8,13 @@ namespace CrfDesign.Server.WebAPI.Models
 {
     public class RenderCrfPageViewModel
     {
-        public RenderCrfPageViewModel(CrfPage crfPage, List<CrfPageComponent> crfPageComponent)
+        public RenderCrfPageViewModel(CrfPage crfPage, List<CrfPageComponentViewModel> crfPageComponent)
         {
             CrfPage = crfPage;
             CrfPageComponent = crfPageComponent;
         }
 
         public CrfPage CrfPage { get; }
-        public List<CrfPageComponent> CrfPageComponent { get; }
+        public List<CrfPageComponentViewModel> CrfPageComponent { get; }
     }
 }

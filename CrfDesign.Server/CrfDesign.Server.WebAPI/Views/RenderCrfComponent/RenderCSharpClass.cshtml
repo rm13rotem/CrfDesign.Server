@@ -1,0 +1,56 @@
+﻿@model RenderCrfPageViewModel
+
+@{
+    // property IEnumerable<BuisnessLogic.Models.CrfPageComponent>
+}
+
+public class @Model.CrfPage.Name @Html.Raw("{")
+<br />
+
+@Html.Raw("public int CrfPageId {get; set; } =") @Model.CrfPage.Id
+<br />
+
+@foreach (var item in Model.CrfPageComponent)
+{
+
+
+    @switch (item.QuestionType)
+    {
+        case "Text":
+            @Html.Raw("public string ");
+            break;
+        case "MultipleChoice":
+            @Html.Raw("public List<int> ");
+            break;
+        case "SingleChoice":
+            @Html.Raw("public int ");
+            break;
+        case "Date":
+            @Html.Raw("public DateTime ");
+            break;
+        case "Checkbox":
+            @Html.Raw("public bool ");
+            break;
+        case "Numeric":
+            @Html.Raw("public int ");
+            break;
+        case "Boolean":
+            @Html.Raw("public bool ");
+            break;
+        case "OpenSingleChoise":
+            @Html.Raw("public int ");
+            break;
+
+        default:
+            @Html.Raw("public string ");
+            break;
+    }
+
+
+    @item.Name
+    @Html.Raw(" { get; set; }");
+    <br />
+}
+
+
+@Html.Raw(" }");

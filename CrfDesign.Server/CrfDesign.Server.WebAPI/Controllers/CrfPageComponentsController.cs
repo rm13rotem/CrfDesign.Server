@@ -58,6 +58,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return NotFound();
             }
 
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", crfPageComponent.CategoryId);
             return View(crfPageComponent);
         }
 
@@ -66,6 +69,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
         {
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name");
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name");
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name");
             return View();
         }
 
@@ -84,6 +90,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", crfPageComponent.CategoryId);
             return View(crfPageComponent);
         }
         // GET: CrfPageComponents/Duplicate/5
@@ -119,6 +128,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name");
             return View(crfPageComponent);
         }
 
@@ -153,10 +165,13 @@ namespace CrfDesign.Server.WebAPI.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new CrfPageComponentFilter { CrfPageId = crfPageComponent.CRFPageId });
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
+            var Options = _context.CrfOptionCategories.ToList();
+            Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
+            ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", crfPageComponent.CategoryId);
             return View(crfPageComponent);
         }
 

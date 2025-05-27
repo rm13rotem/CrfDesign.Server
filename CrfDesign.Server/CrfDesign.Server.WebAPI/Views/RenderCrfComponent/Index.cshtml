@@ -7,33 +7,71 @@
 }
 
 <h1>@Model.CrfPage.Name</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@Model.CrfPage.Name" method="post">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <tbody>
-        @foreach (var item in Model.CrfPageComponent.Where(x => x.IsDeleted == false).ToList())
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuestionText)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuestionTypeId)
-                    @Html.DisplayFor(modelItem => item.CategoryId)
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                    @Html.DisplayFor(modelItem => item.IsRequired)
-                    @Html.DisplayFor(modelItem => item.ValidationPattern)
-                    @Html.DisplayFor(modelItem => item.Name)
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                    @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-                </td>
-                <td>
-                    <a asp-action="Lock" asp-route-id="@item.Id">Lock</a> |
-                    <a asp-action="Unlock" asp-route-id="@item.Id">Unlock</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="CrfPageId" value="@Model.CrfPage.Id" />
+
+            @foreach (var item in Model.CrfPageComponent)
+            {
+                @switch (item.QuestionType)
+                    {
+                        case "Text":
+                            {
+                                await Html.RenderPartialAsync("Text", item);
+                            }
+                            break;
+                        case "MultipleChoice":
+                            {
+                                await Html.RenderPartialAsync("MultipleChoice", item);
+                            }
+                            break;
+                        case "SingleChoice":
+                            {
+                                await Html.RenderPartialAsync("SingleChoice", item);
+                            }
+                            break;
+                        case "Date":
+                            {
+                                await Html.RenderPartialAsync("Date", item);
+                            }
+                            break;
+                        case "Checkbox":
+                            {
+                                await Html.RenderPartialAsync("CheckBox", item);
+                            }
+                            break;
+                        case "Numeric":
+                            {
+                                await Html.RenderPartialAsync("Numeric", item);
+                            }
+                            break;
+                        case "Boolean":
+                            {
+                                await Html.RenderPartialAsync("Boolean", item);
+                            }
+                            break;
+                        case "OpenSingleChoise":
+                            {
+                                await Html.RenderPartialAsync("OpenSingleChoice", item);
+                            }
+                            break;
+                        default:
+                            {
+                                await Html.RenderPartialAsync("Text", item);
+                            }
+                            break;
+                    }
+                }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

@@ -1,6 +1,9 @@
 ﻿using BuisnessLogic.DataContext;
+using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +19,65 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
         {
             _context = context;
         }
-        public IActionResult Index(int? id)
+        public async Task<IActionResult> Index(int? id)
         {
             if (id == null)
                 return RedirectToAction($"{nameof(Index)}", "CrfPages");
 
-            var CrfPage = _context.CrfPages.Find(id);
-            var CrfPageComponent = _context.CrfPageComponents.Where(x => x.CRFPageId == id).ToList();
-            if (CrfPage == null || CrfPageComponent.Count == 0)
+            RenderCrfPageViewModel model = GetRenderViewModel(id);
+
+            if (model == null)
                 return NotFound();
-            var model = new RenderCrfPageViewModel(CrfPage, CrfPageComponent);
+
+            foreach (var item in model.CrfPageComponent.Where(x => x.QuestionType == "SingleChoice"))
+            {
+                var Options = _context.CrfOptions.Where(x => x.CrfOptionCategoryId == item.CategoryId).ToList();
+                Options.Add(new CrfOption() { Id = 0, Name = "--Select--" });
+                ViewData[item.Name] = new SelectList(Options, "Id", "Name", 0);
+            }
+
             return View(model);
         }
+
+        private RenderCrfPageViewModel GetRenderViewModel(int? id)
+        {
+            var CrfPage = _context.CrfPages.Find(id);
+            if (CrfPage == null) return null;
+            var CrfPageComponents = _context.CrfPageComponents
+                .Where(x => x.CRFPageId == id)
+                .Where(x => x.IsDeleted == false)
+                .OrderBy(x => x.Id)
+                .Select(x => new CrfPageComponentViewModel(x, _context))
+                .ToList();
+            if (CrfPageComponents.Any() == false)
+                return null;
+            var model = new RenderCrfPageViewModel(CrfPage, CrfPageComponents);
+            return model;
+        }
+
+        public IActionResult RenderReceipt(int id)
+        {
+            if (id == null)
+                return RedirectToAction($"{nameof(Index)}", "CrfPages");
+
+            RenderCrfPageViewModel model = GetRenderViewModel(id);
+
+            if (model == null)
+                return NotFound();
+            return View(model);
+        }
+
+        public IActionResult RenderCSharpClass(int id)
+        {
+            if (id == null)
+                return RedirectToAction($"{nameof(Index)}", "CrfPages");
+
+            RenderCrfPageViewModel model = GetRenderViewModel(id);
+
+            if (model == null)
+                return NotFound();
+            return View(model);
+        }
+
     }
 }

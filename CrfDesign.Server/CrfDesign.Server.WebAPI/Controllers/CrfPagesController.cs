@@ -44,8 +44,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
         {
             return RedirectToAction("Index", "RenderCrfComponent", new { id });
         }
-        
 
+        public IActionResult RenderReceipt(int id)
+        {
+            return RedirectToAction("RenderReceipt", "RenderCrfComponent", new { id });
+        }
+
+        public IActionResult RenderCSharpClass(int id)
+        {
+            return RedirectToAction("RenderCSharpClass", "RenderCrfComponent", new { id });
+        }
         // GET: CrfPages/Duplicate/5
         public async Task<IActionResult> Duplicate(int id)
         {
