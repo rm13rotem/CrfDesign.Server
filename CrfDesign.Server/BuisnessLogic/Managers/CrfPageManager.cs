@@ -20,6 +20,8 @@ namespace BuisnessLogic.Managers
         {
             int originalId = entity.Id;
             var newEntity = base.Duplicate(entity);
+            newEntity.ModifiedDateTime = DateTime.Now;
+            _context.SaveChanges();
 
             var componentManager = new Manager<CrfPageComponent>(_context);
             var crfComponentIds = _context.CrfPageComponents.Where(x => x.CRFPageId == originalId)
