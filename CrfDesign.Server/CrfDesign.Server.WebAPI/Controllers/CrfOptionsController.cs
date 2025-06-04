@@ -27,12 +27,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfOptions
         public async Task<IActionResult> Index(CrfOptionFilter filter)
         {
+            if (filter == null) filter = new CrfOptionFilter();//
+            filter.TotalLines = _context.CrfOptions.Count();
             var dbresults = await _manager.GetCrfOptionsAsync(filter);
             var results = dbresults.Select(x => new CrfOptionViewModel(x, _context)).ToList();
 
             var Options = _context.CrfOptionCategories.ToList();
             Options.Add(new CrfOptionCategory() { Id = 0, Name = "All" });
             ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", filter.CategoryId);
+            ViewBag.filter = filter;
             return View(results);
         }
 
@@ -81,7 +84,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
 
         // GET: CrfOptions/Edit/5
-        public async Task<IActionResult> Duplicate(int? id)
+        public async Task<IActionResult> Duplicate(int? id, CrfOptionFilter filter)
         {
             
             bool isSuccess = await _manager.DuplicateAsync(id);
@@ -90,7 +93,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return NotFound();
             }            
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", filter);
         }
 
         // GET: CrfOptions/Edit/5

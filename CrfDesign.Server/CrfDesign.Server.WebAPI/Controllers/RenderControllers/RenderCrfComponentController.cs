@@ -33,6 +33,7 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
             {
                 var Options = _context.CrfOptions.Where(x => x.CrfOptionCategoryId == item.CategoryId).ToList();
                 Options.Add(new CrfOption() { Id = 0, Name = "--Select--" });
+                Options = Options.OrderBy(x => x.Id).ToList();
                 ViewData[item.Name] = new SelectList(Options, "Id", "Name", 0);
             }
 

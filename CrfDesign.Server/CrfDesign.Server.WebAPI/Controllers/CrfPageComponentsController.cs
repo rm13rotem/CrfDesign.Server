@@ -27,17 +27,23 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPageComponents
         public async Task<IActionResult> Index(CrfPageComponentFilter filter)
         {
-            var dblines = await _context.CrfPageComponents.ToListAsync();
-            if (!string.IsNullOrEmpty(filter.PartialName))
-                dblines = dblines.Where(x => x.Name?.Contains(filter.PartialName) == true).ToList();
+            List<CrfPageComponent> dblines = null;
             if (filter.CrfPageId > 0)
-                dblines = dblines.Where(x => x.CRFPageId == filter.CrfPageId).ToList();
+                dblines = await _context.CrfPageComponents
+                    .Where(x => x.CRFPageId == filter.CrfPageId).ToListAsync();
+            else dblines = await _context.CrfPageComponents.ToListAsync();
+
+            if (!string.IsNullOrEmpty(filter.PartialName))
+                dblines = dblines
+                    .Where(x => x.Name.Contains(filter.PartialName) == true)
+                    .ToList();
             var uiLines = dblines.Select(crfComponent => 
                         new CrfPageComponentViewModel(crfComponent, _context))
                 .ToList();
 
             var Options = _context.CrfPages.ToList();
             Options.Add(new CrfPage() { Id = 0, Name = "All" });
+            Options = Options.OrderBy(x => x.Id).ToList();
             ViewData["CRFPageId"] = new SelectList(Options, "Id", "Name", filter.CrfPageId);
             return View(uiLines);
         }

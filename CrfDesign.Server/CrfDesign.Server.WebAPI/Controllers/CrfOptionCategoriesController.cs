@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BuisnessLogic.DataContext;
 using BuisnessLogic.Models;
+using BuisnessLogic.Filters;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -20,9 +21,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfOptionCategories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CrfOptionCategoriesFilter filter)
         {
-            return View(await _context.CrfOptionCategories.ToListAsync());
+            filter.TotalLines = _context.CrfOptionCategories.Count();
+            var dbLines = await _context.CrfOptionCategories.OrderBy(x => x.Id).Skip(filter.Page - 1).Take(filter.NLines).ToListAsync();
+            if (dbLines.Count == 0)
+                dbLines = await _context.CrfOptionCategories.ToListAsync();
+            else ViewBag.filter = filter;
+            return View(dbLines);
         }
 
         // GET: CrfOptionCategories/Details/5
@@ -63,6 +69,13 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(crfOptionCategory);
+        }
+
+        // GET: CrfOptionCategories/Duplicate/5
+        public async Task<IActionResult> Duplicate(int? id, CrfOptionCategoriesFilter filter)
+        {
+
+            return RedirectToAction($"{nameof(Index)}", filter);
         }
 
         // GET: CrfOptionCategories/Edit/5

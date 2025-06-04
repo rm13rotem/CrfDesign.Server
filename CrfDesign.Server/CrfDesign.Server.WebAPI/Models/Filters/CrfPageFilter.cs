@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Models.Filters
 {
-    public class CrfPageFilter : IFilter
+    public class CrfPageFilter : Filter
     {
-        public string PartialName { get; set; }
+        // PartialName (string), Page (int) , NLines (int)
     }
 }
