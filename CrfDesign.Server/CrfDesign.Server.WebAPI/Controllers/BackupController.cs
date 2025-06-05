@@ -31,8 +31,10 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
         // GET: Backup/Load/
         public IActionResult Load()
-        {            
-            return View();
+        {
+            LoadOptions model = new();
+            model.ModifiedDateTime = DateTime.UtcNow;
+            return View(model);
         }
 
         // POST: Backup/Edit/5

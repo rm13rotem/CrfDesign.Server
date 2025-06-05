@@ -29,4 +29,10 @@
     <ProjectReference Include="..\BuisnessLogic\BuisnessLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Data\Migrations\DbCrfDesign.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

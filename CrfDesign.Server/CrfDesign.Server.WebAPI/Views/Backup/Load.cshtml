@@ -4,18 +4,18 @@
     ViewData["Title"] = "Load Database";
 }
 
-<h1>Edit</h1>
+<h1>Restore Database</h1>
 
-<h4>CrfPage</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <div class="col-md-12">
+        <form asp-action="Load">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DB" class="control-label"></label>
-                <textarea asp-for="DB" class="form-control" />
-                <span asp-validation-for="DB" class="text-danger"></span>
+                <textarea class="form-control" rows="30" cols="220" asp-for="DB"
+                          style="width: 100%; scroll-behavior: auto;">
+                    @Model.DB
+            </textarea>
             </div>
 
             <div class="form-group form-check">
@@ -41,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Home">Back to Home</a>
 </div>
 
 @section Scripts {

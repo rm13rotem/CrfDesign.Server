@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace BuisnessLogic.Models
         public string ValidationPattern { get; set; } // Optional for custom validation like regex
 
         // Navigation properties
+        [JsonIgnoreAttribute]
         public CrfPage CrfPage { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }

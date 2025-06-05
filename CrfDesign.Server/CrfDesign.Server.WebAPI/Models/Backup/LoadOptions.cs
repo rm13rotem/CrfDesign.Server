@@ -18,12 +18,14 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
 
         public async Task SaveToDb(CrfDesignContext context)
         {
+            if (string.IsNullOrWhiteSpace(DB))
+                return; // no info given
             DataBaseViewModel dataBase = JsonConvert.DeserializeObject<DataBaseViewModel>(DB);
             if (dataBase == null)
                 return;
-            ImportDataIntoDatabase<CrfPageViewModel>(context, dataBase);
+            ImportDataIntoDatabase<CrfPage>(context, dataBase);
             ImportDataIntoDatabase<CrfPageComponent>(context, dataBase);
-            ImportDataIntoDatabase<CrfOptionViewModel>(context, dataBase);
+            ImportDataIntoDatabase<CrfOption>(context, dataBase);
             ImportDataIntoDatabase<CrfOptionCategory>(context, dataBase);
         }
 
@@ -31,11 +33,11 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             where T : class, IPersistantEntity
         {
             List<T> list = null;
-            if (typeof(T) == typeof(CrfPageViewModel))
+            if (typeof(T) == typeof(CrfPage))
                 list = dataBase.CrfPages as List<T>;
             if (typeof(T) == typeof(CrfPageComponent))
                 list = dataBase.CrfPageComponents as List<T>;
-            if (typeof(T) == typeof(CrfOptionViewModel))
+            if (typeof(T) == typeof(CrfOption))
                 list = dataBase.CrfOptions as List<T>;
             if (typeof(T) == typeof(CrfOptionCategory))
                 list = dataBase.CrfOptionCategories as List<T>;
