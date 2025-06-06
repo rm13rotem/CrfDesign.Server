@@ -197,3 +197,4 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\OpenSingleChoice.cshtml.g.cs
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\RenderCSharpClass.cshtml.g.cs
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Debug\net5.0\Razor\Views\RenderCrfComponent\RenderReceipt.cshtml.g.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\bin\Debug\net5.0\Data\Migrations\DbCrfDesign.json

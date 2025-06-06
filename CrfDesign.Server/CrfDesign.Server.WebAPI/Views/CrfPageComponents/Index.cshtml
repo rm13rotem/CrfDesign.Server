@@ -56,6 +56,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CRFPageName)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDateTime)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -94,8 +97,12 @@
                     @Html.DisplayFor(modelItem => item.CRFPageName)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+                </td>
+                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Refresh" asp-route-id="@item.Id">Refresh</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
                     <a asp-action="Duplicate" asp-route-id="@item.Id">Duplicate</a>
                 </td>

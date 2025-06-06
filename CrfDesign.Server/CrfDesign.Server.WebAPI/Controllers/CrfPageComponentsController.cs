@@ -37,7 +37,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 dblines = dblines
                     .Where(x => x.Name.Contains(filter.PartialName) == true)
                     .ToList();
-            var uiLines = dblines.Select(crfComponent => 
+            var uiLines = dblines.Select(crfComponent =>
                         new CrfPageComponentViewModel(crfComponent, _context))
                 .ToList();
 
@@ -63,7 +63,12 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
-
+            // else
+            if (crfPageComponent.ModifiedDateTime < new DateTime(1900, 1, 1))
+            {
+                crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
+                _context.SaveChanges();
+            }
             var Options = _context.CrfOptionCategories.ToList();
             Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
             ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", crfPageComponent.CategoryId);
@@ -89,7 +94,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> Create(CrfPageComponent crfPageComponent)
         {
             if (ModelState.IsValid)
-            {                
+            {
+                crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
                 _context.Add(crfPageComponent);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -119,8 +125,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return RedirectToAction("Index", crfPageFilter);
         }
 
-            // GET: CrfPageComponents/Edit/5
-            public async Task<IActionResult> Edit(int? id)
+        // GET: CrfPageComponents/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -132,6 +138,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
+
+            //else
+            crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
             var Options = _context.CrfOptionCategories.ToList();
@@ -156,6 +165,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 try
                 {
+                    crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
                     crfPageComponent.FixByRenderType(_context);
                     _context.Update(crfPageComponent);
                     await _context.SaveChangesAsync();
@@ -206,11 +216,23 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var crfPageComponent = await _context.CrfPageComponents.FindAsync(id);
-            _context.CrfPageComponents.Remove(crfPageComponent);
+            crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
+            crfPageComponent.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Refresh(int id)
+        {
+            var crfPageComponent = _context.CrfPageComponents.Find(id);
+            crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
+            _context.SaveChanges();
+            var backToPageFilter = new CrfPageComponentFilter()
+            {
+                CrfPageId = crfPageComponent.CRFPageId
+            };
+            return RedirectToAction(nameof(Index), backToPageFilter);
+        }
         private bool CrfPageComponentExists(int id)
         {
             return _context.CrfPageComponents.Any(e => e.Id == id);
