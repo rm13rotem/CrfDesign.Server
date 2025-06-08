@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace BuisnessLogic.Models
         public bool IsLockedForChanges { get; set; }
 
         // Navigation property to Questions
+        [JsonIgnoreAttribute]
         public ICollection<CrfPageComponent> Questions { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }

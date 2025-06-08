@@ -384,7 +384,7 @@
           "ValidationPattern": null,
           "Name": "DateOfVisit",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:51.391257"
         },
         {
           "Id": 15,
@@ -399,7 +399,7 @@
           "ValidationPattern": null,
           "Name": "Date_of_Birth",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:56.2430369"
         },
         {
           "Id": 16,
@@ -414,7 +414,7 @@
           "ValidationPattern": null,
           "Name": "Gender",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:59.8859999"
         },
         {
           "Id": 17,
@@ -429,7 +429,7 @@
           "ValidationPattern": null,
           "Name": "Ethnicity",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:06:06.1079501"
         },
         {
           "Id": 18,
@@ -444,7 +444,7 @@
           "ValidationPattern": null,
           "Name": "Race",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:06:14.6547471"
         },
         {
           "Id": 19,
@@ -459,7 +459,7 @@
           "ValidationPattern": null,
           "Name": "Race_Other",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:06:19.5655783"
         }
       ],
       "IsDeleted": false,
@@ -472,7 +472,23 @@
       "Description": "Physical Examination",
       "CreatedAt": "2025-04-17T23:52:00",
       "IsLockedForChanges": false,
-      "Questions": null,
+      "Questions": [
+        {
+          "Id": 61,
+          "CRFPageId": 2,
+          "QuestionText": "ToDo - add components to this CRF",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "PE[0]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:07:48.0963975"
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-04-17T23:52:00"
     },
@@ -508,7 +524,7 @@
           "ValidationPattern": null,
           "Name": "INC[0]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:04:49.2528913"
         },
         {
           "Id": 2,
@@ -523,7 +539,7 @@
           "ValidationPattern": null,
           "Name": "INC[1]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:04:57.6154538"
         },
         {
           "Id": 3,
@@ -538,7 +554,7 @@
           "ValidationPattern": null,
           "Name": "INC[2]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:03.7748234"
         },
         {
           "Id": 4,
@@ -553,7 +569,7 @@
           "ValidationPattern": null,
           "Name": "INC[3]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:09.4405303"
         },
         {
           "Id": 8,
@@ -568,7 +584,7 @@
           "ValidationPattern": null,
           "Name": "INC[4]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:15.8017867"
         },
         {
           "Id": 37,
@@ -583,7 +599,7 @@
           "ValidationPattern": null,
           "Name": "INC[5]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:23.9465156"
         },
         {
           "Id": 38,
@@ -598,7 +614,7 @@
           "ValidationPattern": null,
           "Name": "INC[7]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:05:36.2551045"
         }
       ],
       "IsDeleted": false,
@@ -625,7 +641,7 @@
           "ValidationPattern": null,
           "Name": "EXC[0]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:11:25.6709488"
         },
         {
           "Id": 40,
@@ -640,7 +656,7 @@
           "ValidationPattern": null,
           "Name": "EXC[1]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:11.7185098"
         },
         {
           "Id": 41,
@@ -655,7 +671,7 @@
           "ValidationPattern": null,
           "Name": "EXC[2]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:18.6825246"
         },
         {
           "Id": 42,
@@ -670,7 +686,7 @@
           "ValidationPattern": null,
           "Name": "EXC[3]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:25.7770465"
         },
         {
           "Id": 43,
@@ -685,7 +701,7 @@
           "ValidationPattern": null,
           "Name": "EXC[4]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:40.4942571"
         },
         {
           "Id": 44,
@@ -700,7 +716,7 @@
           "ValidationPattern": null,
           "Name": "EXC[5]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:48.3777884"
         },
         {
           "Id": 45,
@@ -715,7 +731,7 @@
           "ValidationPattern": null,
           "Name": "EXC[6]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:34.6523384"
         },
         {
           "Id": 46,
@@ -730,7 +746,7 @@
           "ValidationPattern": null,
           "Name": "EXC[7]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:12:59.4387724"
         },
         {
           "Id": 47,
@@ -745,7 +761,7 @@
           "ValidationPattern": null,
           "Name": "EXC[8]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:13:00.0198148"
         },
         {
           "Id": 48,
@@ -760,7 +776,7 @@
           "ValidationPattern": null,
           "Name": "EXC[9]",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:13:15.6131131"
         }
       ],
       "IsDeleted": false,
@@ -787,7 +803,7 @@
           "ValidationPattern": null,
           "Name": "VisitDate",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:13:33.2975274"
         },
         {
           "Id": 6,
@@ -802,7 +818,7 @@
           "ValidationPattern": null,
           "Name": "IsAttended",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:13:35.8106087"
         },
         {
           "Id": 7,
@@ -817,7 +833,7 @@
           "ValidationPattern": null,
           "Name": "Comments",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:13:39.3655367"
         }
       ],
       "IsDeleted": false,
@@ -844,7 +860,7 @@
           "ValidationPattern": null,
           "Name": "ConsentDate",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:03.7863867"
         },
         {
           "Id": 50,
@@ -859,7 +875,7 @@
           "ValidationPattern": null,
           "Name": "IsIncExcMet",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:04.6203427"
         },
         {
           "Id": 51,
@@ -874,7 +890,7 @@
           "ValidationPattern": null,
           "Name": "IfNot",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:05.9450414"
         },
         {
           "Id": 52,
@@ -889,7 +905,7 @@
           "ValidationPattern": null,
           "Name": "Category",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:16.1749225"
         },
         {
           "Id": 53,
@@ -919,7 +935,7 @@
           "ValidationPattern": null,
           "Name": "Explanation",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:36.4764939"
         },
         {
           "Id": 55,
@@ -934,7 +950,7 @@
           "ValidationPattern": null,
           "Name": "IsExceptionGranted",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:24.5323799"
         },
         {
           "Id": 56,
@@ -949,7 +965,7 @@
           "ValidationPattern": null,
           "Name": "ExceptionDate",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:24.069199"
         }
       ],
       "IsDeleted": false,
@@ -976,7 +992,7 @@
           "ValidationPattern": null,
           "Name": "IsCollected",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:55.8708119"
         },
         {
           "Id": 58,
@@ -991,7 +1007,7 @@
           "ValidationPattern": null,
           "Name": "VisitDate",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:57.8107634"
         },
         {
           "Id": 59,
@@ -1006,7 +1022,7 @@
           "ValidationPattern": null,
           "Name": "Height",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:14:59.5665255"
         },
         {
           "Id": 60,
@@ -1021,7 +1037,7 @@
           "ValidationPattern": null,
           "Name": "HeightUnit",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:15:01.8895993"
         }
       ],
       "IsDeleted": false,
@@ -1168,7 +1184,7 @@
           "ValidationPattern": null,
           "Name": "something",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:15:54.191016"
         }
       ],
       "IsDeleted": false,
@@ -1195,7 +1211,7 @@
           "ValidationPattern": null,
           "Name": "IsRandomized",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:08.0826033"
         }
       ],
       "IsDeleted": false,
@@ -1222,7 +1238,7 @@
           "ValidationPattern": null,
           "Name": "OnsetDateTime",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:27.1718134"
         },
         {
           "Id": 23,
@@ -1237,7 +1253,7 @@
           "ValidationPattern": null,
           "Name": "ResolvedDateTime",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:27.7340552"
         },
         {
           "Id": 24,
@@ -1252,7 +1268,7 @@
           "ValidationPattern": null,
           "Name": "IsSerious",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:30.0499954"
         },
         {
           "Id": 25,
@@ -1267,7 +1283,7 @@
           "ValidationPattern": null,
           "Name": "Severity",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:29.7817986"
         },
         {
           "Id": 26,
@@ -1282,7 +1298,7 @@
           "ValidationPattern": null,
           "Name": "Related",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:30.3151369"
         },
         {
           "Id": 27,
@@ -1297,7 +1313,7 @@
           "ValidationPattern": null,
           "Name": "ActionTaken",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:32.5016747"
         },
         {
           "Id": 28,
@@ -1312,7 +1328,7 @@
           "ValidationPattern": null,
           "Name": "Outcome",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:34.156317"
         },
         {
           "Id": 29,
@@ -1327,7 +1343,7 @@
           "ValidationPattern": null,
           "Name": "AdverseEventDescription",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:37.615676"
         },
         {
           "Id": 30,
@@ -1342,7 +1358,7 @@
           "ValidationPattern": null,
           "Name": "AdverseEventIdByMed",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:38.6797563"
         },
         {
           "Id": 31,
@@ -1357,7 +1373,7 @@
           "ValidationPattern": null,
           "Name": "Action_OtherDrug_Specify",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:16:40.227025"
         }
       ],
       "IsDeleted": false,
@@ -1384,7 +1400,7 @@
           "ValidationPattern": null,
           "Name": "CompletionDate",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:17:13.2466144"
         },
         {
           "Id": 33,
@@ -1399,7 +1415,7 @@
           "ValidationPattern": null,
           "Name": "ReasonWithdrawn",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:17:13.8287226"
         },
         {
           "Id": 34,
@@ -1414,13 +1430,13 @@
           "ValidationPattern": null,
           "Name": "AdverseEventSpecify",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:17:20.9423981"
         },
         {
           "Id": 35,
           "CRFPageId": 16,
           "QuestionText": "Other, specifiy:",
-          "RenderType": "yesno",
+          "RenderType": null,
           "QuestionTypeId": 1,
           "CategoryId": 0,
           "CategoryName": null,
@@ -1429,13 +1445,13 @@
           "ValidationPattern": null,
           "Name": "OtherSpecify",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:18:12.0508037"
         },
         {
           "Id": 36,
           "CRFPageId": 16,
           "QuestionText": "Investigator Comment",
-          "RenderType": "yesno",
+          "RenderType": null,
           "QuestionTypeId": 1,
           "CategoryId": 0,
           "CategoryName": null,
@@ -1444,7 +1460,7 @@
           "ValidationPattern": null,
           "Name": "InvestigatorComment",
           "IsDeleted": false,
-          "ModifiedDateTime": "0001-01-01T00:00:00"
+          "ModifiedDateTime": "2025-06-06T06:18:28.6254825"
         }
       ],
       "IsDeleted": false,
@@ -1465,7 +1481,7 @@
       "ValidationPattern": null,
       "Name": "INC[0]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:04:49.2528913"
     },
     {
       "Id": 2,
@@ -1480,7 +1496,7 @@
       "ValidationPattern": null,
       "Name": "INC[1]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:04:57.6154538"
     },
     {
       "Id": 3,
@@ -1495,7 +1511,7 @@
       "ValidationPattern": null,
       "Name": "INC[2]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:03.7748234"
     },
     {
       "Id": 4,
@@ -1510,7 +1526,7 @@
       "ValidationPattern": null,
       "Name": "INC[3]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:09.4405303"
     },
     {
       "Id": 5,
@@ -1525,7 +1541,7 @@
       "ValidationPattern": null,
       "Name": "VisitDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:13:33.2975274"
     },
     {
       "Id": 6,
@@ -1540,7 +1556,7 @@
       "ValidationPattern": null,
       "Name": "IsAttended",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:13:35.8106087"
     },
     {
       "Id": 7,
@@ -1555,7 +1571,7 @@
       "ValidationPattern": null,
       "Name": "Comments",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:13:39.3655367"
     },
     {
       "Id": 8,
@@ -1570,7 +1586,7 @@
       "ValidationPattern": null,
       "Name": "INC[4]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:15.8017867"
     },
     {
       "Id": 9,
@@ -1660,7 +1676,7 @@
       "ValidationPattern": null,
       "Name": "DateOfVisit",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:51.391257"
     },
     {
       "Id": 15,
@@ -1675,7 +1691,7 @@
       "ValidationPattern": null,
       "Name": "Date_of_Birth",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:56.2430369"
     },
     {
       "Id": 16,
@@ -1690,7 +1706,7 @@
       "ValidationPattern": null,
       "Name": "Gender",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:59.8859999"
     },
     {
       "Id": 17,
@@ -1705,7 +1721,7 @@
       "ValidationPattern": null,
       "Name": "Ethnicity",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:06:06.1079501"
     },
     {
       "Id": 18,
@@ -1720,7 +1736,7 @@
       "ValidationPattern": null,
       "Name": "Race",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:06:14.6547471"
     },
     {
       "Id": 19,
@@ -1735,7 +1751,7 @@
       "ValidationPattern": null,
       "Name": "Race_Other",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:06:19.5655783"
     },
     {
       "Id": 20,
@@ -1750,7 +1766,7 @@
       "ValidationPattern": null,
       "Name": "something",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:15:54.191016"
     },
     {
       "Id": 21,
@@ -1765,7 +1781,7 @@
       "ValidationPattern": null,
       "Name": "IsRandomized",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:08.0826033"
     },
     {
       "Id": 22,
@@ -1780,7 +1796,7 @@
       "ValidationPattern": null,
       "Name": "OnsetDateTime",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:27.1718134"
     },
     {
       "Id": 23,
@@ -1795,7 +1811,7 @@
       "ValidationPattern": null,
       "Name": "ResolvedDateTime",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:27.7340552"
     },
     {
       "Id": 24,
@@ -1810,7 +1826,7 @@
       "ValidationPattern": null,
       "Name": "IsSerious",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:30.0499954"
     },
     {
       "Id": 25,
@@ -1825,7 +1841,7 @@
       "ValidationPattern": null,
       "Name": "Severity",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:29.7817986"
     },
     {
       "Id": 26,
@@ -1840,7 +1856,7 @@
       "ValidationPattern": null,
       "Name": "Related",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:30.3151369"
     },
     {
       "Id": 27,
@@ -1855,7 +1871,7 @@
       "ValidationPattern": null,
       "Name": "ActionTaken",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:32.5016747"
     },
     {
       "Id": 28,
@@ -1870,7 +1886,7 @@
       "ValidationPattern": null,
       "Name": "Outcome",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:34.156317"
     },
     {
       "Id": 29,
@@ -1885,7 +1901,7 @@
       "ValidationPattern": null,
       "Name": "AdverseEventDescription",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:37.615676"
     },
     {
       "Id": 30,
@@ -1900,7 +1916,7 @@
       "ValidationPattern": null,
       "Name": "AdverseEventIdByMed",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:38.6797563"
     },
     {
       "Id": 31,
@@ -1915,7 +1931,7 @@
       "ValidationPattern": null,
       "Name": "Action_OtherDrug_Specify",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:16:40.227025"
     },
     {
       "Id": 32,
@@ -1930,7 +1946,7 @@
       "ValidationPattern": null,
       "Name": "CompletionDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:17:13.2466144"
     },
     {
       "Id": 33,
@@ -1945,7 +1961,7 @@
       "ValidationPattern": null,
       "Name": "ReasonWithdrawn",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:17:13.8287226"
     },
     {
       "Id": 34,
@@ -1960,13 +1976,13 @@
       "ValidationPattern": null,
       "Name": "AdverseEventSpecify",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:17:20.9423981"
     },
     {
       "Id": 35,
       "CRFPageId": 16,
       "QuestionText": "Other, specifiy:",
-      "RenderType": "yesno",
+      "RenderType": null,
       "QuestionTypeId": 1,
       "CategoryId": 0,
       "CategoryName": null,
@@ -1975,13 +1991,13 @@
       "ValidationPattern": null,
       "Name": "OtherSpecify",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:18:12.0508037"
     },
     {
       "Id": 36,
       "CRFPageId": 16,
       "QuestionText": "Investigator Comment",
-      "RenderType": "yesno",
+      "RenderType": null,
       "QuestionTypeId": 1,
       "CategoryId": 0,
       "CategoryName": null,
@@ -1990,7 +2006,7 @@
       "ValidationPattern": null,
       "Name": "InvestigatorComment",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:18:28.6254825"
     },
     {
       "Id": 37,
@@ -2005,7 +2021,7 @@
       "ValidationPattern": null,
       "Name": "INC[5]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:23.9465156"
     },
     {
       "Id": 38,
@@ -2020,7 +2036,7 @@
       "ValidationPattern": null,
       "Name": "INC[7]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:05:36.2551045"
     },
     {
       "Id": 39,
@@ -2035,7 +2051,7 @@
       "ValidationPattern": null,
       "Name": "EXC[0]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:11:25.6709488"
     },
     {
       "Id": 40,
@@ -2050,7 +2066,7 @@
       "ValidationPattern": null,
       "Name": "EXC[1]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:11.7185098"
     },
     {
       "Id": 41,
@@ -2065,7 +2081,7 @@
       "ValidationPattern": null,
       "Name": "EXC[2]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:18.6825246"
     },
     {
       "Id": 42,
@@ -2080,7 +2096,7 @@
       "ValidationPattern": null,
       "Name": "EXC[3]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:25.7770465"
     },
     {
       "Id": 43,
@@ -2095,7 +2111,7 @@
       "ValidationPattern": null,
       "Name": "EXC[4]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:40.4942571"
     },
     {
       "Id": 44,
@@ -2110,7 +2126,7 @@
       "ValidationPattern": null,
       "Name": "EXC[5]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:48.3777884"
     },
     {
       "Id": 45,
@@ -2125,7 +2141,7 @@
       "ValidationPattern": null,
       "Name": "EXC[6]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:34.6523384"
     },
     {
       "Id": 46,
@@ -2140,7 +2156,7 @@
       "ValidationPattern": null,
       "Name": "EXC[7]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:12:59.4387724"
     },
     {
       "Id": 47,
@@ -2155,7 +2171,7 @@
       "ValidationPattern": null,
       "Name": "EXC[8]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:13:00.0198148"
     },
     {
       "Id": 48,
@@ -2170,7 +2186,7 @@
       "ValidationPattern": null,
       "Name": "EXC[9]",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:13:15.6131131"
     },
     {
       "Id": 49,
@@ -2185,7 +2201,7 @@
       "ValidationPattern": null,
       "Name": "ConsentDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:03.7863867"
     },
     {
       "Id": 50,
@@ -2200,7 +2216,7 @@
       "ValidationPattern": null,
       "Name": "IsIncExcMet",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:04.6203427"
     },
     {
       "Id": 51,
@@ -2215,7 +2231,7 @@
       "ValidationPattern": null,
       "Name": "IfNot",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:05.9450414"
     },
     {
       "Id": 52,
@@ -2230,7 +2246,7 @@
       "ValidationPattern": null,
       "Name": "Category",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:16.1749225"
     },
     {
       "Id": 53,
@@ -2260,7 +2276,7 @@
       "ValidationPattern": null,
       "Name": "Explanation",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:36.4764939"
     },
     {
       "Id": 55,
@@ -2275,7 +2291,7 @@
       "ValidationPattern": null,
       "Name": "IsExceptionGranted",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:24.5323799"
     },
     {
       "Id": 56,
@@ -2290,7 +2306,7 @@
       "ValidationPattern": null,
       "Name": "ExceptionDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:24.069199"
     },
     {
       "Id": 57,
@@ -2305,7 +2321,7 @@
       "ValidationPattern": null,
       "Name": "IsCollected",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:55.8708119"
     },
     {
       "Id": 58,
@@ -2320,7 +2336,7 @@
       "ValidationPattern": null,
       "Name": "VisitDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:57.8107634"
     },
     {
       "Id": 59,
@@ -2335,7 +2351,7 @@
       "ValidationPattern": null,
       "Name": "Height",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:14:59.5665255"
     },
     {
       "Id": 60,
@@ -2350,7 +2366,22 @@
       "ValidationPattern": null,
       "Name": "HeightUnit",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "2025-06-06T06:15:01.8895993"
+    },
+    {
+      "Id": 61,
+      "CRFPageId": 2,
+      "QuestionText": "ToDo - add components to this CRF",
+      "RenderType": null,
+      "QuestionTypeId": 1,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "PE[0]",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-06T06:07:48.0963975"
     }
   ],
   "QuestionTypes": [
