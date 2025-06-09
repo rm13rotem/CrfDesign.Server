@@ -1,0 +1,15 @@
+﻿@model BuisnessLogic.Models.CrfPage
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Lockout Error</h1>
+
+<h2>Crf Page @Model.Id @Model.Name was created on @Model.CreatedAt and locked on @Model.ModifiedDateTime </h2>
+
+<p>
+    It cannot be altered. But it can be duplicated (if user is allowed)
+
+    <a asp-action="Duplicate" asp-route-id="@Model.Id">here</a>
+</p>

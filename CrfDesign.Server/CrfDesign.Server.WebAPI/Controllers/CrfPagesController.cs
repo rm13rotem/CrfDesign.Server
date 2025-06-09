@@ -105,6 +105,11 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfPages/Edit/5
+        public async Task<IActionResult> ReturnLockedMessage(CrfPage crfPage)
+        {            
+            return View(crfPage);
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,25 +122,31 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
+
+            if (crfPage.IsLockedForChanges)
+                return RedirectToAction("ReturnLockedMessage", crfPage);
             return View(crfPage);
         }
+
+        
 
         // POST: CrfPages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,StudyId,Name,Description,CreatedAt,IsLockedForChanges,IsDeleted,ModifiedDateTime")] CrfPage crfPage)
+        public async Task<IActionResult> Edit(CrfPage crfPage)
         {
-            if (id != crfPage.Id)
+            if (crfPage.Id == 0)
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
+                    crfPage.ModifiedDateTime = DateTime.UtcNow;
                     _context.Update(crfPage);
                     await _context.SaveChangesAsync();
                 }
@@ -169,6 +180,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
+            if (crfPage.IsLockedForChanges == true)
+                return RedirectToAction("ReturnLockedMessage", crfPage);
 
             return View(crfPage);
         }
@@ -179,6 +192,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var crfPage = await _context.CrfPages.FindAsync(id);
+            if (crfPage.IsLockedForChanges == true)
+                return RedirectToAction("ReturnLockedMessage", crfPage);
             crfPage.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -192,6 +207,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             var crfPage = await _context.CrfPages.FindAsync(id);
             crfPage.IsDeleted = false;
             await _context.SaveChangesAsync();
+            if (crfPage.IsLockedForChanges == true)
+                return RedirectToAction("ReturnLockedMessage", crfPage);
             return RedirectToAction(nameof(Index));
         }
 
