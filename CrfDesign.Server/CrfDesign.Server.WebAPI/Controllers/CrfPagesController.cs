@@ -104,8 +104,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(crfPage);
         }
 
-        // GET: CrfPages/Edit/5
-        public async Task<IActionResult> ReturnLockedMessage(CrfPage crfPage)
+        // GET: CrfPages/ReturnLockedMessage/5
+        public IActionResult ReturnLockedMessage(CrfPage crfPage)
         {            
             return View(crfPage);
         }

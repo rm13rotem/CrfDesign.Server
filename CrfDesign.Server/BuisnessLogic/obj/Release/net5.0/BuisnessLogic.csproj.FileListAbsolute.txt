@@ -1,0 +1,15 @@
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\BuisnessLogic.deps.json
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\BuisnessLogic.runtimeconfig.json
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\BuisnessLogic.runtimeconfig.dev.json
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\BuisnessLogic.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\ref\BuisnessLogic.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Release\net5.0\BuisnessLogic.pdb
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.csproj.AssemblyReference.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.AssemblyInfoInputs.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.AssemblyInfo.cs
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.csproj.CoreCompileInputs.cache
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\ref\BuisnessLogic.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.pdb
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Release\net5.0\BuisnessLogic.genruntimeconfig.cache
