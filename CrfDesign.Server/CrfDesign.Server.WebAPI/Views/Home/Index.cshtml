@@ -1,22 +1,28 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<Investigator> SignInManager
+@inject UserManager<Investigator> UserManager
 @{
     ViewData["Title"] = "Home Page";
-
+    Investigator user = await UserManager.GetUserAsync(User);
 }
 
 <div class="text-center">
     @if (SignInManager.IsSignedIn(User))
     {
-        <h1 class="display-4">Welcome @User.Identity.Name</h1>
+        <h1 class="display-4">Welcome @user.FirstName @user.LastName</h1>
         <p>View and Define <a>@Html.ActionLink("CRF Pages", "Index", "CrfPages")</a>.</p>
         <p>Design <a>@Html.ActionLink("CRF Page Components", "Index", "CrfPageComponents")</a>.</p>
         <p>Design <a>@Html.ActionLink("CRF Options", "Index", "CrfOptions")</a>.</p>
         <p>View and Define <a>@Html.ActionLink("CRF Question Types", "Index", "QuestionTypes")</a>.</p>
         <p>Design <a>@Html.ActionLink("CRF Option Category", "Index", "CrfOptionCategories")</a>.</p>
-        <p>View and Define <a>@Html.ActionLink("Database Backup and Restore", "Save", "Backup")</a>.</p>
-        <p>Example of CRF file (WORD) <a href="https://www.accessdata.fda.gov/Static/widgets/tobacco/MRTP/09%20appendix-2h-smna-smkng-cstn/sm-08-01/1.%20CSR/16.1.2-sample-case-report-form.pdf">here</a>.</p>
+        @if (await SignInManager.UserManager.IsInRoleAsync(user, "Admin"))
+        {
+            <p>View and Define <a>@Html.ActionLink("Database Backup and Restore", "Save", "Backup")</a>.</p>
+            <p>View and Define <a>@Html.ActionLink("User Management", "Index", "UserManagement")</a>.</p>
+        }
+        <p>
+            Example of CRF file(WORD) <a href="https://www.accessdata.fda.gov/Static/widgets/tobacco/MRTP/09%20appendix-2h-smna-smkng-cstn/sm-08-01/1.%20CSR/16.1.2-sample-case-report-form.pdf">here</a>.
+        </p>
     }
     else
     {

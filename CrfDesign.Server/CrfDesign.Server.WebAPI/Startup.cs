@@ -1,6 +1,8 @@
 using BuisnessLogic.DataContext;
 using BuisnessLogic.Managers;
 using CrfDesign.Server.WebAPI.Data;
+using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.LoginModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,16 +39,20 @@ namespace CrfDesign.Server.WebAPI
                     Configuration.GetConnectionString("CrfDesignConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddControllersWithViews();
+            services.AddRazorPages();
+
+            services.AddIdentity<Investigator, IdentityRole>(options =>
+            options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -68,12 +74,18 @@ namespace CrfDesign.Server.WebAPI
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
+                        {
+                            endpoints.MapControllerRoute(
+                                name: "default",
+                                pattern: "{controller=Home}/{action=Index}/{id?}");
+                            endpoints.MapRazorPages();
+                        });
+
+
+            // Create roles if missing
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            IdentityDataInitializer.SeedRolesAsync(roleManager).Wait();
         }
+
     }
 }
