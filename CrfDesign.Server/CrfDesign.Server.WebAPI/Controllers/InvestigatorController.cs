@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class InvestigatorsController : Controller
     {
         private readonly UserManager<Investigator> _userManager;
@@ -48,6 +51,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Edit(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -55,6 +59,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Edit(string id, Investigator model)
         {
             var user = await _userManager.FindByIdAsync(id);
