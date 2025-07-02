@@ -2,11 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 
-# Copy everything
-COPY . .
+# Copy the actual solution folder into the container
+COPY CrfDesign.Server ./CrfDesign.Server
 
-# Restore and publish the main WebAPI project
-WORKDIR /src/CrfDesign.Server.WebAPI
+# Set working directory to WebAPI project folder
+WORKDIR /src/CrfDesign.Server/CrfDesign.Server.WebAPI
+
+# Restore and publish
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app/publish
 
@@ -15,7 +17,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Configure environment
+# Environment setup
 ENV ASPNETCORE_URLS=http://+:80
 ENV ASPNETCORE_ENVIRONMENT=Production
 
