@@ -39,16 +39,15 @@ namespace CrfDesign.Server.WebAPI
                     Configuration.GetConnectionString("CrfDesignConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddControllersWithViews();
 
             services.AddIdentity<Investigator, IdentityRole>(options =>
             options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-
+                .AddDefaultTokenProviders()
+                .AddDefaultUI();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,3 +12,4 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Debug\net5.0\BuisnessLogic.pdb
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Debug\net5.0\BuisnessLogic.genruntimeconfig.cache
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\bin\Debug\net5.0\ref\BuisnessLogic.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\BuisnessLogic\obj\Debug\net5.0\BuisnessLogic.csproj.AssemblyReference.cache
