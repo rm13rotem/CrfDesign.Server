@@ -12,6 +12,16 @@ namespace BuisnessLogic.Models
         public string Name { get ; set; }
         public bool IsDeleted { get ; set; }
         public DateTime ModifiedDateTime { get; set; }
+        public IPersistantEntity ToNewEntity()
+        {
+            QuestionType result = new()
+            {
+                Name = this.Name,
+                IsDeleted = this.IsDeleted,
+                ModifiedDateTime = this.ModifiedDateTime
+            };
+            return result;
+        }
     }
     //    Text,
     //    MultipleChoice,

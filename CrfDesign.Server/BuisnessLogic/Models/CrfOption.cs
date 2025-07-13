@@ -15,5 +15,17 @@ namespace BuisnessLogic.Models
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
         public int CrfOptionCategoryId { get; set; }
+
+        public IPersistantEntity ToNewEntity()
+        {
+            CrfOption result = new()
+            {
+                Name = this.Name,
+                IsDeleted = this.IsDeleted,
+                ModifiedDateTime = this.ModifiedDateTime,
+                CrfOptionCategoryId = this.CrfOptionCategoryId
+            };
+            return result;
+        }
     }
 }

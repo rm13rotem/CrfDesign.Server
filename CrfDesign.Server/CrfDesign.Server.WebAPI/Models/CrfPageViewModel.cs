@@ -28,5 +28,10 @@ namespace CrfDesign.Server.WebAPI.Models
         public bool IsLockedForChanges { get; set; }        
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
+
+        public IPersistantEntity ToNewEntity()
+        {
+            return this;
+        }
     }
 }

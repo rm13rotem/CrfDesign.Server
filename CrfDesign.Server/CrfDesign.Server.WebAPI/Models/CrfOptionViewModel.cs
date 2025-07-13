@@ -25,5 +25,10 @@ namespace CrfDesign.Server.WebAPI.Models
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
         public string CrfOptionCategoryName { get; set; }  // Foreign key to CRFQuestion
+
+        public IPersistantEntity ToNewEntity()
+        {
+            return new CrfOption();
+        }
     }
 }
