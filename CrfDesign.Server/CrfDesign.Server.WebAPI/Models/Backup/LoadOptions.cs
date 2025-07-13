@@ -23,10 +23,12 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             DataBaseViewModel dataBase = JsonConvert.DeserializeObject<DataBaseViewModel>(DB);
             if (dataBase == null)
                 return;
+
+            ImportDataIntoDatabase<QuestionType>(context, dataBase);
+            ImportDataIntoDatabase<CrfOptionCategory>(context, dataBase);
+            ImportDataIntoDatabase<CrfOption>(context, dataBase);
             ImportDataIntoDatabase<CrfPage>(context, dataBase);
             ImportDataIntoDatabase<CrfPageComponent>(context, dataBase);
-            ImportDataIntoDatabase<CrfOption>(context, dataBase);
-            ImportDataIntoDatabase<CrfOptionCategory>(context, dataBase);
         }
 
         private void ImportDataIntoDatabase<T>(CrfDesignContext context, DataBaseViewModel dataBase)
@@ -41,20 +43,25 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
                 list = dataBase.CrfOptions as List<T>;
             if (typeof(T) == typeof(CrfOptionCategory))
                 list = dataBase.CrfOptionCategories as List<T>;
+            if (typeof(T) == typeof(QuestionType))
+                list = dataBase.QuestionTypes as List<T>;
 
-            foreach (var t in list)
+            foreach (var t in list.OrderBy(x=>x.Id))
             {
                 var existing = context.Set<T>().FirstOrDefault(x => x.Id == t.Id);
                 if (existing != null && IsOverwrite == true)
-                {
+                { 
                     context.Set<T>().Attach(t);
                     context.SaveChanges();
                 }
                 if (existing == null && IsAppend == true)
                 {
-                    // TODO - somethign like context.CrfPages.IdentityInsert = false;
-                    context.Set<T>().Add(t);
-                    context.SaveChanges();
+                    T r = t.ToNewEntity() as T;
+                    if (r != null)
+                    {
+                        context.Set<T>().Add(r);
+                        context.SaveChanges();
+                    }
                 }
             }
         }

@@ -13,5 +13,6 @@ namespace BuisnessLogic.Interfaces
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
 
+        IPersistantEntity ToNewEntity();
     }
 }

@@ -17,6 +17,11 @@ namespace CrfDesign.Server.WebAPI.Models
         public string Name { get ; set; }
         public bool IsDeleted { get ; set; }
         public DateTime ModifiedDateTime { get; set; }
+
+        public IPersistantEntity ToNewEntity()
+        {
+            return this;
+        }
     }
     //    Text,
     //    MultipleChoice,

@@ -21,5 +21,20 @@ namespace BuisnessLogic.Models
         public ICollection<CrfPageComponent> Questions { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
+        public IPersistantEntity ToNewEntity()
+        {
+            CrfPage result = new()
+            {
+                StudyId = StudyId,
+                CreatedAt = CreatedAt,
+                Description = Description,
+                IsLockedForChanges = IsLockedForChanges,
+                Questions = Questions,
+                Name = this.Name,
+                IsDeleted = this.IsDeleted,
+                ModifiedDateTime = this.ModifiedDateTime
+            };
+            return result;
+        }
     }
 }

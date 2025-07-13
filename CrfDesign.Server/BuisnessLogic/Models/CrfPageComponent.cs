@@ -34,7 +34,7 @@ namespace BuisnessLogic.Models
             if (RenderType == null)
                 return;
             var QuestionType = _context.QuestionTypes.FirstOrDefault(x => x.Name.ToLower() == RenderType.ToLower());
-            if (QuestionType == null  && QuestionTypeId == 0)
+            if (QuestionType == null && QuestionTypeId == 0)
             {
                 QuestionType = _context.QuestionTypes
                     .FirstOrDefault(x => x.Name.ToLower() == "SingleChoice".ToLower());
@@ -44,6 +44,24 @@ namespace BuisnessLogic.Models
                 if (category != null)
                     CategoryId = category.Id;
             }
+        }
+
+        public IPersistantEntity ToNewEntity()
+        {
+            CrfPageComponent result = new()
+            {
+                CRFPageId = CRFPageId,
+                CategoryId = CategoryId,
+                IsRequired = IsRequired,
+                QuestionText = QuestionText,
+                QuestionTypeId = QuestionTypeId,
+                RenderType = RenderType,
+                ValidationPattern = ValidationPattern,
+                Name = this.Name,
+                IsDeleted = this.IsDeleted,
+                ModifiedDateTime = this.ModifiedDateTime
+            };
+            return result;
         }
     }
 }
