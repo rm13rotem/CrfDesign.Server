@@ -1,22 +1,50 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<Investigator> SignInManager
 @inject UserManager<Investigator> UserManager
-@{ 
-    Investigator investigator = new Investigator();
+
+@{
+    Investigator investigator = null;
     if (SignInManager.IsSignedIn(User))
+    {
         investigator = await UserManager.GetUserAsync(User);
+    }
 }
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
+    @if (SignInManager.IsSignedIn(User) && investigator != null)
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Investigator/Edit/?id=@investigator.Id" title="Manage">Hello @investigator.FirstName @investigator.LastName!</a>
-    </li>
-    <li class="nav-item">
-        <form method="post" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
         </form>
+    </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+           aria-expanded="false">
+            @if (!await UserManager.IsInRoleAsync(investigator, "Admin")) {
+            @:Hello, @investigator.FirstName!
+            } else {
+            @:Hello, @investigator.FirstName @investigator.LastName!
+            }
+        </a>
+
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" asp-controller="CrfPages" asp-action="Index">CRF Pages</a></li>
+            <li><a class="dropdown-item" asp-controller="CrfPageComponents" asp-action="Index">CRF Page Components</a></li>
+            <li><a class="dropdown-item" asp-controller="CrfOptions" asp-action="Index">CRF Options</a></li>
+            <li><a class="dropdown-item" asp-controller="QuestionTypes" asp-action="Index">CRF Question Types</a></li>
+            <li><a class="dropdown-item" asp-controller="CrfOptionCategories" asp-action="Index">CRF Option Categories</a></li>
+
+            @if (await UserManager.IsInRoleAsync(investigator, "Admin"))
+            {
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" asp-controller="Backup" asp-action="Save">Backup & Restore</a></li>
+            <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Index">User Management</a></li>
+            <li><a class="dropdown-item" asp-controller="Investigators" asp-action="Index">User Details</a></li>
+            }
+        </ul>
     </li>
 }
 else
