@@ -2,11 +2,11 @@
 @inject SignInManager<Investigator> SignInManager
 @inject UserManager<Investigator> UserManager
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to CrfDesign";
     Investigator user = await UserManager.GetUserAsync(User);
 }
 
-<div class="text-center">
+<div>
     @if (SignInManager.IsSignedIn(User))
     {
         <script>
@@ -15,14 +15,44 @@
                 location.reload();
             }, 1800000); // 30 minutes
         </script>
-        <p>Use the navigation menu to access your tools.</p>
-    }
-    else
-    {
-        <h1>Welcome</h1>
-        <p>Please sign in or Register</p>
-        <p>Example of CRF file (WORD) <a href="https://www.accessdata.fda.gov/Static/widgets/tobacco/MRTP/09%20appendix-2h-smna-smkng-cstn/sm-08-01/1.%20CSR/16.1.2-sample-case-report-form.pdf">here</a>.</p>
+    }  
 
-    }
+</div>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h1 class="display-4">Design Case Report Forms in Minutes</h1>
+            <p class="lead">
+                CrfDesign is a free, open-source platform for creating clean, validated Case Report Forms for clinical trials.
+                No coding needed – just register and start building.
+            </p>
+            <ul class="list-unstyled">
+                <li>✔️ Dozens of prebuilt CRF templates</li>
+                <li>✔️ Visual form designer</li>
+                <li>✔️ Secure data storage and backups</li>
+                <li>✔️ Full HTML output with role-based access</li>
+            </ul>
+            <div class="mt-4">
+                <a class="btn btn-primary btn-lg me-2" asp-area="Identity" asp-page="/Account/Register">Get Started</a>
+                <a class="btn btn-outline-secondary btn-lg" asp-area="Identity" asp-page="/Account/Login">Log In</a>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="https://img.freepik.com/premium-vector/doctors-team-working-clinical-trial-laboratory-research-cartoon-scientists-conducting-medical_258153-621.jpg?w=826" class="img-fluid rounded shadow" alt="Clinical Trial Form Example" />
+        </div>
+    </div>
 
+    <hr class="my-5" />
+
+    <div class="text-center">
+        <h2>Try It Live</h2>
+        <p class="lead">
+            Visit the running site:
+            <a href="http://crfdesign.somee.com" target="_blank">http://crfdesign.somee.com</a>
+        </p>
+        <p>
+            View the source code on
+            <a href="https://github.com/rm13rotem/CrfDesign.Server" target="_blank">GitHub</a>.
+        </p>
+    </div>
 </div>
