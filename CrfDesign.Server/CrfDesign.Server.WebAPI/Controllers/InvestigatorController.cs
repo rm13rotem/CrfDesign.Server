@@ -63,23 +63,31 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> Edit(string id, Investigator model)
         {
             var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-                return NotFound();
+            if (user == null) return NotFound();
 
+            // Update properties
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.QuickLookId = model.QuickLookId;
-            user.DoctorNumber = model.DoctorNumber;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.EmailConfirmed = model.EmailConfirmed;
+            user.PhoneNumberConfirmed = model.PhoneNumberConfirmed;
 
+            // ✅ Persist changes
             var result = await _userManager.UpdateAsync(user);
-
             if (result.Succeeded)
+            {
                 return RedirectToAction(nameof(Index));
+            }
 
+            // If it failed, show errors
             foreach (var error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
 
-            return View(user);
+            return View(model);
         }
 
         public async Task<IActionResult> Delete(string id)
