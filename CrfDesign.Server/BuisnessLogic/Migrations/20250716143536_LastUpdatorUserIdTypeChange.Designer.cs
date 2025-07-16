@@ -4,14 +4,16 @@ using BuisnessLogic.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CrfDesign.Server.WebAPI.Migrations
+namespace BuisnessLogic.Migrations
 {
     [DbContext(typeof(CrfDesignContext))]
-    partial class CrfDesignContextModelSnapshot : ModelSnapshot
+    [Migration("20250716143536_LastUpdatorUserIdTypeChange")]
+    partial class LastUpdatorUserIdTypeChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

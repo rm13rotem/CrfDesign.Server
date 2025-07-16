@@ -5,6 +5,7 @@ using CrfDesign.Server.WebAPI.Models;
 using CrfDesign.Server.WebAPI.Models.LoginModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -31,12 +32,20 @@ namespace CrfDesign.Server.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<CrfDesignContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("CrfDesignConnection")));
+
+            services.AddHttpContextAccessor(); // needed once globally
+
+            services.AddDbContext<CrfDesignContext>((serviceProvider, optionsBuilder) =>
+            {
+                var connectionString = Configuration.GetConnectionString("CrfDesignConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            });
+
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddRazorPages();

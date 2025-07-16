@@ -13,6 +13,8 @@ namespace BuisnessLogic.Interfaces
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
 
+        bool IsLockedForChanges { get; set; }
+        string? LastUpdatorUserId { get; set; }
         IPersistantEntity ToNewEntity();
     }
 }

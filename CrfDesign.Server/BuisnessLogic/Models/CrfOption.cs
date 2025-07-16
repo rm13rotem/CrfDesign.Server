@@ -13,6 +13,8 @@ namespace BuisnessLogic.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
         public DateTime ModifiedDateTime { get; set; }
         public int CrfOptionCategoryId { get; set; }
 

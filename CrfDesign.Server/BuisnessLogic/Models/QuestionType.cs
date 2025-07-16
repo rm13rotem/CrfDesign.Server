@@ -12,13 +12,16 @@ namespace BuisnessLogic.Models
         public string Name { get ; set; }
         public bool IsDeleted { get ; set; }
         public DateTime ModifiedDateTime { get; set; }
+        public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
         public IPersistantEntity ToNewEntity()
         {
             QuestionType result = new()
             {
                 Name = this.Name,
                 IsDeleted = this.IsDeleted,
-                ModifiedDateTime = this.ModifiedDateTime
+                ModifiedDateTime = DateTime.UtcNow,
+                LastUpdatorUserId = this.LastUpdatorUserId,
             };
             return result;
         }

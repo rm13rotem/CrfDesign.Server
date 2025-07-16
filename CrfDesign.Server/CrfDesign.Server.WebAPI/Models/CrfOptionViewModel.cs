@@ -23,12 +23,14 @@ namespace CrfDesign.Server.WebAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
         public DateTime ModifiedDateTime { get; set; }
         public string CrfOptionCategoryName { get; set; }  // Foreign key to CRFQuestion
 
         public IPersistantEntity ToNewEntity()
         {
-            return new CrfOption();
+            return this;
         }
     }
 }

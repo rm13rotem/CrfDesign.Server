@@ -15,6 +15,7 @@ namespace BuisnessLogic.Models
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
 
         // Navigation property to Questions
         [JsonIgnoreAttribute]
@@ -32,7 +33,8 @@ namespace BuisnessLogic.Models
                 Questions = Questions,
                 Name = this.Name,
                 IsDeleted = this.IsDeleted,
-                ModifiedDateTime = this.ModifiedDateTime
+                ModifiedDateTime = this.ModifiedDateTime,
+                LastUpdatorUserId = this.LastUpdatorUserId,
             };
             return result;
         }

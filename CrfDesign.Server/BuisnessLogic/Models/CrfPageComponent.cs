@@ -27,6 +27,8 @@ namespace BuisnessLogic.Models
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
+        public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
 
         public void FixByRenderType(DataContext.CrfDesignContext _context)
         {
@@ -59,7 +61,9 @@ namespace BuisnessLogic.Models
                 ValidationPattern = ValidationPattern,
                 Name = this.Name,
                 IsDeleted = this.IsDeleted,
-                ModifiedDateTime = this.ModifiedDateTime
+                ModifiedDateTime = DateTime.UtcNow,
+                LastUpdatorUserId = this.LastUpdatorUserId,
+                IsLockedForChanges = false,
             };
             return result;
         }

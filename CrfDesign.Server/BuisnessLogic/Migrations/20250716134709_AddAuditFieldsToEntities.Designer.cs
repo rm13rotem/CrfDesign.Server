@@ -4,14 +4,16 @@ using BuisnessLogic.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CrfDesign.Server.WebAPI.Migrations
+namespace BuisnessLogic.Migrations
 {
     [DbContext(typeof(CrfDesignContext))]
-    partial class CrfDesignContextModelSnapshot : ModelSnapshot
+    [Migration("20250716134709_AddAuditFieldsToEntities")]
+    partial class AddAuditFieldsToEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,8 +40,8 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsLockedForChanges")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastUpdatorUserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastUpdatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
@@ -67,8 +69,8 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsLockedForChanges")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastUpdatorUserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastUpdatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
@@ -100,8 +102,8 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsLockedForChanges")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastUpdatorUserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastUpdatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
@@ -142,8 +144,8 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastUpdatorUserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastUpdatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
@@ -183,8 +185,8 @@ namespace CrfDesign.Server.WebAPI.Migrations
                     b.Property<bool>("IsLockedForChanges")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastUpdatorUserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastUpdatorUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");

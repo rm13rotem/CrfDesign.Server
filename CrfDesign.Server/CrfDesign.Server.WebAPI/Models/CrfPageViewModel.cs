@@ -18,6 +18,7 @@ namespace CrfDesign.Server.WebAPI.Models
             this.CreatedAt = crfPage.CreatedAt;
                 this.ModifiedDateTime = DateTime.Now;
             this.IsLockedForChanges = crfPage.IsLockedForChanges;
+            this.LastUpdatorUserId = crfPage.LastUpdatorUserId;
             this.IsDeleted = crfPage.IsDeleted;
         }
         public int Id { get; set; }
@@ -25,7 +26,8 @@ namespace CrfDesign.Server.WebAPI.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
-        public bool IsLockedForChanges { get; set; }        
+        public bool IsLockedForChanges { get; set; }
+        public string? LastUpdatorUserId { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
 
