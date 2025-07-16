@@ -2,6 +2,7 @@
 using BuisnessLogic.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Linq;
 using System.Security.Claims;
@@ -34,28 +35,24 @@ namespace BuisnessLogic.DataContext
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var user = _httpContextAccessor.HttpContext?.User;
-            string? currentUserId = null;
-
-            if (user?.Identity?.IsAuthenticated == true)
-            {
-                var idClaim = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-                // Convert if Investigator.Id is an int (or parse Guid if it's Guid)
-                if (!string.IsNullOrWhiteSpace(idClaim))
-                {
-                    currentUserId = idClaim;
-                }
-            }
-
             var modifiedEntries = ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Modified && e.Entity is IPersistantEntity);
 
             foreach (var entry in modifiedEntries)
             {
                 var entity = (IPersistantEntity)entry.Entity;
+
+                // Prevent changes if locked
+                if (entity.IsLockedForChanges)
+                    throw new InvalidOperationException("This record is locked and cannot be modified.");
+
+                // Log who made the update
                 entity.ModifiedDateTime = DateTime.UtcNow;
-                entity.LastUpdatorUserId = currentUserId;
+
+                // Access user ID
+                var httpContextAccessor = this.GetService<IHttpContextAccessor>();
+                var userId = httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                entity.LastUpdatorUserId = userId;
             }
 
             return await base.SaveChangesAsync(cancellationToken);
