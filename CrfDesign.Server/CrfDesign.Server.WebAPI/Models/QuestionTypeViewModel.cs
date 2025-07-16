@@ -11,7 +11,12 @@ namespace CrfDesign.Server.WebAPI.Models
     {
         public QuestionTypeViewModel(QuestionType questionType)
         {
-
+            Id = questionType.Id;
+            Name = questionType.Name;
+            IsDeleted = questionType.IsDeleted;
+            ModifiedDateTime = questionType.ModifiedDateTime;
+            IsLockedForChanges = questionType.IsLockedForChanges;
+            LastUpdatorUserId = questionType.LastUpdatorUserId;
         }
         public int Id { get; set; }
         public string Name { get ; set; }

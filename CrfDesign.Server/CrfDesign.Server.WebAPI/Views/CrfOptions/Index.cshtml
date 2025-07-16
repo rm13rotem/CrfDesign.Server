@@ -57,6 +57,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.CrfOptionCategoryName)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsLockedForChanges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdatorUserId)
+            </th>
 
             <th></th>
         </tr>
@@ -64,30 +70,36 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CrfOptionCategoryName)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrfOptionCategoryName)
 
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    @{ 
-                        filterDictionary["id"] = item.Id.ToString();
-                    }
-                    <a asp-action="Duplicate" asp-all-route-data="@filterDictionary">Duplicate</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLockedForChanges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatorUserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                @{
+                    filterDictionary["id"] = item.Id.ToString();
+                }
+                <a asp-action="Duplicate" asp-all-route-data="@filterDictionary">Duplicate</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

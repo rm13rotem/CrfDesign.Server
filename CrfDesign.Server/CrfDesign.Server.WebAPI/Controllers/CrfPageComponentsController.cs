@@ -10,6 +10,7 @@ using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 using BuisnessLogic.Models.Managers;
 using CrfDesign.Server.WebAPI.Models.Filters;
+using Microsoft.AspNetCore.Identity;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -17,11 +18,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
     {
         private readonly CrfDesignContext _context;
         private readonly Manager<CrfPageComponent> _manager;
+        private readonly UserManager<Investigator> _userManager;
 
-        public CrfPageComponentsController(CrfDesignContext context)
+        public CrfPageComponentsController(UserManager<Investigator> userManager,
+            CrfDesignContext context)
         {
             _context = context;
             _manager = new Manager<CrfPageComponent>(_context);
+            _userManager = userManager;
         }
 
         // GET: CrfPageComponents
@@ -40,6 +44,17 @@ namespace CrfDesign.Server.WebAPI.Controllers
             var uiLines = dblines.Select(crfComponent =>
                         new CrfPageComponentViewModel(crfComponent, _context))
                 .ToList();
+
+            foreach (var component in uiLines)
+            {
+                if (!string.IsNullOrEmpty(component.LastUpdatorUserId))
+                {
+                    var user = await _userManager.FindByIdAsync(component.LastUpdatorUserId);
+                    if (user != null)
+                        component.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
+                    else component.LastUpdatorUserId = "Unknown";
+                }
+            }
 
             var Options = _context.CrfPages.ToList();
             Options.Add(new CrfPage() { Id = 0, Name = "All" });

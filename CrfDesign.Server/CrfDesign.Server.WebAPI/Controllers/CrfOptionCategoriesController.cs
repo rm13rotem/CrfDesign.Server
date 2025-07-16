@@ -8,26 +8,43 @@ using Microsoft.EntityFrameworkCore;
 using BuisnessLogic.DataContext;
 using BuisnessLogic.Models;
 using BuisnessLogic.Filters;
+using Microsoft.AspNetCore.Identity;
+using CrfDesign.Server.WebAPI.Models;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfOptionCategoriesController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly UserManager<Investigator> _userManager;
 
-        public CrfOptionCategoriesController(CrfDesignContext context)
+        public CrfOptionCategoriesController(UserManager<Investigator> userManager, 
+            CrfDesignContext context)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: CrfOptionCategories
         public async Task<IActionResult> Index(CrfOptionCategoriesFilter filter)
         {
             filter.TotalLines = _context.CrfOptionCategories.Count();
-            var dbLines = await _context.CrfOptionCategories.OrderBy(x => x.Id).Skip(filter.Page - 1).Take(filter.NLines).ToListAsync();
+            var dbLines = await _context.CrfOptionCategories.
+                OrderBy(x => x.Id).Skip(filter.Page - 1).Take(filter.NLines).ToListAsync();
             if (dbLines.Count == 0)
                 dbLines = await _context.CrfOptionCategories.ToListAsync();
             else ViewBag.filter = filter;
+
+            foreach (var optionCategory in dbLines)
+            {
+                if (!string.IsNullOrEmpty(optionCategory.LastUpdatorUserId))
+                {
+                    var user = await _userManager.FindByIdAsync(optionCategory.LastUpdatorUserId);
+                    if (user != null)
+                        optionCategory.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
+                    else optionCategory.LastUpdatorUserId = "Unknown";
+                }
+            }
             return View(dbLines);
         }
 

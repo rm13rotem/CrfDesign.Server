@@ -20,6 +20,7 @@ namespace CrfDesign.Server.WebAPI.Models
             this.IsLockedForChanges = crfPage.IsLockedForChanges;
             this.LastUpdatorUserId = crfPage.LastUpdatorUserId;
             this.IsDeleted = crfPage.IsDeleted;
+            this.LastUpdatorUserId = crfPage.LastUpdatorUserId;
         }
         public int Id { get; set; }
         public int StudyId { get; set; }  // Foreign key to Study

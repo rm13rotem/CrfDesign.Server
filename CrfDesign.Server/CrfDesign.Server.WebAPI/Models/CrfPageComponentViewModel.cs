@@ -33,6 +33,8 @@ namespace CrfDesign.Server.WebAPI.Models
             ValidationPattern = component.ValidationPattern;
             Name = component.Name;
             ModifiedDateTime = component.ModifiedDateTime;
+            IsLockedForChanges = component.IsLockedForChanges;
+            LastUpdatorUserId = component.LastUpdatorUserId;
         }
 
         public string ToCategoryOptions()
@@ -69,6 +71,8 @@ namespace CrfDesign.Server.WebAPI.Models
         public string ValidationPattern { get; set; }
         public string Name { get; private set; }
         public DateTime ModifiedDateTime { get; private set; }
+        public bool IsLockedForChanges { get; private set; }
+        public string LastUpdatorUserId { get; set; }
 
         public string CategoryOptions { get { return ToCategoryOptions(); } }
 

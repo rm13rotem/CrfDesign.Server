@@ -1,11 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Interfaces;
 using BuisnessLogic.Models;
-using BuisnessLogic.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Models
 {
@@ -19,6 +15,7 @@ namespace CrfDesign.Server.WebAPI.Models
             IsDeleted = model.IsDeleted;
             ModifiedDateTime = model.ModifiedDateTime;
             CrfOptionCategoryName = _context.CrfOptionCategories.Find(model.CrfOptionCategoryId)?.Name;
+            LastUpdatorUserId = model.LastUpdatorUserId;
         }
         public int Id { get; set; }
         public string Name { get; set; }

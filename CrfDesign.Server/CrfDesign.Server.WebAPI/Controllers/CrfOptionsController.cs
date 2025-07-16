@@ -11,6 +11,7 @@ using CrfDesign.Server.WebAPI.Models;
 using BuisnessLogic.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -18,11 +19,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
     {
         private readonly CrfDesignContext _context;
         private readonly CrfOptionsManager _manager;
+        private readonly UserManager<Investigator> _userManager;
 
-        public CrfOptionsController(CrfDesignContext context)
+
+        public CrfOptionsController(UserManager<Investigator> userManager,
+            CrfDesignContext context)
         {
             _context = context;
             _manager = new CrfOptionsManager(_context);
+            _userManager = userManager;
         }
 
         // GET: CrfOptions
@@ -32,7 +37,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
             filter.TotalLines = _context.CrfOptions.Count();
             var dbresults = await _manager.GetCrfOptionsAsync(filter);
             var results = dbresults.Select(x => new CrfOptionViewModel(x, _context)).ToList();
-
+            foreach (var option in results)
+            {
+                if (!string.IsNullOrEmpty(option.LastUpdatorUserId))
+                {
+                    var user = await _userManager.FindByIdAsync(option.LastUpdatorUserId);
+                    if (user != null)
+                        option.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
+                    else option.LastUpdatorUserId = "Unknown";
+                }
+            }
             var Options = _context.CrfOptionCategories.ToList();
             Options.Add(new CrfOptionCategory() { Id = 0, Name = "All" });
             ViewData["CategoryId"] = new SelectList(Options, "Id", "Name", filter.CategoryId);
