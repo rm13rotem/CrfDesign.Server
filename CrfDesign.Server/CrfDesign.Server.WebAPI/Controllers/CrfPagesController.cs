@@ -8,229 +8,131 @@ using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Data;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
-using BuisnessLogic.Managers;
 using CrfDesign.Server.WebAPI.Models.Filters;
 using Microsoft.AspNetCore.Identity;
+using CrfDesign.Server.WebAPI.Models.Managers;
 using CrfDesign.Server.WebAPI.Models;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfPagesController : Controller
     {
-        private readonly CrfDesignContext _context;
-        private readonly CrfPageManager _crfPageManager;
-        private readonly UserManager<Investigator> _userManager;
+        private readonly CrfPageManager _manager;
 
-        public CrfPagesController(UserManager<Investigator> userManager,
-            CrfDesignContext context)
+        public CrfPagesController(UserManager<Investigator> userManager, CrfDesignContext context)
         {
-            _context = context;
-            _crfPageManager = new CrfPageManager(_context);
-            _userManager = userManager;
+            _manager = new CrfPageManager(context, userManager);
         }
 
-        // GET: CrfPages
-        public async Task<IActionResult> Index(CrfPageFilter crfPageFilter)
+        public async Task<IActionResult> Index(CrfPageFilter filter)
         {
-            var pages = await _context.CrfPages.ToListAsync();
-            if (!string.IsNullOrEmpty(crfPageFilter.PartialName))
-                pages = pages.Where(x => x.Name.Contains(crfPageFilter.PartialName)).ToList();
-
-            foreach (var component in pages)
-            {
-                if (!string.IsNullOrEmpty(component.LastUpdatorUserId))
-                {
-                    var user = await _userManager.FindByIdAsync(component.LastUpdatorUserId);
-                    if (user != null)
-                        component.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
-                    else component.LastUpdatorUserId = "Unknown";
-                }
-            }
+            var pages = await _manager.GetFilteredPagesAsync(filter);
             return View(pages);
         }
 
-        // GET: CrfPages/GoToComponents/5
         public IActionResult GoToComponents(int id)
-        {
-            return RedirectToAction("Index", "CrfPageComponents", new CrfPageComponentFilter { CrfPageId = id });
-        }
+            => RedirectToAction("Index", "CrfPageComponents", new CrfPageComponentFilter { CrfPageId = id });
 
-        // GET: CrfPages/RenderHTML/5
         public IActionResult RenderHTML(int id)
-        {
-            return RedirectToAction("Index", "RenderCrfComponent", new { id });
-        }
+            => RedirectToAction("Index", "RenderCrfComponent", new { id });
 
         public IActionResult RenderReceipt(int id)
-        {
-            return RedirectToAction("RenderReceipt", "RenderCrfComponent", new { id });
-        }
+            => RedirectToAction("RenderReceipt", "RenderCrfComponent", new { id });
 
         public IActionResult RenderCSharpClass(int id)
-        {
-            return RedirectToAction("RenderCSharpClass", "RenderCrfComponent", new { id });
-        }
-        // GET: CrfPages/Duplicate/5
+            => RedirectToAction("RenderCSharpClass", "RenderCrfComponent", new { id });
+
         public async Task<IActionResult> Duplicate(int id)
         {
-            var d = await _crfPageManager.GetById(id);
-            _crfPageManager.Duplicate(d);
-
-            var filter = new CrfPageFilter() { PartialName = d.Name };
-            return View("Index", filter);
+            try
+            {
+                var page = await _manager.GetByIdAsync(id);
+                await _manager.DuplicateAsync(page);
+                return RedirectToAction("Index", new CrfPageFilter { PartialName = page.Name });
+            }
+            catch (Exception ex)
+            {
+                // log error, optionally show UI error message
+                return BadRequest(ex.Message);
+            }
         }
 
-        // GET: CrfPages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfPage = await _context.CrfPages
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (crfPage == null)
-            {
-                return NotFound();
-            }
-
-            return View(crfPage);
+            if (id == null) return NotFound();
+            var page = await _manager.GetByIdAsync(id.Value);
+            return page == null ? NotFound() : View(page);
         }
 
-        // GET: CrfPages/Create
-        public IActionResult Create()
+        public IActionResult Create() => View();
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CrfPage page)
         {
-            return View();
-        }
-
-        // POST: CrfPages/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StudyId,Name,Description,CreatedAt,IsLockedForChanges,IsDeleted,ModifiedDateTime")] CrfPage crfPage)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(crfPage);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(crfPage);
-        }
-
-        // GET: CrfPages/ReturnLockedMessage/5
-        public IActionResult ReturnLockedMessage(CrfPage crfPage)
-        {            
-            return View(crfPage);
+            if (!ModelState.IsValid) return View(page);
+            _manager.Update(page); // Handles ModifiedDateTime
+            await _manager.SaveAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfPage = await _context.CrfPages.FindAsync(id);
-            if (crfPage == null)
-            {
-                return NotFound();
-            }
-
-            if (crfPage.IsLockedForChanges)
-                return RedirectToAction("ReturnLockedMessage", crfPage);
-            return View(crfPage);
+            if (id == null) return NotFound();
+            var page = await _manager.GetByIdAsync(id.Value);
+            if (page == null) return NotFound();
+            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            return View(page);
         }
 
-        
-
-        // POST: CrfPages/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(CrfPage crfPage)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(CrfPage page)
         {
-            if (crfPage.Id == 0)
+            if (!ModelState.IsValid) return View(page);
+            if (page.Id == 0) return NotFound();
+            try
             {
-                return NotFound();
+                _manager.Update(page);
+                await _manager.SaveAsync();
             }
-            
-            if (ModelState.IsValid)
+            catch (DbUpdateConcurrencyException)
             {
-                try
-                {
-                    crfPage.ModifiedDateTime = DateTime.UtcNow;
-                    _context.Update(crfPage);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CrfPageExists(crfPage.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                if (!_manager.Exists(page.Id)) return NotFound();
+                throw;
             }
-            return View(crfPage);
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: CrfPages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfPage = await _context.CrfPages
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (crfPage == null)
-            {
-                return NotFound();
-            }
-            if (crfPage.IsLockedForChanges == true)
-                return RedirectToAction("ReturnLockedMessage", crfPage);
-
-            return View(crfPage);
+            if (id == null) return NotFound();
+            var page = await _manager.GetByIdAsync(id.Value);
+            if (page == null) return NotFound();
+            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            return View(page);
         }
 
-        // POST: CrfPages/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var crfPage = await _context.CrfPages.FindAsync(id);
-            if (crfPage.IsLockedForChanges == true)
-                return RedirectToAction("ReturnLockedMessage", crfPage);
-            crfPage.IsDeleted = true;
-            await _context.SaveChangesAsync();
+            var page = await _manager.GetByIdAsync(id);
+            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            page.IsDeleted = true;
+            await _manager.SaveAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: CrfPages/Delete/5
-        [HttpPost, ActionName("Undelete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Undelete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> UndeleteConfirmed(int id)
         {
-            var crfPage = await _context.CrfPages.FindAsync(id);
-            crfPage.IsDeleted = false;
-            await _context.SaveChangesAsync();
-            if (crfPage.IsLockedForChanges == true)
-                return RedirectToAction("ReturnLockedMessage", crfPage);
+            var page = await _manager.GetByIdAsync(id);
+            page.IsDeleted = false;
+            await _manager.SaveAsync();
+            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CrfPageExists(int id)
-        {
-            return _context.CrfPages.Any(e => e.Id == id);
-        }
+        public IActionResult ReturnLockedMessage(CrfPage page)
+            => View(page);
     }
+
 }

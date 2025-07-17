@@ -9,6 +9,7 @@ namespace BuisnessLogic.Models
 {
     public class CrfPage : IPersistantEntity
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public int StudyId { get; set; }  // Foreign key to Study
         public string Name { get; set; }
@@ -18,8 +19,7 @@ namespace BuisnessLogic.Models
         public string? LastUpdatorUserId { get; set; }
 
         // Navigation property to Questions
-        [JsonIgnoreAttribute]
-        public ICollection<CrfPageComponent> Questions { get; set; }
+        public ICollection<CrfPageComponent> Components { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime ModifiedDateTime { get; set; }
         public IPersistantEntity ToNewEntity()
@@ -30,7 +30,7 @@ namespace BuisnessLogic.Models
                 CreatedAt = CreatedAt,
                 Description = Description,
                 IsLockedForChanges = IsLockedForChanges,
-                Questions = Questions,
+                Components = Components,
                 Name = this.Name,
                 IsDeleted = this.IsDeleted,
                 ModifiedDateTime = this.ModifiedDateTime,
