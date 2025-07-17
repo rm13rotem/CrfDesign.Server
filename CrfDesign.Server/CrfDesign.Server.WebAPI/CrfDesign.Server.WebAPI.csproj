@@ -26,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\CrfDesignLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BuisnessLogic\BuisnessLogic.csproj" />
   </ItemGroup>
 
