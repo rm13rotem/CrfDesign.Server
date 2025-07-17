@@ -27,6 +27,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> Index(CrfPageFilter filter)
         {
             var pages = await _manager.GetFilteredPagesAsync(filter);
+            ViewBag.filter = filter;
             return View(pages);
         }
 

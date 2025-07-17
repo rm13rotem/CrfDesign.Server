@@ -57,8 +57,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
             }
 
             var Options = _context.CrfPages.ToList();
+            for (int i = 0; i < Options.Count; i++)
+            {
+                Options[i].Name = string.Format("{0} - {1}",
+                    Options[i].Id, Options[i].Name);
+            }
             Options.Add(new CrfPage() { Id = 0, Name = "All" });
             Options = Options.OrderBy(x => x.Id).ToList();
+            
             ViewData["CRFPageId"] = new SelectList(Options, "Id", "Name", filter.CrfPageId);
             return View(uiLines);
         }
