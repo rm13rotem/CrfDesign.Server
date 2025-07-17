@@ -1,22 +1,16 @@
 using BuisnessLogic.DataContext;
-using BuisnessLogic.Managers;
 using CrfDesign.Server.WebAPI.Data;
 using CrfDesign.Server.WebAPI.Models;
 using CrfDesign.Server.WebAPI.Models.LoginModels;
+using CrfDesign.Server.WebAPI.Models.Managers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI
 {
@@ -45,18 +39,20 @@ namespace CrfDesign.Server.WebAPI
                 optionsBuilder.UseSqlServer(connectionString);
             });
 
-
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddRazorPages();
             services.AddControllersWithViews();
 
             services.AddIdentity<Investigator, IdentityRole>(options =>
-            options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI();
+                                options.SignIn.RequireConfirmedAccount = true)
+                                    .AddRoles<IdentityRole>()
+                                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                                    .AddDefaultTokenProviders()
+                                    .AddDefaultUI();
+
+            services.AddScoped<CrfOptionCategoryManager>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

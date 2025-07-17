@@ -1,183 +1,87 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BuisnessLogic.DataContext;
+﻿using BuisnessLogic.Filters;
 using BuisnessLogic.Models;
-using BuisnessLogic.Filters;
-using Microsoft.AspNetCore.Identity;
-using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     public class CrfOptionCategoriesController : Controller
     {
-        private readonly CrfDesignContext _context;
-        private readonly UserManager<Investigator> _userManager;
+        private readonly CrfOptionCategoryManager _manager;
 
-        public CrfOptionCategoriesController(UserManager<Investigator> userManager, 
-            CrfDesignContext context)
+        public CrfOptionCategoriesController(CrfOptionCategoryManager manager)
         {
-            _context = context;
-            _userManager = userManager;
+            _manager = manager;
         }
 
-        // GET: CrfOptionCategories
         public async Task<IActionResult> Index(CrfOptionCategoriesFilter filter)
         {
-            filter.TotalLines = _context.CrfOptionCategories.Count();
-            var dbLines = await _context.CrfOptionCategories.
-                OrderBy(x => x.Id).Skip(filter.Page - 1).Take(filter.NLines).ToListAsync();
-            if (dbLines.Count == 0)
-                dbLines = await _context.CrfOptionCategories.ToListAsync();
-            else ViewBag.filter = filter;
+            var result = await _manager.GetAllAsync(filter);
+            if (result == null)
+                return View(new List<CrfOptionCategory>());
 
-            foreach (var optionCategory in dbLines)
-            {
-                if (!string.IsNullOrEmpty(optionCategory.LastUpdatorUserId))
-                {
-                    var user = await _userManager.FindByIdAsync(optionCategory.LastUpdatorUserId);
-                    if (user != null)
-                        optionCategory.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
-                    else optionCategory.LastUpdatorUserId = "Unknown";
-                }
-            }
-            return View(dbLines);
+            ViewBag.filter = filter;
+            return View(result);
         }
 
-        // GET: CrfOptionCategories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfOptionCategory = await _context.CrfOptionCategories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (crfOptionCategory == null)
-            {
-                return NotFound();
-            }
-
-            return View(crfOptionCategory);
+            var result = await _manager.GetDetailsAsync(id);
+            return result == null ? NotFound() : View(result);
         }
 
-        // GET: CrfOptionCategories/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
-        // POST: CrfOptionCategories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,IsDeleted,ModifiedDateTime")] CrfOptionCategory crfOptionCategory)
+        public async Task<IActionResult> Create(CrfOptionCategory crfOptionCategory)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(crfOptionCategory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(crfOptionCategory);
+            if (!ModelState.IsValid)
+                return View(crfOptionCategory);
+
+            var success = await _manager.CreateAsync(crfOptionCategory);
+            return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
-        // GET: CrfOptionCategories/Duplicate/5
-        public async Task<IActionResult> Duplicate(int? id, CrfOptionCategoriesFilter filter)
-        {
-
-            return RedirectToAction($"{nameof(Index)}", filter);
-        }
-
-        // GET: CrfOptionCategories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfOptionCategory = await _context.CrfOptionCategories.FindAsync(id);
-            if (crfOptionCategory == null)
-            {
-                return NotFound();
-            }
-            return View(crfOptionCategory);
+            var result = await _manager.GetEditAsync(id);
+            return result == null ? NotFound() : View(result);
         }
 
-        // POST: CrfOptionCategories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime")] CrfOptionCategory crfOptionCategory)
+        public async Task<IActionResult> Edit(int id, CrfOptionCategory crfOptionCategory)
         {
             if (id != crfOptionCategory.Id)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(crfOptionCategory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CrfOptionCategoryExists(crfOptionCategory.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(crfOptionCategory);
+            if (!ModelState.IsValid)
+                return View(crfOptionCategory);
+
+            var success = await _manager.EditAsync(crfOptionCategory);
+            return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
-        // GET: CrfOptionCategories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfOptionCategory = await _context.CrfOptionCategories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (crfOptionCategory == null)
-            {
-                return NotFound();
-            }
-
-            return View(crfOptionCategory);
+            var result = await _manager.GetDeleteAsync(id);
+            return result == null ? NotFound() : View(result);
         }
 
-        // POST: CrfOptionCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var crfOptionCategory = await _context.CrfOptionCategories.FindAsync(id);
-            _context.CrfOptionCategories.Remove(crfOptionCategory);
-            await _context.SaveChangesAsync();
+            await _manager.DeleteConfirmedAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CrfOptionCategoryExists(int id)
+        public IActionResult Duplicate(int? id, CrfOptionCategoriesFilter filter)
         {
-            return _context.CrfOptionCategories.Any(e => e.Id == id);
+            return RedirectToAction(nameof(Index), filter);
         }
     }
 }
