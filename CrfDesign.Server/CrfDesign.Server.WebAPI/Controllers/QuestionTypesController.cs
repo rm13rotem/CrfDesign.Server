@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using CrfDesign.Server.WebAPI.Data;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class QuestionTypesController : Controller
     {
         private readonly CrfDesignContext _context;
@@ -141,7 +144,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var questionType = await _context.QuestionTypes.FindAsync(id);
-            _context.QuestionTypes.Remove(questionType);
+            questionType.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

@@ -12,9 +12,12 @@ using BuisnessLogic.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class CrfOptionsController : Controller
     {
         private readonly CrfDesignContext _context;

@@ -41,7 +41,7 @@
     </Content>
   </ItemGroup>
 
-  <!-- ✅ Include Identity Razor Pages -->
+  <!-- Include Identity Razor Pages -->
   <ItemGroup>
     <Content Update="Areas\Identity\**\*.cshtml" CopyToPublishDirectory="Always" />
   </ItemGroup>

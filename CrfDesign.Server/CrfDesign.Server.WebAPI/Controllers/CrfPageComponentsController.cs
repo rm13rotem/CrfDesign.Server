@@ -11,9 +11,12 @@ using BuisnessLogic.DataContext;
 using BuisnessLogic.Models.Managers;
 using CrfDesign.Server.WebAPI.Models.Filters;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+
+    [Authorize]
     public class CrfPageComponentsController : Controller
     {
         private readonly CrfDesignContext _context;

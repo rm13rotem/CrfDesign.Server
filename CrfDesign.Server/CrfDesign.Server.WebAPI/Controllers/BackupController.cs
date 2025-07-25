@@ -9,9 +9,11 @@ using BuisnessLogic.DataContext;
 using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models.Backup;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class BackupController : Controller
     {
         private readonly CrfDesignContext _context;

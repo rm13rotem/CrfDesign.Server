@@ -1,12 +1,14 @@
 ﻿using BuisnessLogic.Filters;
 using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CrfOptionCategoriesController : Controller
     {
         private readonly CrfOptionCategoryManager _manager;

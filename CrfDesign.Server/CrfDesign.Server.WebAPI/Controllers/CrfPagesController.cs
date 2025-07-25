@@ -12,9 +12,11 @@ using CrfDesign.Server.WebAPI.Models.Filters;
 using Microsoft.AspNetCore.Identity;
 using CrfDesign.Server.WebAPI.Models.Managers;
 using CrfDesign.Server.WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
+    [Authorize]
     public class CrfPagesController : Controller
     {
         private readonly CrfPageManager _manager;

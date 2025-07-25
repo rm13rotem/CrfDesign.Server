@@ -1,14 +1,12 @@
 ﻿using BuisnessLogic.DataContext;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
-    
+    [AllowAnonymous]
     public class ReadyController : Controller
     {
         private readonly CrfDesignContext _context;
