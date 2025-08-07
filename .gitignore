@@ -1,21 +1,21 @@
 # Build outputs
-bin/
-obj/
+**/bin/
+**/obj/
 
 # User-specific files
-*.user
-*.vs/
-.vscode/
-*.suo
+**/*.user
+**/*.vs/
+**/.vscode/
+**/*.suo
 
 # Secrets & config
-appsettings.Development.json
-appsettings.Production.json
-secrets.json
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/secrets.json
 
 # Publish folders
-publish/
-*.PublishProfiles/
+**/publish/
+**/*.PublishProfiles/
 
 # OS junk
 *.DS_Store
