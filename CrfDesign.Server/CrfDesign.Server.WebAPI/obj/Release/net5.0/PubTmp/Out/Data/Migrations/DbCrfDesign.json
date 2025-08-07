@@ -1,75 +1,87 @@
 {
   "CrfOptionCategories": [
     {
-      "Id": 1,
       "Name": "yesno",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-18T18:13:00"
     },
     {
-      "Id": 2,
       "Name": "yesNoExplain",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-21T12:26:00"
     },
     {
-      "Id": 3,
       "Name": "gender",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-25T14:56:00"
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "ModifiedDateTime": "2025-07-17T09:30:02.8597235"
     },
     {
-      "Id": 4,
       "Name": "race",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:03:00"
     },
     {
-      "Id": 5,
       "Name": "ethnicity_hispanic",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:05:00"
     },
     {
-      "Id": 6,
       "Name": "Severity",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:41:00"
     },
     {
-      "Id": 7,
       "Name": "Related",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:41:00"
     },
     {
-      "Id": 8,
       "Name": "ActionTaken",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:42:00"
     },
     {
-      "Id": 9,
       "Name": "Outcome",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:42:00"
     },
     {
-      "Id": 10,
       "Name": "withdrawalReason",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T10:28:00"
     },
     {
-      "Id": 11,
       "Name": "InclusionExclusion",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-03T15:17:00"
     },
     {
-      "Id": 12,
       "Name": "HeightUnit",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-03T20:25:00"
     }
   ],
@@ -78,6 +90,8 @@
       "Id": 2,
       "Name": "Yes",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-05T00:00:00",
       "CrfOptionCategoryId": 1
     },
@@ -85,6 +99,8 @@
       "Id": 4,
       "Name": "No",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-21T08:28:31.521",
       "CrfOptionCategoryId": 1
     },
@@ -92,6 +108,8 @@
       "Id": 5,
       "Name": "Yes",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-23T09:22:51.402",
       "CrfOptionCategoryId": 2
     },
@@ -99,6 +117,8 @@
       "Id": 6,
       "Name": "No (explain, if No)",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-23T09:23:12.572",
       "CrfOptionCategoryId": 2
     },
@@ -106,6 +126,8 @@
       "Id": 7,
       "Name": "Male",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:05:02.265",
       "CrfOptionCategoryId": 3
     },
@@ -113,6 +135,8 @@
       "Id": 8,
       "Name": "Hispanic or Latino",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:06:05.791",
       "CrfOptionCategoryId": 5
     },
@@ -120,6 +144,8 @@
       "Id": 9,
       "Name": "Female",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:05:18.255",
       "CrfOptionCategoryId": 3
     },
@@ -127,6 +153,8 @@
       "Id": 10,
       "Name": "Not Hispanic or Latino",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:06:53.049",
       "CrfOptionCategoryId": 5
     },
@@ -134,6 +162,8 @@
       "Id": 11,
       "Name": "White",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:07:43.69",
       "CrfOptionCategoryId": 4
     },
@@ -141,6 +171,8 @@
       "Id": 12,
       "Name": "Black or African American",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:08:10.117",
       "CrfOptionCategoryId": 4
     },
@@ -148,6 +180,8 @@
       "Id": 13,
       "Name": "Asian",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:08:35.539",
       "CrfOptionCategoryId": 4
     },
@@ -155,6 +189,8 @@
       "Id": 14,
       "Name": "Native Hawaiian or Other Pacific Islander",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:08:57.083",
       "CrfOptionCategoryId": 4
     },
@@ -162,6 +198,8 @@
       "Id": 15,
       "Name": "American Indian/Alaskan Native",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:36:21",
       "CrfOptionCategoryId": 4
     },
@@ -169,6 +207,8 @@
       "Id": 16,
       "Name": "Other",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-25T15:36:36.504",
       "CrfOptionCategoryId": 4
     },
@@ -176,6 +216,8 @@
       "Id": 17,
       "Name": "Mild",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:42:29.628",
       "CrfOptionCategoryId": 6
     },
@@ -183,6 +225,8 @@
       "Id": 18,
       "Name": "Moderate",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:42:58.323",
       "CrfOptionCategoryId": 6
     },
@@ -190,6 +234,8 @@
       "Id": 19,
       "Name": "Severe",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:43:04.52",
       "CrfOptionCategoryId": 6
     },
@@ -197,6 +243,8 @@
       "Id": 20,
       "Name": "Not Related",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:44:02.05",
       "CrfOptionCategoryId": 7
     },
@@ -204,6 +252,8 @@
       "Id": 21,
       "Name": "Unlikely",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:44:44.802",
       "CrfOptionCategoryId": 7
     },
@@ -211,6 +261,8 @@
       "Id": 22,
       "Name": "Possibly Related",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:44:48.705",
       "CrfOptionCategoryId": 7
     },
@@ -218,6 +270,8 @@
       "Id": 23,
       "Name": "Probably Related",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:44:58.705",
       "CrfOptionCategoryId": 7
     },
@@ -225,6 +279,8 @@
       "Id": 24,
       "Name": "Definitely Related",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:45:02.734",
       "CrfOptionCategoryId": 7
     },
@@ -232,6 +288,8 @@
       "Id": 25,
       "Name": "None",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:46:29.217",
       "CrfOptionCategoryId": 8
     },
@@ -239,6 +297,8 @@
       "Id": 26,
       "Name": "Recovered",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:46:59.348",
       "CrfOptionCategoryId": 9
     },
@@ -246,6 +306,8 @@
       "Id": 27,
       "Name": "Other Drug Therapy, Specify as Con. Med.",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:47:53.911",
       "CrfOptionCategoryId": 8
     },
@@ -253,6 +315,8 @@
       "Id": 28,
       "Name": "Other Treatment or Procedure, Specify",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:47:57.566",
       "CrfOptionCategoryId": 8
     },
@@ -260,6 +324,8 @@
       "Id": 29,
       "Name": "Discontinuation of Drug Therapy",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:48:46.501",
       "CrfOptionCategoryId": 8
     },
@@ -267,6 +333,8 @@
       "Id": 30,
       "Name": "Discontinuation from Study",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:50:50.027",
       "CrfOptionCategoryId": 8
     },
@@ -274,6 +342,8 @@
       "Id": 31,
       "Name": "Continuing without Treatment",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:52:17.237",
       "CrfOptionCategoryId": 9
     },
@@ -281,6 +351,8 @@
       "Id": 32,
       "Name": "Continuing with Treatment",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:52:29.827",
       "CrfOptionCategoryId": 9
     },
@@ -288,6 +360,8 @@
       "Id": 33,
       "Name": "Death",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-27T17:52:34.118",
       "CrfOptionCategoryId": 9
     },
@@ -295,6 +369,8 @@
       "Id": 34,
       "Name": "NA. Completed Study",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T10:31:33.759",
       "CrfOptionCategoryId": 10
     },
@@ -302,6 +378,8 @@
       "Id": 35,
       "Name": "Adverse Event, specify:",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T10:34:43.552",
       "CrfOptionCategoryId": 10
     },
@@ -309,6 +387,8 @@
       "Id": 36,
       "Name": "Terminated by Sponsor",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T11:50:58.103",
       "CrfOptionCategoryId": 10
     },
@@ -316,6 +396,8 @@
       "Id": 37,
       "Name": " Consent Withdrawn",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T11:56:24.505",
       "CrfOptionCategoryId": 10
     },
@@ -323,6 +405,8 @@
       "Id": 38,
       "Name": " Lost to Follow–up",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T12:00:07.679",
       "CrfOptionCategoryId": 10
     },
@@ -330,6 +414,8 @@
       "Id": 39,
       "Name": "Other, specify: ",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-05-28T12:02:27.598",
       "CrfOptionCategoryId": 10
     },
@@ -337,6 +423,8 @@
       "Id": 40,
       "Name": "Inclusion",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-03T15:18:00",
       "CrfOptionCategoryId": 11
     },
@@ -344,6 +432,8 @@
       "Id": 41,
       "Name": "Exclusion",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-03T15:19:13.603",
       "CrfOptionCategoryId": 11
     },
@@ -351,6 +441,8 @@
       "Id": 42,
       "Name": "cm",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-04T12:53:55.067",
       "CrfOptionCategoryId": 12
     },
@@ -358,170 +450,1646 @@
       "Id": 43,
       "Name": "inch",
       "IsDeleted": false,
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
       "ModifiedDateTime": "2025-06-04T12:54:30.451",
       "CrfOptionCategoryId": 12
     }
   ],
   "CrfPages": [
     {
-      "Id": 1,
       "StudyId": 1,
       "Name": "Demographics",
       "Description": "Demographics CRF page",
       "CreatedAt": "2025-04-17T23:50:00",
-      "IsLockedForChanges": false,
+      "IsLockedForChanges": true,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 14,
+          "CRFPageId": 1,
+          "QuestionText": "Date dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "DateOfVisit",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:51.391257",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 15,
+          "CRFPageId": 1,
+          "QuestionText": "Date of Birth dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Date_of_Birth",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:56.2430369",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 16,
+          "CRFPageId": 1,
+          "QuestionText": "Gender",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 3,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Gender",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:59.8859999",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 17,
+          "CRFPageId": 1,
+          "QuestionText": "Ethnicity",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 5,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Ethnicity",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:06:06.1079501",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 18,
+          "CRFPageId": 1,
+          "QuestionText": "Race",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 4,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Race",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:06:14.6547471",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 19,
+          "CRFPageId": 1,
+          "QuestionText": "Other Race (Text)",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Race_Other",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:06:19.5655783",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 62,
+          "CRFPageId": 1,
+          "QuestionText": "Date of Data Entry (last) dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "DateOfDataEntry",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:57:42.8931202",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        }
+      ],
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-04-17T23:50:00"
+      "ModifiedDateTime": "2025-07-16T07:44:37.4460882"
     },
     {
-      "Id": 2,
       "StudyId": 1,
       "Name": "Physical Examination",
       "Description": "Physical Examination",
       "CreatedAt": "2025-04-17T23:52:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "Components": [
+        {
+          "Id": 61,
+          "CRFPageId": 2,
+          "QuestionText": "ToDo - add components to this CRF",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "PE[0]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-16T16:32:32.2238951",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        }
+      ],
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-04-17T23:52:00"
+      "ModifiedDateTime": "2025-07-16T16:30:58.2110384"
     },
     {
-      "Id": 3,
       "StudyId": 1,
       "Name": "Vital Signs",
       "Description": "Measure the vital signs of the patient",
       "CreatedAt": "2025-05-18T13:07:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-18T13:07:00"
     },
     {
-      "Id": 4,
       "StudyId": 1,
       "Name": "Inclusion Criteria",
       "Description": "Who is eligible to apply to the study",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 1,
+          "CRFPageId": 4,
+          "QuestionText": "Femal. Age 25 and 65 years old",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[0]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:04:49.2528913",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 2,
+          "CRFPageId": 4,
+          "QuestionText": "The subject smokes > 9 cigarettes per day (average daily consumption during past month). ",
+          "RenderType": "SingleChoise",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[1]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:04:57.6154538",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 3,
+          "CRFPageId": 4,
+          "QuestionText": "The subject has smoked daily > 1 year",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[2]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:03.7748234",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 4,
+          "CRFPageId": 4,
+          "QuestionText": "The subject is motivated to quit smoking with the help of an alternative",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[3]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:09.4405303",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 8,
+          "CRFPageId": 4,
+          "QuestionText": "The subject is in good general health as evident by Medical History, physical examination, routine blood chemistry (Hb, total WBC, creatinine, electrolytes), and an ECG ",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[4]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:15.8017867",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 37,
+          "CRFPageId": 4,
+          "QuestionText": "The subject practices, by self report, good oral hygiene (including brushing teeth) at least twice per day and having regular dental check ups",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[5]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:23.9465156",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 38,
+          "CRFPageId": 4,
+          "QuestionText": "The subject agrees to comply with the requirements of the protocol and complete study measures",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "INC[7]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:05:36.2551045",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-19T13:25:00"
     },
     {
-      "Id": 5,
       "StudyId": 1,
       "Name": "Exclusion Criteria",
       "Description": "who is not eligible for study",
       "CreatedAt": "2025-05-19T06:37:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 39,
+          "CRFPageId": 5,
+          "QuestionText": "The subject is a current user of ST (defined as daily usage during more than 1 week within past 6 months) or is unable to refrain from NRT or any other non-protocol treatment during the study. Use of pipes, cigars, cigarillos, snuff, and chewing tobacco is also prohibited during the study. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[0]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:11:25.6709488",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 40,
+          "CRFPageId": 5,
+          "QuestionText": "The subject is a female who is pregnant or lactating. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[1]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:11.7185098",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 41,
+          "CRFPageId": 5,
+          "QuestionText": "The subject has oral conditions that could potentially be made worse by use of study product, for instance, exposed dental cervices in the upper sulcus.",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[2]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:18.6825246",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 42,
+          "CRFPageId": 5,
+          "QuestionText": "The subject has used any type of pharmaceutical (including some psychotropics, e.g., wellbutrin) or other products for smoking cessation within the past 3 months. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[3]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:25.7770465",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 43,
+          "CRFPageId": 5,
+          "QuestionText": "The subject has a history of clinically significant renal, hepatic, neurological, or chronic pulmonary disease that in the judgment of the investigator precludes participation. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[4]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:40.4942571",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 44,
+          "CRFPageId": 5,
+          "QuestionText": "The subject has a history of cardiovascular disease, including myocardial infarction within the last 3 months, significant cardiac arrhythmias, or poorly controlled hypertension (defined as a diastolic pressure of more than 90 mm Hg or a systolic pressure of more than 140 mm Hg) that in the judgment of the investigator precludes participation.",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[5]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:48.3777884",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 45,
+          "CRFPageId": 5,
+          "QuestionText": "The subject has a history of alcohol or substance abuse or dependence other than cigarette smoking within the past year ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[6]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:34.6523384",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 46,
+          "CRFPageId": 5,
+          "QuestionText": "Use of any illicit drug or smoked marijuana in the last 3 months. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[7]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:12:59.4387724",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 47,
+          "CRFPageId": 5,
+          "QuestionText": "The subject is unwilling to be randomized into active or placebo conditions, or be available for follow-up assessments. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[8]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:00.0198148",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 48,
+          "CRFPageId": 5,
+          "QuestionText": "The subject resides in a household where another member is currently participating in the study. ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "EXC[9]",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:15.6131131",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-19T06:46:00"
     },
     {
-      "Id": 6,
       "StudyId": 1,
       "Name": "Information Session",
       "Description": "Informed consent explained",
       "CreatedAt": "2025-05-19T06:51:00",
-      "IsLockedForChanges": false,
+      "IsLockedForChanges": true,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 5,
+          "CRFPageId": 6,
+          "QuestionText": "Date of Information Session",
+          "RenderType": "Date",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "VisitDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 6,
+          "CRFPageId": 6,
+          "QuestionText": "Did the subject attend the Information Session?",
+          "RenderType": "yesNoExplain",
+          "QuestionTypeId": 3,
+          "CategoryId": 2,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsAttended",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:35.8106087",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 7,
+          "CRFPageId": 6,
+          "QuestionText": "Comments",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Comments",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:39.3655367",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 63,
+          "CRFPageId": 6,
+          "QuestionText": "Date of Information Session",
+          "RenderType": "Date",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "VisitDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 64,
+          "CRFPageId": 6,
+          "QuestionText": "Date of Information Session",
+          "RenderType": "Date",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "VisitDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 65,
+          "CRFPageId": 6,
+          "QuestionText": "Date of Information Session",
+          "RenderType": "Date",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "VisitDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-19T06:52:00"
+      "ModifiedDateTime": "2025-06-09T13:03:25.8449808"
     },
     {
-      "Id": 7,
       "StudyId": 1,
       "Name": "Subject Elegibility",
       "Description": "Who is eligible to apply to the study",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 49,
+          "CRFPageId": 7,
+          "QuestionText": "Date of Consent dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ConsentDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:03.7863867",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 50,
+          "CRFPageId": 7,
+          "QuestionText": "Did the subject meet all of the inclusion/exclusion criteria?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsIncExcMet",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:04.6203427",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 51,
+          "CRFPageId": 7,
+          "QuestionText": "If the subject did not meet all of the Inclusion/Exclusion criteria, provide criterion number and explanation below.",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IfNot",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:05.9450414",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 52,
+          "CRFPageId": 7,
+          "QuestionText": "Category (Inc/Exc)?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 11,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Category",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:16.1749225",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 53,
+          "CRFPageId": 7,
+          "QuestionText": "Inclusion/ Exclusion No. ",
+          "RenderType": null,
+          "QuestionTypeId": 6,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IncExcQuestionNumber",
+          "IsDeleted": false,
+          "ModifiedDateTime": "0001-01-01T00:00:00",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 54,
+          "CRFPageId": 7,
+          "QuestionText": "Explanation",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Explanation",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:36.4764939",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 55,
+          "CRFPageId": 7,
+          "QuestionText": "Exception Granted?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsExceptionGranted",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:24.5323799",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 56,
+          "CRFPageId": 7,
+          "QuestionText": "If Yes, Date of Granted Exception",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ExceptionDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:24.069199",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-19T13:25:00"
     },
     {
-      "Id": 8,
       "StudyId": 1,
       "Name": "Body Measurements",
       "Description": "Measuring things such as Height, Weight, ...",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 57,
+          "CRFPageId": 8,
+          "QuestionText": "Were Body Measurements Collected? ",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsCollected",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:55.8708119",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 58,
+          "CRFPageId": 8,
+          "QuestionText": "Date",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "VisitDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:57.8107634",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 59,
+          "CRFPageId": 8,
+          "QuestionText": "Height",
+          "RenderType": null,
+          "QuestionTypeId": 6,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Height",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:14:59.5665255",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 60,
+          "CRFPageId": 8,
+          "QuestionText": "Unit of Height",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "HeightUnit",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:15:01.8895993",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:25:00"
     },
     {
-      "Id": 9,
       "StudyId": 1,
       "Name": "Vital Signs",
       "Description": "Blood Pressure, Pulse, Heart Rate, ...",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:25:00"
     },
     {
-      "Id": 10,
       "StudyId": 1,
       "Name": "Laboratory Evaluations",
       "Description": "Lab results",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-19T13:25:00"
     },
     {
-      "Id": 11,
       "StudyId": 1,
       "Name": "Urine Pregnancy Test",
       "Description": "Quick Result",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:25:00"
     },
     {
-      "Id": 12,
       "StudyId": 1,
       "Name": "Medical History",
       "Description": "Med History of Patient",
       "CreatedAt": "2025-05-18T13:25:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 9,
+          "CRFPageId": 12,
+          "QuestionText": "Femal. Age 25 and 65 years old",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": "yesno",
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "y",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-05-21T13:55:35.0867552",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 10,
+          "CRFPageId": 12,
+          "QuestionText": "The subject smokes > 9 cigarettes per day (average daily consumption during past month). ",
+          "RenderType": "SingleChoise",
+          "QuestionTypeId": 3,
+          "CategoryId": null,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "9",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-05-21T13:55:59.2211987",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 11,
+          "CRFPageId": 12,
+          "QuestionText": "Femal. Age 25 and 65 years old",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": "yesno",
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "y",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-05-21T13:56:03.3353174",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 12,
+          "CRFPageId": 12,
+          "QuestionText": "Femal. Age 25 and 65 years old",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": "yesno",
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "y",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-05-21T13:56:03.6046648",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 13,
+          "CRFPageId": 12,
+          "QuestionText": "Femal. Age 25 and 65 years old",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": "yesno",
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "y",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-05-21T13:56:03.6258883",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-19T13:25:00"
     },
     {
-      "Id": 13,
       "StudyId": 1,
       "Name": "ECG Test",
       "Description": "12-LEAD ELECTROCARDIOGRAM REPORT",
       "CreatedAt": "2025-05-27T13:51:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 20,
+          "CRFPageId": 13,
+          "QuestionText": null,
+          "RenderType": "yesno",
+          "QuestionTypeId": 1,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "something",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:15:54.191016",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:52:00"
     },
     {
-      "Id": 14,
       "StudyId": 1,
       "Name": "Randomization",
       "Description": "Randomization of Patients",
       "CreatedAt": "2025-05-27T13:51:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 21,
+          "CRFPageId": 14,
+          "QuestionText": "Was Subject randomized?",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsRandomized",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:08.0826033",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:52:00"
     },
     {
-      "Id": 15,
       "StudyId": 1,
       "Name": "Adverse Events",
       "Description": "Adverse Events of Patients",
       "CreatedAt": "2025-05-27T13:51:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 22,
+          "CRFPageId": 15,
+          "QuestionText": "Onset Date & Time",
+          "RenderType": "yesno",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "OnsetDateTime",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:27.1718134",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 23,
+          "CRFPageId": 15,
+          "QuestionText": "Resolved Date & Time",
+          "RenderType": "yesno",
+          "QuestionTypeId": 4,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ResolvedDateTime",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:27.7340552",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 24,
+          "CRFPageId": 15,
+          "QuestionText": "Onset Date & Time",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsSerious",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:30.0499954",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 25,
+          "CRFPageId": 15,
+          "QuestionText": "Onset Date & Time",
+          "RenderType": "severity",
+          "QuestionTypeId": 3,
+          "CategoryId": 6,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Severity",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:29.7817986",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 26,
+          "CRFPageId": 15,
+          "QuestionText": "Relationship to Product",
+          "RenderType": "related",
+          "QuestionTypeId": 3,
+          "CategoryId": 7,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Related",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:30.3151369",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 27,
+          "CRFPageId": 15,
+          "QuestionText": "Action Taken",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 8,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ActionTaken",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:32.5016747",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 28,
+          "CRFPageId": 15,
+          "QuestionText": "Outcome to Date",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 9,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Outcome",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:34.156317",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 29,
+          "CRFPageId": 15,
+          "QuestionText": "Description",
+          "RenderType": "yesno",
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "AdverseEventDescription",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:37.615676",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 30,
+          "CRFPageId": 15,
+          "QuestionText": "Adverse Event Exact identification by Medical Dictionary",
+          "RenderType": "yesno",
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "AdverseEventIdByMed",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:38.6797563",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 31,
+          "CRFPageId": 15,
+          "QuestionText": "Other Drug Taken - Specify",
+          "RenderType": "yesno",
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Action_OtherDrug_Specify",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:16:40.227025",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:53:00"
     },
     {
-      "Id": 16,
       "StudyId": 1,
       "Name": "Study Completion",
       "Description": "Termination of Study",
       "CreatedAt": "2025-05-27T13:51:00",
       "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 32,
+          "CRFPageId": 16,
+          "QuestionText": "Date the subject completed OR withdrew from the study",
+          "RenderType": "yesno",
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "CompletionDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:17:13.2466144",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 33,
+          "CRFPageId": 16,
+          "QuestionText": "Reason for Withdrawal (check one):",
+          "RenderType": "yesno",
+          "QuestionTypeId": 3,
+          "CategoryId": 10,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ReasonWithdrawn",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:17:13.8287226",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 34,
+          "CRFPageId": 16,
+          "QuestionText": "Adverse Event, specifiy:",
+          "RenderType": "yesno",
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "AdverseEventSpecify",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:17:20.9423981",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 35,
+          "CRFPageId": 16,
+          "QuestionText": "Other, specifiy:",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "OtherSpecify",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:18:12.0508037",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 36,
+          "CRFPageId": 16,
+          "QuestionText": "Investigator Comment",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "InvestigatorComment",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-06-06T06:18:28.6254825",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
       "IsDeleted": false,
       "ModifiedDateTime": "2025-05-27T13:53:00"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Information Session_Copy",
+      "Description": "Informed consent explained",
+      "CreatedAt": "2025-07-17T10:36:17.0111966",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
+      "IsDeleted": false,
+      "ModifiedDateTime": "0001-01-01T00:00:00"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Information Session_Copy",
+      "Description": "Informed consent explained",
+      "CreatedAt": "2025-07-17T11:13:25.2120237",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": null,
+      "IsDeleted": false,
+      "ModifiedDateTime": "0001-01-01T00:00:00"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Test3",
+      "Description": "Test3",
+      "CreatedAt": "2025-07-17T11:26:50.324",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "Components": null,
+      "IsDeleted": true,
+      "ModifiedDateTime": "2025-07-17T11:35:52.0155504"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Information Session_Copy",
+      "Description": "Informed consent explained",
+      "CreatedAt": "2025-07-17T11:36:10.0833291",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 73,
+          "CRFPageId": 20,
+          "QuestionText": "Category (Inc/Exc)?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 11,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Category",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T12:16:16.5596907",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        }
+      ],
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-09T13:03:25.8449808"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Information Session_Copy",
+      "Description": "Informed consent explained",
+      "CreatedAt": "2025-07-17T11:41:01.7565098",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 67,
+          "CRFPageId": 21,
+          "QuestionText": "Date of Consent dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ConsentDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:54:13.3422437",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 69,
+          "CRFPageId": 21,
+          "QuestionText": "Did the subject meet all of the inclusion/exclusion criteria?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsIncExcMet",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:55:12.0577651",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 71,
+          "CRFPageId": 21,
+          "QuestionText": "If the subject did not meet all of the Inclusion/Exclusion criteria, provide criterion number and explanation below.",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IfNot",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T12:14:45.055858",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        }
+      ],
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-09T13:03:25.8449808"
+    },
+    {
+      "StudyId": 1,
+      "Name": "Subject Elegibility_Copy",
+      "Description": "Who is eligible to apply to the study",
+      "CreatedAt": "2025-07-17T11:45:29.0983496",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null,
+      "Components": [
+        {
+          "Id": 66,
+          "CRFPageId": 22,
+          "QuestionText": "Date of Consent dd/mm/yyyy",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ConsentDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:28.8688542",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 68,
+          "CRFPageId": 22,
+          "QuestionText": "Did the subject meet all of the inclusion/exclusion criteria?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": true,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsIncExcMet",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:37.2820037",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 70,
+          "CRFPageId": 22,
+          "QuestionText": "If the subject did not meet all of the Inclusion/Exclusion criteria, provide criterion number and explanation below.",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IfNot",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:38.6444291",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 72,
+          "CRFPageId": 22,
+          "QuestionText": "Category (Inc/Exc)?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 11,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Category",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:39.6480768",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 74,
+          "CRFPageId": 22,
+          "QuestionText": "Inclusion/ Exclusion No. ",
+          "RenderType": null,
+          "QuestionTypeId": 6,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IncExcQuestionNumber",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:40.1376523",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 75,
+          "CRFPageId": 22,
+          "QuestionText": "Inclusion/ Exclusion No. ",
+          "RenderType": null,
+          "QuestionTypeId": 6,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IncExcQuestionNumber",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:40.1366572",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 76,
+          "CRFPageId": 22,
+          "QuestionText": "Explanation",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Explanation",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.5016816",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 77,
+          "CRFPageId": 22,
+          "QuestionText": "Explanation",
+          "RenderType": null,
+          "QuestionTypeId": 1,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "Explanation",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.500939",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 78,
+          "CRFPageId": 22,
+          "QuestionText": "Exception Granted?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsExceptionGranted",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.5213902",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 79,
+          "CRFPageId": 22,
+          "QuestionText": "Exception Granted?",
+          "RenderType": null,
+          "QuestionTypeId": 3,
+          "CategoryId": 1,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "IsExceptionGranted",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.5205887",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        },
+        {
+          "Id": 80,
+          "CRFPageId": 22,
+          "QuestionText": "If Yes, Date of Granted Exception",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ExceptionDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.9905436",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+        },
+        {
+          "Id": 81,
+          "CRFPageId": 22,
+          "QuestionText": "If Yes, Date of Granted Exception",
+          "RenderType": null,
+          "QuestionTypeId": 4,
+          "CategoryId": 0,
+          "CategoryName": null,
+          "IsRequired": false,
+          "Options": null,
+          "ValidationPattern": null,
+          "Name": "ExceptionDate",
+          "IsDeleted": false,
+          "ModifiedDateTime": "2025-07-17T11:46:41.9897923",
+          "IsLockedForChanges": false,
+          "LastUpdatorUserId": null
+        }
+      ],
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-05-19T13:25:00"
     }
   ],
   "CrfPageComponents": [
@@ -538,7 +2106,9 @@
       "ValidationPattern": null,
       "Name": "INC[0]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:04:49.2528913"
+      "ModifiedDateTime": "2025-06-06T06:04:49.2528913",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 2,
@@ -553,7 +2123,9 @@
       "ValidationPattern": null,
       "Name": "INC[1]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:04:57.6154538"
+      "ModifiedDateTime": "2025-06-06T06:04:57.6154538",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 3,
@@ -568,7 +2140,9 @@
       "ValidationPattern": null,
       "Name": "INC[2]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:03.7748234"
+      "ModifiedDateTime": "2025-06-06T06:05:03.7748234",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 4,
@@ -583,7 +2157,9 @@
       "ValidationPattern": null,
       "Name": "INC[3]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:09.4405303"
+      "ModifiedDateTime": "2025-06-06T06:05:09.4405303",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 5,
@@ -598,7 +2174,9 @@
       "ValidationPattern": null,
       "Name": "VisitDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:13:33.2975274"
+      "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 6,
@@ -613,7 +2191,9 @@
       "ValidationPattern": null,
       "Name": "IsAttended",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:13:35.8106087"
+      "ModifiedDateTime": "2025-06-06T06:13:35.8106087",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 7,
@@ -628,7 +2208,9 @@
       "ValidationPattern": null,
       "Name": "Comments",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:13:39.3655367"
+      "ModifiedDateTime": "2025-06-06T06:13:39.3655367",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 8,
@@ -643,7 +2225,9 @@
       "ValidationPattern": null,
       "Name": "INC[4]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:15.8017867"
+      "ModifiedDateTime": "2025-06-06T06:05:15.8017867",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 9,
@@ -658,7 +2242,9 @@
       "ValidationPattern": null,
       "Name": "y",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-21T13:55:35.0867552"
+      "ModifiedDateTime": "2025-05-21T13:55:35.0867552",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 10,
@@ -673,7 +2259,9 @@
       "ValidationPattern": null,
       "Name": "9",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-21T13:55:59.2211987"
+      "ModifiedDateTime": "2025-05-21T13:55:59.2211987",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 11,
@@ -688,7 +2276,9 @@
       "ValidationPattern": null,
       "Name": "y",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-21T13:56:03.3353174"
+      "ModifiedDateTime": "2025-05-21T13:56:03.3353174",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 12,
@@ -703,7 +2293,9 @@
       "ValidationPattern": null,
       "Name": "y",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-21T13:56:03.6046648"
+      "ModifiedDateTime": "2025-05-21T13:56:03.6046648",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 13,
@@ -718,7 +2310,9 @@
       "ValidationPattern": null,
       "Name": "y",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-21T13:56:03.6258883"
+      "ModifiedDateTime": "2025-05-21T13:56:03.6258883",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 14,
@@ -733,7 +2327,9 @@
       "ValidationPattern": null,
       "Name": "DateOfVisit",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:51.391257"
+      "ModifiedDateTime": "2025-06-06T06:05:51.391257",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 15,
@@ -748,7 +2344,9 @@
       "ValidationPattern": null,
       "Name": "Date_of_Birth",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:56.2430369"
+      "ModifiedDateTime": "2025-06-06T06:05:56.2430369",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 16,
@@ -763,7 +2361,9 @@
       "ValidationPattern": null,
       "Name": "Gender",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:59.8859999"
+      "ModifiedDateTime": "2025-06-06T06:05:59.8859999",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 17,
@@ -778,7 +2378,9 @@
       "ValidationPattern": null,
       "Name": "Ethnicity",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:06:06.1079501"
+      "ModifiedDateTime": "2025-06-06T06:06:06.1079501",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 18,
@@ -793,7 +2395,9 @@
       "ValidationPattern": null,
       "Name": "Race",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:06:14.6547471"
+      "ModifiedDateTime": "2025-06-06T06:06:14.6547471",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 19,
@@ -808,7 +2412,9 @@
       "ValidationPattern": null,
       "Name": "Race_Other",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:06:19.5655783"
+      "ModifiedDateTime": "2025-06-06T06:06:19.5655783",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 20,
@@ -823,7 +2429,9 @@
       "ValidationPattern": null,
       "Name": "something",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:15:54.191016"
+      "ModifiedDateTime": "2025-06-06T06:15:54.191016",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 21,
@@ -838,7 +2446,9 @@
       "ValidationPattern": null,
       "Name": "IsRandomized",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:08.0826033"
+      "ModifiedDateTime": "2025-06-06T06:16:08.0826033",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 22,
@@ -853,7 +2463,9 @@
       "ValidationPattern": null,
       "Name": "OnsetDateTime",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:27.1718134"
+      "ModifiedDateTime": "2025-06-06T06:16:27.1718134",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 23,
@@ -868,7 +2480,9 @@
       "ValidationPattern": null,
       "Name": "ResolvedDateTime",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:27.7340552"
+      "ModifiedDateTime": "2025-06-06T06:16:27.7340552",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 24,
@@ -883,7 +2497,9 @@
       "ValidationPattern": null,
       "Name": "IsSerious",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:30.0499954"
+      "ModifiedDateTime": "2025-06-06T06:16:30.0499954",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 25,
@@ -898,7 +2514,9 @@
       "ValidationPattern": null,
       "Name": "Severity",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:29.7817986"
+      "ModifiedDateTime": "2025-06-06T06:16:29.7817986",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 26,
@@ -913,7 +2531,9 @@
       "ValidationPattern": null,
       "Name": "Related",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:30.3151369"
+      "ModifiedDateTime": "2025-06-06T06:16:30.3151369",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 27,
@@ -928,7 +2548,9 @@
       "ValidationPattern": null,
       "Name": "ActionTaken",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:32.5016747"
+      "ModifiedDateTime": "2025-06-06T06:16:32.5016747",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 28,
@@ -943,7 +2565,9 @@
       "ValidationPattern": null,
       "Name": "Outcome",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:34.156317"
+      "ModifiedDateTime": "2025-06-06T06:16:34.156317",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 29,
@@ -958,7 +2582,9 @@
       "ValidationPattern": null,
       "Name": "AdverseEventDescription",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:37.615676"
+      "ModifiedDateTime": "2025-06-06T06:16:37.615676",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 30,
@@ -973,7 +2599,9 @@
       "ValidationPattern": null,
       "Name": "AdverseEventIdByMed",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:38.6797563"
+      "ModifiedDateTime": "2025-06-06T06:16:38.6797563",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 31,
@@ -988,7 +2616,9 @@
       "ValidationPattern": null,
       "Name": "Action_OtherDrug_Specify",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:16:40.227025"
+      "ModifiedDateTime": "2025-06-06T06:16:40.227025",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 32,
@@ -1003,7 +2633,9 @@
       "ValidationPattern": null,
       "Name": "CompletionDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:17:13.2466144"
+      "ModifiedDateTime": "2025-06-06T06:17:13.2466144",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 33,
@@ -1018,7 +2650,9 @@
       "ValidationPattern": null,
       "Name": "ReasonWithdrawn",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:17:13.8287226"
+      "ModifiedDateTime": "2025-06-06T06:17:13.8287226",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 34,
@@ -1033,7 +2667,9 @@
       "ValidationPattern": null,
       "Name": "AdverseEventSpecify",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:17:20.9423981"
+      "ModifiedDateTime": "2025-06-06T06:17:20.9423981",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 35,
@@ -1048,7 +2684,9 @@
       "ValidationPattern": null,
       "Name": "OtherSpecify",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:18:12.0508037"
+      "ModifiedDateTime": "2025-06-06T06:18:12.0508037",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 36,
@@ -1063,7 +2701,9 @@
       "ValidationPattern": null,
       "Name": "InvestigatorComment",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:18:28.6254825"
+      "ModifiedDateTime": "2025-06-06T06:18:28.6254825",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 37,
@@ -1078,7 +2718,9 @@
       "ValidationPattern": null,
       "Name": "INC[5]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:23.9465156"
+      "ModifiedDateTime": "2025-06-06T06:05:23.9465156",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 38,
@@ -1093,7 +2735,9 @@
       "ValidationPattern": null,
       "Name": "INC[7]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:05:36.2551045"
+      "ModifiedDateTime": "2025-06-06T06:05:36.2551045",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 39,
@@ -1108,7 +2752,9 @@
       "ValidationPattern": null,
       "Name": "EXC[0]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:11:25.6709488"
+      "ModifiedDateTime": "2025-06-06T06:11:25.6709488",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 40,
@@ -1123,7 +2769,9 @@
       "ValidationPattern": null,
       "Name": "EXC[1]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:11.7185098"
+      "ModifiedDateTime": "2025-06-06T06:12:11.7185098",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 41,
@@ -1138,7 +2786,9 @@
       "ValidationPattern": null,
       "Name": "EXC[2]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:18.6825246"
+      "ModifiedDateTime": "2025-06-06T06:12:18.6825246",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 42,
@@ -1153,7 +2803,9 @@
       "ValidationPattern": null,
       "Name": "EXC[3]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:25.7770465"
+      "ModifiedDateTime": "2025-06-06T06:12:25.7770465",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 43,
@@ -1168,7 +2820,9 @@
       "ValidationPattern": null,
       "Name": "EXC[4]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:40.4942571"
+      "ModifiedDateTime": "2025-06-06T06:12:40.4942571",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 44,
@@ -1183,7 +2837,9 @@
       "ValidationPattern": null,
       "Name": "EXC[5]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:48.3777884"
+      "ModifiedDateTime": "2025-06-06T06:12:48.3777884",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 45,
@@ -1198,7 +2854,9 @@
       "ValidationPattern": null,
       "Name": "EXC[6]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:34.6523384"
+      "ModifiedDateTime": "2025-06-06T06:12:34.6523384",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 46,
@@ -1213,7 +2871,9 @@
       "ValidationPattern": null,
       "Name": "EXC[7]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:12:59.4387724"
+      "ModifiedDateTime": "2025-06-06T06:12:59.4387724",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 47,
@@ -1228,7 +2888,9 @@
       "ValidationPattern": null,
       "Name": "EXC[8]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:13:00.0198148"
+      "ModifiedDateTime": "2025-06-06T06:13:00.0198148",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 48,
@@ -1243,7 +2905,9 @@
       "ValidationPattern": null,
       "Name": "EXC[9]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:13:15.6131131"
+      "ModifiedDateTime": "2025-06-06T06:13:15.6131131",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 49,
@@ -1258,7 +2922,9 @@
       "ValidationPattern": null,
       "Name": "ConsentDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:03.7863867"
+      "ModifiedDateTime": "2025-06-06T06:14:03.7863867",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 50,
@@ -1273,7 +2939,9 @@
       "ValidationPattern": null,
       "Name": "IsIncExcMet",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:04.6203427"
+      "ModifiedDateTime": "2025-06-06T06:14:04.6203427",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 51,
@@ -1288,7 +2956,9 @@
       "ValidationPattern": null,
       "Name": "IfNot",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:05.9450414"
+      "ModifiedDateTime": "2025-06-06T06:14:05.9450414",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 52,
@@ -1303,7 +2973,9 @@
       "ValidationPattern": null,
       "Name": "Category",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:16.1749225"
+      "ModifiedDateTime": "2025-06-06T06:14:16.1749225",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 53,
@@ -1318,7 +2990,9 @@
       "ValidationPattern": null,
       "Name": "IncExcQuestionNumber",
       "IsDeleted": false,
-      "ModifiedDateTime": "0001-01-01T00:00:00"
+      "ModifiedDateTime": "0001-01-01T00:00:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 54,
@@ -1333,7 +3007,9 @@
       "ValidationPattern": null,
       "Name": "Explanation",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:36.4764939"
+      "ModifiedDateTime": "2025-06-06T06:14:36.4764939",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 55,
@@ -1348,7 +3024,9 @@
       "ValidationPattern": null,
       "Name": "IsExceptionGranted",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:24.5323799"
+      "ModifiedDateTime": "2025-06-06T06:14:24.5323799",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 56,
@@ -1363,7 +3041,9 @@
       "ValidationPattern": null,
       "Name": "ExceptionDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:24.069199"
+      "ModifiedDateTime": "2025-06-06T06:14:24.069199",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 57,
@@ -1378,7 +3058,9 @@
       "ValidationPattern": null,
       "Name": "IsCollected",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:55.8708119"
+      "ModifiedDateTime": "2025-06-06T06:14:55.8708119",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 58,
@@ -1393,7 +3075,9 @@
       "ValidationPattern": null,
       "Name": "VisitDate",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:57.8107634"
+      "ModifiedDateTime": "2025-06-06T06:14:57.8107634",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 59,
@@ -1408,7 +3092,9 @@
       "ValidationPattern": null,
       "Name": "Height",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:14:59.5665255"
+      "ModifiedDateTime": "2025-06-06T06:14:59.5665255",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 60,
@@ -1423,7 +3109,9 @@
       "ValidationPattern": null,
       "Name": "HeightUnit",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:15:01.8895993"
+      "ModifiedDateTime": "2025-06-06T06:15:01.8895993",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 61,
@@ -1438,7 +3126,349 @@
       "ValidationPattern": null,
       "Name": "PE[0]",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-06-06T06:07:48.0963975"
+      "ModifiedDateTime": "2025-07-16T16:32:32.2238951",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 62,
+      "CRFPageId": 1,
+      "QuestionText": "Date of Data Entry (last) dd/mm/yyyy",
+      "RenderType": null,
+      "QuestionTypeId": 4,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "DateOfDataEntry",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:57:42.8931202",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 63,
+      "CRFPageId": 6,
+      "QuestionText": "Date of Information Session",
+      "RenderType": "Date",
+      "QuestionTypeId": 4,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "VisitDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 64,
+      "CRFPageId": 6,
+      "QuestionText": "Date of Information Session",
+      "RenderType": "Date",
+      "QuestionTypeId": 4,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "VisitDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 65,
+      "CRFPageId": 6,
+      "QuestionText": "Date of Information Session",
+      "RenderType": "Date",
+      "QuestionTypeId": 4,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "VisitDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-06-06T06:13:33.2975274",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 66,
+      "CRFPageId": 22,
+      "QuestionText": "Date of Consent dd/mm/yyyy",
+      "RenderType": null,
+      "QuestionTypeId": 4,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "ConsentDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:28.8688542",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 67,
+      "CRFPageId": 21,
+      "QuestionText": "Date of Consent dd/mm/yyyy",
+      "RenderType": null,
+      "QuestionTypeId": 4,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "ConsentDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:54:13.3422437",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 68,
+      "CRFPageId": 22,
+      "QuestionText": "Did the subject meet all of the inclusion/exclusion criteria?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IsIncExcMet",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:37.2820037",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 69,
+      "CRFPageId": 21,
+      "QuestionText": "Did the subject meet all of the inclusion/exclusion criteria?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": true,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IsIncExcMet",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:55:12.0577651",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 70,
+      "CRFPageId": 22,
+      "QuestionText": "If the subject did not meet all of the Inclusion/Exclusion criteria, provide criterion number and explanation below.",
+      "RenderType": null,
+      "QuestionTypeId": 1,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IfNot",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:38.6444291",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 71,
+      "CRFPageId": 21,
+      "QuestionText": "If the subject did not meet all of the Inclusion/Exclusion criteria, provide criterion number and explanation below.",
+      "RenderType": null,
+      "QuestionTypeId": 1,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IfNot",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T12:14:45.055858",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 72,
+      "CRFPageId": 22,
+      "QuestionText": "Category (Inc/Exc)?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 11,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "Category",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:39.6480768",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 73,
+      "CRFPageId": 20,
+      "QuestionText": "Category (Inc/Exc)?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 11,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "Category",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T12:16:16.5596907",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 74,
+      "CRFPageId": 22,
+      "QuestionText": "Inclusion/ Exclusion No. ",
+      "RenderType": null,
+      "QuestionTypeId": 6,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IncExcQuestionNumber",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:40.1376523",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 75,
+      "CRFPageId": 22,
+      "QuestionText": "Inclusion/ Exclusion No. ",
+      "RenderType": null,
+      "QuestionTypeId": 6,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IncExcQuestionNumber",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:40.1366572",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 76,
+      "CRFPageId": 22,
+      "QuestionText": "Explanation",
+      "RenderType": null,
+      "QuestionTypeId": 1,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "Explanation",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.5016816",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 77,
+      "CRFPageId": 22,
+      "QuestionText": "Explanation",
+      "RenderType": null,
+      "QuestionTypeId": 1,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "Explanation",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.500939",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 78,
+      "CRFPageId": 22,
+      "QuestionText": "Exception Granted?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IsExceptionGranted",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.5213902",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 79,
+      "CRFPageId": 22,
+      "QuestionText": "Exception Granted?",
+      "RenderType": null,
+      "QuestionTypeId": 3,
+      "CategoryId": 1,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "IsExceptionGranted",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.5205887",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
+    },
+    {
+      "Id": 80,
+      "CRFPageId": 22,
+      "QuestionText": "If Yes, Date of Granted Exception",
+      "RenderType": null,
+      "QuestionTypeId": 4,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "ExceptionDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.9905436",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
+    },
+    {
+      "Id": 81,
+      "CRFPageId": 22,
+      "QuestionText": "If Yes, Date of Granted Exception",
+      "RenderType": null,
+      "QuestionTypeId": 4,
+      "CategoryId": 0,
+      "CategoryName": null,
+      "IsRequired": false,
+      "Options": null,
+      "ValidationPattern": null,
+      "Name": "ExceptionDate",
+      "IsDeleted": false,
+      "ModifiedDateTime": "2025-07-17T11:46:41.9897923",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     }
   ],
   "QuestionTypes": [
@@ -1446,50 +3476,65 @@
       "Id": 1,
       "Name": "Text",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T12:52:00"
+      "ModifiedDateTime": "2025-07-16T16:35:17.3281182",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80"
     },
     {
       "Id": 2,
       "Name": "MultipleChoice",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T12:53:00"
+      "ModifiedDateTime": "2025-05-18T12:53:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 3,
       "Name": "SingleChoice",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T12:53:00"
+      "ModifiedDateTime": "2025-05-18T12:53:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 4,
       "Name": "Date",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T12:53:00"
+      "ModifiedDateTime": "2025-05-18T12:53:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 5,
       "Name": "Checkbox",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T12:54:00"
+      "ModifiedDateTime": "2025-05-18T12:54:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 6,
       "Name": "Numeric",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T13:04:00"
+      "ModifiedDateTime": "2025-05-18T13:04:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 7,
       "Name": "Boolean",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T13:05:00"
+      "ModifiedDateTime": "2025-05-18T13:05:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     },
     {
       "Id": 8,
       "Name": "OpenSingleChoise",
       "IsDeleted": false,
-      "ModifiedDateTime": "2025-05-18T13:05:00"
+      "ModifiedDateTime": "2025-05-18T13:05:00",
+      "IsLockedForChanges": false,
+      "LastUpdatorUserId": null
     }
   ]
 }
-            

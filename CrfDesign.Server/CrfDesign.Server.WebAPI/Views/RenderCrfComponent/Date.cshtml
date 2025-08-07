@@ -6,11 +6,22 @@
     Layout = null;
 }
 
-<div class="form-group">
-    <label class="control-label" for="@Model.Name">@Model.QuestionText</label>
-    <input class="form-control" type="datetime-local" data-val="@Model.IsRequired"
-           data-val-required="This field is required."
-           id="@Model.Name" name="@Model.Name" />
-    <span class="text-danger field-validation-valid" data-valmsg-for="@Model.Name"></span>
-</div>
+@try
+{
 
+
+    <div class="form-group">
+        <label class="control-label" for="@Model.Name">@Model.QuestionText</label>
+        <input class="form-control" type="datetime-local" data-val="@Model.IsRequired"
+               data-val-required="This field is required."
+               id="@Model.Name" name="@Model.Name" />
+        <span class="text-danger field-validation-valid" data-valmsg-for="@Model.Name"></span>
+    </div>
+
+}
+catch (Exception ex)
+{
+    <div class="form-group">
+        Error in Date Field @ex.Message
+    </div>
+}

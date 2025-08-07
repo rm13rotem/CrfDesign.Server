@@ -1,3 +1,4 @@
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\wwwroot\images\CrfDesignLogo.png
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\CrfDesign.Server.WebAPI.exe
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
@@ -38,6 +39,7 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\appsettings.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Data\Migrations\DbCrfDesign.json
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Data\Migrations\loginUsers.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\CrfDesign.Server.WebAPI.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\CrfDesign.Server.WebAPI.runtimeconfig.json
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\CrfDesign.Server.WebAPI.pdb
@@ -65,6 +67,7 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Primitives.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.Identity.Client.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -89,7 +92,9 @@ C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.W
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
+C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\System.Text.Encodings.Web.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\rm13r\source\repos\CrfDesign.Server\CrfDesign.Server\CrfDesign.Server.WebAPI\obj\Release\net5.0\PubTmp\Out\es\Microsoft.CodeAnalysis.resources.dll

@@ -6,9 +6,19 @@
     Layout = null;
 }
 
-<div class="form-group">
-    <label class="control-label" for="@Model.Name">@Model.QuestionText</label>
-    <input class="form-control" type="text" id="@Model.Name" name="@Model.Name" data-val="@Model.IsRequired"
-           data-val-required="This field is required." />
-    <span class="text-danger field-validation-valid" data-valmsg-for="@Model.Name" data-valmsg-replace="true"></span>
-</div>
+@try
+{
+
+    <div class="form-group">
+        <label class="control-label" for="@Model.Name">@Model.QuestionText</label>
+        <input class="form-control" type="text" id="@Model.Name" name="@Model.Name" data-val="@Model.IsRequired"
+               data-val-required="This field is required." />
+        <span class="text-danger field-validation-valid" data-valmsg-for="@Model.Name" data-valmsg-replace="true"></span>
+    </div>
+}
+catch (Exception ex)
+{
+    <div class="form-group">
+        Error in Text Field @ex.Message
+    </div>
+}
