@@ -28,7 +28,6 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             ImportDataIntoDatabase<CrfOptionCategory>(context, dataBase);
             ImportDataIntoDatabase<CrfOption>(context, dataBase);
             ImportDataIntoDatabase<CrfPage>(context, dataBase);
-            ImportDataIntoDatabase<CrfPageComponent>(context, dataBase);
         }
 
         private void ImportDataIntoDatabase<T>(CrfDesignContext context, DataBaseViewModel dataBase)
@@ -37,8 +36,6 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             List<T> list = null;
             if (typeof(T) == typeof(CrfPage))
                 list = dataBase.CrfPages as List<T>;
-            if (typeof(T) == typeof(CrfPageComponent))
-                list = dataBase.CrfPageComponents as List<T>;
             if (typeof(T) == typeof(CrfOption))
                 list = dataBase.CrfOptions as List<T>;
             if (typeof(T) == typeof(CrfOptionCategory))

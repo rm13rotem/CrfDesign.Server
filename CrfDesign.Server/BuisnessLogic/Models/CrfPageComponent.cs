@@ -22,6 +22,7 @@ namespace BuisnessLogic.Models
         public string ValidationPattern { get; set; } // Optional for custom validation like regex
 
         // Navigation properties
+        [JsonIgnore]
         public CrfPage CrfPage { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }

@@ -10,6 +10,7 @@ using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models.Backup;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using CrfDesign.Server.WebAPI.Data;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -17,10 +18,21 @@ namespace CrfDesign.Server.WebAPI.Controllers
     public class BackupController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly ApplicationDbContext _userContext;
 
-        public BackupController(CrfDesignContext context)
+        public BackupController(CrfDesignContext context,
+            ApplicationDbContext userContext)
         {
             _context = context;
+            _userContext = userContext;
+        }
+
+        // GET: Backup Users
+        public async Task<IActionResult> SaveUsers()
+        {
+            LoginUserViewModel db = new LoginUserViewModel(_userContext);
+            object dbJson = JsonConvert.SerializeObject(db);
+            return View(dbJson);
         }
 
         // GET: Backup
@@ -29,7 +41,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             DataBaseViewModel db = new DataBaseViewModel(_context);
             object dbJson = JsonConvert.SerializeObject(db);
             return View(dbJson);
-        }        
+        }
 
         // GET: Backup/Load/
         public IActionResult Load()
@@ -39,14 +51,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(model);
         }
 
-        // POST: Backup/Edit/5
+        // POST: Backup/Load
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Load(LoadOptions model)
         {
-            
+
             if (ModelState.IsValid)
             {
                 try
@@ -67,6 +79,43 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(model);
         }
 
-       
+
+        // GET: Backup/LoadUsers/
+        public IActionResult LoadUsers()
+        {
+            LoadUserOptions model = new();
+            model.ModifiedDateTime = DateTime.UtcNow;
+            return View(model);
+        }
+
+        // POST: Backup/LoadUsers
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoadUsers(LoadUserOptions model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await model.SaveToDb(_userContext);
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    // in the future - Log. (Serilog)
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+
     }
 }

@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Filters\" />
-    <Folder Include="Models\Backup\" />
   </ItemGroup>
 
   <ItemGroup>

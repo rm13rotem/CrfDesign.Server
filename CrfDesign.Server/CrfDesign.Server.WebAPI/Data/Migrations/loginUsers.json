@@ -1,0 +1,136 @@
+{
+  "IdentityRoleClaims": [],
+  "Investigators": [
+    {
+      "FirstName": "Netanel (the king)",
+      "LastName": "Biton",
+      "DoctorNumber": 0,
+      "QuickLookId": "user102001",
+      "Id": "006907ac-4711-4081-b9c6-3cf640a966a4",
+      "UserName": "natibiton1@gmail.com",
+      "NormalizedUserName": "NATIBITON1@GMAIL.COM",
+      "Email": "natibiton1@gmail.com",
+      "NormalizedEmail": "NATIBITON1@GMAIL.COM",
+      "EmailConfirmed": true,
+      "PasswordHash": "AQAAAAEAACcQAAAAEKiStIEYJVOEeyKTHIKurYNbOsCJWwSl3bxlfHAcMCx6C8bMiZnlqLkuBoFXhS+ueg==",
+      "SecurityStamp": "4BOW7FQ3D26264WAEW2HNEX6M35DHXZB",
+      "ConcurrencyStamp": "f1e7d4b9-08ac-4980-8cfa-5d7ed71e7df5",
+      "PhoneNumber": "0542383300",
+      "PhoneNumberConfirmed": false,
+      "TwoFactorEnabled": false,
+      "LockoutEnd": null,
+      "LockoutEnabled": true,
+      "AccessFailedCount": 0
+    },
+    {
+      "FirstName": "Rotem",
+      "LastName": "Meron",
+      "DoctorNumber": 0,
+      "QuickLookId": "user102000",
+      "Id": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "UserName": "rm13rotem@gmail.com",
+      "NormalizedUserName": "RM13ROTEM@GMAIL.COM",
+      "Email": "rm13rotem@gmail.com",
+      "NormalizedEmail": "RM13ROTEM@GMAIL.COM",
+      "EmailConfirmed": true,
+      "PasswordHash": "AQAAAAEAACcQAAAAEJmRww270KtItTk6AICN+2nCJRIT9xBH3EktgKu47WgS+cOU9dr+M4PWuTe7BPUInA==",
+      "SecurityStamp": "I44IZEMQB7OWEW3TCWSFPFWZDN44CNCP",
+      "ConcurrencyStamp": "b53512c3-3b90-4976-9a04-df0badb797ed",
+      "PhoneNumber": "+972528829604",
+      "PhoneNumberConfirmed": false,
+      "TwoFactorEnabled": false,
+      "LockoutEnd": null,
+      "LockoutEnabled": true,
+      "AccessFailedCount": 0
+    },
+    {
+      "FirstName": "Rotem",
+      "LastName": "Meron",
+      "DoctorNumber": 0,
+      "QuickLookId": "user102000",
+      "Id": "88ace8ee-37a9-4e10-8a62-f10c1483ea80",
+      "UserName": "rm12rotem@gmail.com",
+      "NormalizedUserName": "RM12ROTEM@GMAIL.COM",
+      "Email": "rm12rotem@gmail.com",
+      "NormalizedEmail": "RM12ROTEM@GMAIL.COM",
+      "EmailConfirmed": true,
+      "PasswordHash": "AQAAAAEAACcQAAAAEJmRww270KtItTk6AICN+2nCJRIT9xBH3EktgKu47WgS+cOU9dr+M4PWuTe7BPUInA==",
+      "SecurityStamp": "I44IZEMQB7OWEW3TCWSFPFWZDN44CNCP",
+      "ConcurrencyStamp": "b53512c3-3b90-4976-9a04-df0badb797ed",
+      "PhoneNumber": "+972528829604",
+      "PhoneNumberConfirmed": false,
+      "TwoFactorEnabled": false,
+      "LockoutEnd": null,
+      "LockoutEnabled": true,
+      "AccessFailedCount": 0
+    }
+  ],
+  "IdentityUserRoles": [
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "2ad02ffc-994e-4385-905d-df7d8db21dbf"
+    },
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "97c17158-dc85-404d-84bc-0336ba17ae04"
+    },
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "aa9fa444-6946-48e2-8a8f-1de85c3d81e2"
+    },
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "b076016d-7881-468c-9d6c-39e59df1218c"
+    },
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "cf3597ae-937b-41c3-a858-3899095b4ec8"
+    },
+    {
+      "UserId": "88ace8ee-37a9-4e10-8a62-f10a1483ea80",
+      "RoleId": "f8e44894-9136-454f-adc4-6b32fe87b52f"
+    }
+  ],
+  "IdentityUserClaims": [],
+  "IdentityUserLogins": [],
+  "IdentityRoles": [
+    {
+      "Id": "2ad02ffc-994e-4385-905d-df7d8db21dbf",
+      "Name": "DataMonitor",
+      "NormalizedName": "DATAMONITOR",
+      "ConcurrencyStamp": "2760aabf-d80a-43fe-8870-ccdf211edc03"
+    },
+    {
+      "Id": "97c17158-dc85-404d-84bc-0336ba17ae04",
+      "Name": "Investigator",
+      "NormalizedName": "INVESTIGATOR",
+      "ConcurrencyStamp": "4750b24a-35c0-4e65-9b88-3285523ae89f"
+    },
+    {
+      "Id": "aa9fa444-6946-48e2-8a8f-1de85c3d81e2",
+      "Name": "Admin",
+      "NormalizedName": "ADMIN",
+      "ConcurrencyStamp": "ae219eee-eaa6-4e64-bdd0-5917062c1a21"
+    },
+    {
+      "Id": "b076016d-7881-468c-9d6c-39e59df1218c",
+      "Name": "InternationalReviewBoard",
+      "NormalizedName": "INTERNATIONALREVIEWBOARD",
+      "ConcurrencyStamp": "57af0438-9712-422c-afea-23a89e74925d"
+    },
+    {
+      "Id": "cf3597ae-937b-41c3-a858-3899095b4ec8",
+      "Name": "ClinicalTrialLeader",
+      "NormalizedName": "CLINICALTRIALLEADER",
+      "ConcurrencyStamp": "460dd139-3802-4250-9e4a-e83a981d0da4"
+    },
+    {
+      "Id": "f8e44894-9136-454f-adc4-6b32fe87b52f",
+      "Name": "SiteManager",
+      "NormalizedName": "SITEMANAGER",
+      "ConcurrencyStamp": "c9231e1f-1d96-4448-9814-761cc8757b95"
+    }
+  ],
+  "IdentityUserTokens": []
+}
+            
