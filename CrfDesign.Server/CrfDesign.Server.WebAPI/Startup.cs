@@ -1,6 +1,7 @@
 using BuisnessLogic.DataContext;
 using CrfDesign.Server.WebAPI.Data;
 using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.AdminManagement;
 using CrfDesign.Server.WebAPI.Models.LoginModels;
 using CrfDesign.Server.WebAPI.Models.Managers;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +39,8 @@ namespace CrfDesign.Server.WebAPI
                 var connectionString = Configuration.GetConnectionString("CrfDesignConnection");
                 optionsBuilder.UseSqlServer(connectionString);
             });
+
+            services.AddSingleton<IRuntimeEnvironment, RuntimeEnvironment>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

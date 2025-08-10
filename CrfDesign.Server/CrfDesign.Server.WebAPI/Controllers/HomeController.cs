@@ -1,4 +1,5 @@
 ﻿using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.AdminManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,9 +15,12 @@ namespace CrfDesign.Server.WebAPI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRuntimeEnvironment _env;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            IRuntimeEnvironment env)
         {
+            _env = env;
             _logger = logger;
         }
 
@@ -30,10 +34,12 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Admin")]
-        public IActionResult AdminOnly()
+        [Authorize(Roles = "Admin")]
+        public IActionResult AdminOnly(string Current)
         {
-            return View();
+            if (!string.IsNullOrWhiteSpace(Current))
+                _env.Set(Current);
+            return View(_env);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

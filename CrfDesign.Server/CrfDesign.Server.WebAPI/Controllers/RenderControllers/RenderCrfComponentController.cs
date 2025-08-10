@@ -1,6 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.AdminManagement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -14,12 +15,35 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
     public class RenderCrfComponentController : Controller
     {
         private readonly CrfDesignContext _context;
+        private readonly IRuntimeEnvironment _env;
 
-        public RenderCrfComponentController(CrfDesignContext context)
+        public RenderCrfComponentController(CrfDesignContext context, IRuntimeEnvironment env)
         {
             _context = context;
+            _env = env;
         }
         public async Task<IActionResult> Index(int? id)
+        {
+            if (_env.Current == "Development")
+            {
+                // show detailed logs, enable debug tools, etc.
+                try
+                {
+                    return RenderHtmlPageByCrfId(id);
+                }
+                catch (Exception ex)
+                {
+                    return Ok(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+            else
+            {
+                // production behavior
+                return RenderHtmlPageByCrfId(id);
+            }
+        }
+
+        private IActionResult RenderHtmlPageByCrfId(int? id)
         {
             if (id == null)
                 return RedirectToAction($"{nameof(Index)}", "CrfPages");

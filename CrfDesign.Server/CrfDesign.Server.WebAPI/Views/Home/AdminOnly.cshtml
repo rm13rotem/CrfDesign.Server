@@ -1,5 +1,52 @@
-﻿You are an Administrator. Please contact Rotem ("roy") Meron at rm13rotem@gmail.com
+﻿@model CrfDesign.Server.WebAPI.Models.AdminManagement.RuntimeEnvironment
+You are an Administrator. Please contact:
+<div>
+    Rotem ("roy") Meron at <br />
+    Email : rm13rotem@gmail.com<br />
+    Phone : +972528829604
+</div> 
 
-Version updates - v.1.0.0.3
-Added AdminOnly action on HomeController
-All Controllers (Except Home) - have an [Authorize] tag.
+<table border="1">
+    <thead>
+        <tr>
+            <th>
+                Version
+            </th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>v.1.0.0.3</td>
+            <td>
+                Added AdminOnly action on HomeController
+                <br />
+                All Controllers (Except Home) - have an [Authorize] tag.
+            </td>
+        </tr>
+        <tr><td>v.1.0.0.4</td><td>Added LoginUser backup and restore</td></tr>
+        <tr><td>v.1.0.0.5</td><td>Added Development/Production on the fly</td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+    </tbody>
+</table>
+ 
+<h2>Environment set to: </h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdminOnly">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Current" class="control-label"></label>
+                <input asp-for="Current" class="form-control" />
+                <span asp-validation-for="Current" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
