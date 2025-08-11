@@ -44,9 +44,26 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 dblines = dblines
                     .Where(x => x.Name.Contains(filter.PartialName) == true)
                     .ToList();
-            var uiLines = dblines.Select(crfComponent =>
-                        new CrfPageComponentViewModel(crfComponent, _context))
-                .ToList();
+            List<CrfPageComponentViewModel> uiLines = dblines.Select(crfComponent =>
+            {
+                var crfPageName = _context.CrfPages.Find(crfComponent.CRFPageId)?.Name;
+                var questionType = _context.QuestionTypes.FirstOrDefault(x => x.Id == crfComponent.QuestionTypeId)?.Name;
+                var category = _context.CrfOptionCategories.FirstOrDefault(x => x.Id == crfComponent.CategoryId);
+                string categoryName = string.Empty;
+                List<string> categoryOptions = new();
+                if (category != null)
+                {
+                    categoryName = category.Name;
+                    categoryOptions = _context.CrfOptions.
+                    Where(x => x.CrfOptionCategoryId == crfComponent.CategoryId)
+                    .Select(x => x.Name).ToList();
+                    if (!categoryOptions.Any())
+                        categoryOptions.Add("**" + categoryName);
+                }
+
+                return new CrfPageComponentViewModel(crfComponent,
+                     crfPageName, questionType, categoryName, categoryOptions);
+            }).ToList();
 
             foreach (var component in uiLines)
             {
@@ -59,16 +76,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 }
             }
 
-            var Options = _context.CrfPages.ToList();
-            for (int i = 0; i < Options.Count; i++)
+            var crfPages = _context.CrfPages.ToList();
+            for (int i = 0; i < crfPages.Count; i++)
             {
-                Options[i].Name = string.Format("{0} - {1}",
-                    Options[i].Id, Options[i].Name);
+                crfPages[i].Name = string.Format("{0} - {1}",
+                    crfPages[i].Id, crfPages[i].Name);
             }
-            Options.Add(new CrfPage() { Id = 0, Name = "All" });
-            Options = Options.OrderBy(x => x.Id).ToList();
-            
-            ViewData["CRFPageId"] = new SelectList(Options, "Id", "Name", filter.CrfPageId);
+            crfPages.Add(new CrfPage() { Id = 0, Name = "All" });
+            crfPages = crfPages.OrderBy(x => x.Id).ToList();
+
+            ViewData["CRFPageId"] = new SelectList(crfPages, "Id", "Name", filter.CrfPageId);
             return View(uiLines);
         }
 

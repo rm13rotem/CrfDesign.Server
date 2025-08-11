@@ -66,19 +66,56 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
 
         private RenderCrfPageViewModel GetRenderViewModel(int? id)
         {
-            var CrfPage = _context.CrfPages.Find(id);
-            if (CrfPage == null) return null;
-            var CrfPageComponents = _context.CrfPageComponents
-                .Where(x => x.CRFPageId == id)
-                .Where(x => x.IsDeleted == false)
+            if (id == null) return null;
+
+            var crfPage = _context.CrfPages.Find(id);
+            if (crfPage == null) return null;
+
+            // Preload lookup data into dictionaries for O(1) lookup
+            var questionTypesDict = _context.QuestionTypes
+                .ToDictionary(q => q.Id, q => q.Name);
+
+            var categoriesDict = _context.CrfOptionCategories
+                .ToDictionary(c => c.Id, c => c.Name);
+
+            var optionsLookup = _context.CrfOptions.ToList()
+                .GroupBy(o => o.CrfOptionCategoryId)
+                .ToDictionary(g => g.Key, g => g.Select(o => o.Name).ToList());
+
+            var crfPageComponents = _context.CrfPageComponents
+                .Where(x => x.CRFPageId == id && !x.IsDeleted)
                 .OrderBy(x => x.Id)
-                .Select(x => new CrfPageComponentViewModel(x, _context))
+                .ToList() // Switch to in-memory for projection
+                .Select(component =>
+                {
+                    // Get QuestionType name safely
+                    questionTypesDict.TryGetValue(component.QuestionTypeId, out string questionType);
+
+                    // Get category name and options safely
+                    string categoryName = null;
+                    List<string> categoryOptions = new();
+
+                    if (component.CategoryId.HasValue)
+                    {
+                        categoriesDict.TryGetValue(component.CategoryId.Value, out categoryName);
+                        optionsLookup.TryGetValue(component.CategoryId.Value, out categoryOptions);
+                    }
+
+                    return new CrfPageComponentViewModel(
+                        component,
+                        crfPage.Name,
+                        questionType,
+                        categoryName,
+                        categoryOptions ?? new List<string>()
+                    );
+                })
                 .ToList();
-            if (CrfPageComponents.Any() == false)
-                return null;
-            var model = new RenderCrfPageViewModel(CrfPage, CrfPageComponents);
-            return model;
+
+            if (!crfPageComponents.Any()) return null;
+
+            return new RenderCrfPageViewModel(crfPage, crfPageComponents);
         }
+
 
         public IActionResult RenderReceipt(int id)
         {
