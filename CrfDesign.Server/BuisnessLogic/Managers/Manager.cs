@@ -2,6 +2,7 @@
 using BuisnessLogic.Filters;
 using BuisnessLogic.Interfaces;
 using BuisnessLogic.Interfaces.Managers;
+using BuisnessLogic.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,44 +11,39 @@ using System.Threading.Tasks;
 
 namespace BuisnessLogic.Models.Managers
 {
-    public class Manager<T> : IEntityManger<CrfDesignContext, T>
+    public class Manager<T>
         where T : class, IPersistantEntity, new()
     {
-        protected CrfDesignContext _context { get; set; }
+        protected IInMemoryCrfDataStore _context { get; set; }
 
-        public Manager(CrfDesignContext context)
+        public Manager(IInMemoryCrfDataStore dataStore)
         {
-            _context = context;
+            _context = dataStore;
         }
 
         public async Task<bool> Delete(int id)
         {
-            var existingEntity = await GetById(id);
-            if (existingEntity == null)
-                return false;
-            else existingEntity.IsDeleted = true;
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Delete<T>(id);
         }
 
-        public async Task<T> GetById(int id)
+        public T GetById(int id)
         {
-            return await _context.Set<T>()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            return _context.GetList<T>()
+                .FirstOrDefault(m => m.Id == id);
         }
 
-        public async Task<List<CrfOption>> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter)
+        public List<CrfOption> GetCrfOptions(CrfOptionFilter crfOptionFilter)
         {
-            return await _context.CrfOptions
+            return _context.CrfOptions
                 .Where(x => x.Name.Contains(crfOptionFilter.PartialName))
-                .ToListAsync();
+                .ToList();
         }
 
         public async Task<bool> TryInsert(T entity)
         {
             try
             {
-                return await Insert(entity);
+                return Insert(entity);
             }
             catch (System.Exception)
             {
@@ -56,7 +52,7 @@ namespace BuisnessLogic.Models.Managers
                     try
                     {
                         Task.Delay(i * 5000).Wait();
-                        return await Insert(entity);
+                        return Insert(entity);
                     }
                     catch (System.Exception)
                     {
@@ -67,62 +63,26 @@ namespace BuisnessLogic.Models.Managers
             return false;
         }
 
-        private async Task<bool> Insert(T entity)
+        private bool Insert(T entity)
         {
-            entity.Id = _context.Set<T>().Any() ?
-                _context.CrfOptions.Max(x => x.Id) + 1 :
-                1;
-            _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Add(entity);
         }
 
-        public async Task<bool> TryUndelete(int id)
+        public bool TryUndelete(int id)
         {
-            var existingEntity = await GetById(id);
-            if (existingEntity == null)
-                return false;
-            else existingEntity.IsDeleted = false;
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Undelete<T>(id);
         }
 
-        public async Task<bool> Update(T entity)
+        public bool Update(T entity)
         {
-            _context.Set<T>().Attach(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Update(entity);
         }
 
-        public async Task<bool> UpdateAsync(T entity)
-        {
-            try
-            {
-                return await Update(entity);
-            }
-            catch (System.Exception)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    try
-                    {
-                        Task.Delay(i * 5000).Wait();
-                        return await Update(entity);
-                    }
-                    catch (System.Exception)
-                    {
-
-                    }
-                }
-            }
-            return false;
-        }
-
+   
         public virtual T Duplicate(T entity)
         {
             entity.Id = 0;
-            _context.Set<T>().Add(entity);
-            _context.SaveChanges();
+            _context.Add(entity);
             return entity; // new entity
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.Interfaces;
+using BuisnessLogic.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace BuisnessLogic.Models
         public bool IsLockedForChanges { get; set; }
         public string? LastUpdatorUserId { get; set; }
 
-        public void FixByRenderType(DataContext.CrfDesignContext _context)
+        public void FixByRenderType(IInMemoryCrfDataStore _context)
         {
             // figure out component type and fill fields
             if (RenderType == null)

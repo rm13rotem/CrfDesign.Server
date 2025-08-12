@@ -8,23 +8,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BuisnessLogic.Models.Managers;
+using BuisnessLogic.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CrfDesign.Server.WebAPI.Models.Managers
 {
     public class CrfPageManager
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
         private readonly UserManager<Investigator> _userManager;
-
-        public CrfPageManager(CrfDesignContext context, UserManager<Investigator> userManager)
+        private readonly IServiceScopeFactory _scopeFactory;
+        public CrfPageManager(IInMemoryCrfDataStore dataStore, UserManager<Investigator> userManager,
+            IServiceScopeFactory scopeFactory)
         {
-            _context = context;
+            _context = dataStore    ;
             _userManager = userManager;
+            _scopeFactory = scopeFactory;
         }
 
         public async Task<List<CrfPage>> GetFilteredPagesAsync(CrfPageFilter filter)
         {
-            var pages = await _context.CrfPages.ToListAsync();
+            var pages = _context.CrfPages;
 
             if (!string.IsNullOrEmpty(filter.PartialName))
                 pages = pages.Where(x => x.Name.Contains(filter.PartialName)).ToList();
@@ -41,9 +45,9 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             return pages;
         }
 
-        public async Task<CrfPage> GetByIdAsync(int id)
+        public CrfPage GetById(int id)
         {
-            return await _context.CrfPages.FindAsync(id);
+            return _context.CrfPages.FirstOrDefault(x => x.Id == id);
         }
 
         public async Task DuplicateAsync(CrfPage page)
@@ -60,7 +64,6 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             };
 
             _context.CrfPages.Add(duplicate);
-            await _context.SaveChangesAsync();
 
             var page_Components = _context.CrfPageComponents.
                 Where(x => x.CRFPageId == page.Id).ToList();
@@ -75,25 +78,24 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
                 if (newDbEntity != null)
                 {
                     _context.CrfPageComponents.Add(newDbEntity);
-                    await _context.SaveChangesAsync();
                 }
             }
         }
 
-        public async Task<bool> SaveAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
-        }
-
-        public void Update(CrfPage page)
+        public bool Update(CrfPage page)
         {
             page.ModifiedDateTime = DateTime.UtcNow;
-            _context.Update(page);
+            return _context.Update(page);
         }
 
         public bool Exists(int id)
         {
             return _context.CrfPages.Any(e => e.Id == id);
+        }
+
+        public void StoreRefresh()
+        {
+            _context.Refresh(_scopeFactory);
         }
     }
 

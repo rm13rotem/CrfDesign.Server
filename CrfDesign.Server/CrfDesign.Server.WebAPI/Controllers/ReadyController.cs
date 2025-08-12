@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.DataContext;
+using BuisnessLogic.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace CrfDesign.Server.WebAPI.Controllers
     [AllowAnonymous]
     public class ReadyController : Controller
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
 
-        public ReadyController(CrfDesignContext context)
+        public ReadyController(IInMemoryCrfDataStore dataStore)
         {
-            _context = context;
+            _context = dataStore;
         }
 
         public IActionResult Index()

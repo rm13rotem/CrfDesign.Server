@@ -1,6 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Filters;
 using BuisnessLogic.Interfaces.Managers;
+using BuisnessLogic.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -10,34 +11,29 @@ using System.Threading.Tasks;
 
 namespace BuisnessLogic.Models.Managers
 {
-    public class CrfOptionsManager : ICrfOptionsManager, IEntityManger<CrfDesignContext, CrfOption>
+    public class CrfOptionsManager : ICrfOptionsManager
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
 
-        public CrfOptionsManager(CrfDesignContext context)
+        public CrfOptionsManager(IInMemoryCrfDataStore dataStore)
         {
-            _context = context;
+            _context = dataStore;
         }
 
-        public async Task<bool> Delete(int id)
+        public bool Delete(int id)
         {
-            var existingEntity = await GetById(id);
-            if (existingEntity == null)
-                return false;
-            else existingEntity.IsDeleted = true;
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Delete<CrfOption>(id);
         }
 
-        public async Task<CrfOption> GetById(int id)
+        public CrfOption GetById(int id)
         {
-            return await _context.CrfOptions
-                .FirstOrDefaultAsync(m => m.Id == id);
+            return _context.CrfOptions
+                .FirstOrDefault(m => m.Id == id);
         }
 
-        public async Task<List<CrfOption>> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter)
+        public List<CrfOption> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter)
         {
-            var result = await _context.CrfOptions.ToListAsync();
+            var result =  _context.CrfOptions;
             if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialName))
                 result = result.Where(x => x.Name.Contains(crfOptionFilter.PartialName)).ToList();
             if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialCategoryName))
@@ -57,7 +53,7 @@ namespace BuisnessLogic.Models.Managers
         {
             try
             {
-                return await Insert(entity);
+                return Insert(entity);
             }
             catch (System.Exception)
             {
@@ -66,7 +62,7 @@ namespace BuisnessLogic.Models.Managers
                     try
                     {
                         Task.Delay(i * 5000).Wait();
-                        return await Insert(entity);
+                        return Insert(entity);
                     }
                     catch (System.Exception)
                     {
@@ -77,34 +73,27 @@ namespace BuisnessLogic.Models.Managers
             return false;
         }
 
-        private async Task<bool> Insert(CrfOption entity)
+        private bool Insert(CrfOption entity)
         {
             entity.Id = _context.CrfOptions.Any() ?
                 _context.CrfOptions.Max(x => x.Id) + 1 :
                 1;
-            _context.CrfOptions.Add(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Add(entity);
         }
 
-        public async Task<bool> TryUndelete(int id)
+        public bool TryUndelete(int id)
         {
-            var existingEntity = await GetById(id);
-            if (existingEntity == null)
-                return false;
-            else existingEntity.IsDeleted = false;
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Undelete<CrfOption>(id);
         }
 
-        public async Task<bool> DuplicateAsync(int? id)
+        public bool Duplicate(int? id)
         {
             if (id == null)
                 return false;
 
             try
             {
-                var crfOption = await _context.CrfOptions.FindAsync(id);
+                var crfOption = _context.CrfOptions.FirstOrDefault(x => x.Id == id);
                 if (crfOption == null)
                     return false;
 
@@ -116,26 +105,19 @@ namespace BuisnessLogic.Models.Managers
                     ModifiedDateTime = DateTime.Now,
                     IsDeleted = false
                 };
-                _context.Add(crfOptionNew);
-                await _context.SaveChangesAsync();
+                return _context.Add(crfOptionNew);
             }
             catch (System.Exception e)
             {
                 Console.WriteLine("Failed to duplicate id" + id.ToString());
                 Console.WriteLine(e.Message);
             }
-            return true;
+            return false;
         }
 
-        public async Task<bool> Update(CrfOption entity)
+        public bool Update(CrfOption entity)
         {
-            var existingEntity = await GetById(entity.Id);
-            if (existingEntity == null)
-                return false;
-
-            _context.CrfOptions.Attach(entity);
-            await _context.SaveChangesAsync();
-            return true;
+            return _context.Update(entity);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BuisnessLogic.Models;
+using BuisnessLogic.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,13 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
         {
 
         }
-        public DataBaseViewModel(BuisnessLogic.DataContext.CrfDesignContext _context)
+        public DataBaseViewModel(IInMemoryCrfDataStore _context)
         {
-            CrfOptionCategories = _context.CrfOptionCategories.ToList();
-            CrfOptions = _context.CrfOptions.ToList();
-            CrfPages = _context.CrfPages.ToList(); // CrfPageComponents included here
-            QuestionTypes = _context.QuestionTypes.ToList();
+            // TODO - is this really neccessary? It's the same as InMemoryStore
+            CrfOptionCategories = _context.CrfOptionCategories;
+            CrfOptions = _context.CrfOptions;
+            CrfPages = _context.CrfPages; // CrfPageComponents included here
+            QuestionTypes = _context.QuestionTypes;
         }
 
         public List<CrfOptionCategory> CrfOptionCategories { get; set; }

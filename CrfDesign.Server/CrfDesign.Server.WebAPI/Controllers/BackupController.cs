@@ -11,19 +11,20 @@ using CrfDesign.Server.WebAPI.Models.Backup;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using CrfDesign.Server.WebAPI.Data;
+using BuisnessLogic.Repositories;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
     [Authorize(Roles="Admin")]
     public class BackupController : Controller
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
         private readonly ApplicationDbContext _userContext;
 
-        public BackupController(CrfDesignContext context,
+        public BackupController(IInMemoryCrfDataStore dataStore,
             ApplicationDbContext userContext)
         {
-            _context = context;
+            _context = dataStore;
             _userContext = userContext;
         }
 

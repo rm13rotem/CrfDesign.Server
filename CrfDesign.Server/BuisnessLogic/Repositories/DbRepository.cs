@@ -10,20 +10,21 @@ using System.Threading.Tasks;
 
 namespace BuisnessLogic.Repositories
 {
-    public class DbRepository<T> : IRepository<T>, IDbRepository<T> where T : class
+    public class DbRepository<T> 
+        where T : class, IPersistantEntity
     {
-        internal CrfDesignContext context;
-        internal DbSet<T> _dbSet;
+        internal IInMemoryCrfDataStore _context;
+        internal List<T> _dbSet;
 
-        public DbRepository(CrfDesignContext context)
+        public DbRepository(IInMemoryCrfDataStore dataStore)
         {
-            this.context = context;
-            this._dbSet = context.Set<T>();
+            _context = dataStore;
+            _dbSet = _context.GetList<T>();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public T GetById(int id)
         {
-            return await _dbSet.FindAsync(id);
+            return _dbSet.FirstOrDefault(x => x.Id == id);
         }
 
         public async Task<List<T>> GetAllAsync(bool tracked = true)
@@ -38,46 +39,20 @@ namespace BuisnessLogic.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<bool> AddAsync(T entity)
+        public bool Add(T entity)
         {
-            await _dbSet.AddAsync(entity);
-            return await SaveAsync();
+            return _context.Add(entity);
         }
 
-        public async Task<bool> DeleteByIdAsync(int id)
+        public bool DeleteById(int id)
         {
-            var entityToDelete = await _dbSet.FindAsync(id);
-
-            if (entityToDelete != null)
-            {
-                if (entityToDelete is IPersistantEntity dbEntity)
-                {
-                    dbEntity.IsDeleted = true;
-                    return await SaveAsync();
-                }
-            }
-            return false;
+            return _context.Delete<T>(id);
         }
 
-
-
-        public async Task<bool> UpdateAsync(T entity)
+        public bool Update(T entity)
         {
-            _dbSet.Update(entity);
-            return await SaveAsync();
+            return _context.Update<T>(entity);
         }
 
-        public async Task<bool> SaveAsync()
-        {
-            try
-            {
-                await context.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
     }
 }

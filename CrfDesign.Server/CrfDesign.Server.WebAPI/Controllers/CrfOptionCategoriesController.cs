@@ -30,7 +30,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            var result = await _manager.GetDetailsAsync(id);
+            var result = _manager.GetDetails(id);
             return result == null ? NotFound() : View(result);
         }
 
@@ -43,7 +43,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return View(crfOptionCategory);
 
-            var success = await _manager.CreateAsync(crfOptionCategory);
+            var success = _manager.Create(crfOptionCategory);
             return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
@@ -63,13 +63,13 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return View(crfOptionCategory);
 
-            var success = await _manager.EditAsync(crfOptionCategory);
+            var success = _manager.Edit(crfOptionCategory);
             return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
-            var result = await _manager.GetDeleteAsync(id);
+            var result = _manager.GetDelete(id);
             return result == null ? NotFound() : View(result);
         }
 
@@ -77,7 +77,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _manager.DeleteConfirmedAsync(id);
+            _manager.DeleteConfirmed(id);
             return RedirectToAction(nameof(Index));
         }
 

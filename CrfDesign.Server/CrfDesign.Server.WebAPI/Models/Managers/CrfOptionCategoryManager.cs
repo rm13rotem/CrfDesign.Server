@@ -1,6 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Filters;
 using BuisnessLogic.Models;
+using BuisnessLogic.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,12 +13,12 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
 {
     public class CrfOptionCategoryManager
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
         private readonly UserManager<Investigator> _userManager;
 
-        public CrfOptionCategoryManager(CrfDesignContext context, UserManager<Investigator> userManager)
+        public CrfOptionCategoryManager(IInMemoryCrfDataStore dataStore, UserManager<Investigator> userManager)
         {
-            _context = context;
+            _context = dataStore;
             _userManager = userManager;
         }
 
@@ -27,16 +28,16 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             {
                 filter.TotalLines = _context.CrfOptionCategories.Count();
 
-                var result = await _context.CrfOptionCategories
+                var categories = _context.CrfOptionCategories
                     .OrderBy(x => x.Id)
                     .Skip(filter.Page - 1)
                     .Take(filter.NLines)
-                    .ToListAsync();
+                    .ToList();
 
-                if (!result.Any())
-                    result = await _context.CrfOptionCategories.ToListAsync();
+                if (!categories.Any())
+                    categories =  _context.CrfOptionCategories;
 
-                foreach (var item in result)
+                foreach (var item in categories)
                 {
                     if (!string.IsNullOrEmpty(item.LastUpdatorUserId))
                     {
@@ -45,7 +46,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
                     }
                 }
 
-                return result;
+                return categories;
             }
             catch
             {
@@ -53,20 +54,18 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             }
         }
 
-        public async Task<CrfOptionCategory> GetDetailsAsync(int? id)
+        public CrfOptionCategory GetDetails(int? id)
         {
             if (id == null) return null;
 
-            return await _context.CrfOptionCategories.FirstOrDefaultAsync(m => m.Id == id);
+            return _context.CrfOptionCategories.FirstOrDefault(m => m.Id == id);
         }
 
-        public async Task<bool> CreateAsync(CrfOptionCategory model)
+        public bool Create(CrfOptionCategory model)
         {
             try
             {
-                _context.Add(model);
-                await _context.SaveChangesAsync();
-                return true;
+                return _context.Add(model);
             }
             catch { return false; }
         }
@@ -74,16 +73,14 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
         public async Task<CrfOptionCategory> GetEditAsync(int? id)
         {
             if (id == null) return null;
-            return await _context.CrfOptionCategories.FindAsync(id);
+            return _context.CrfOptionCategories.FirstOrDefault(x=> x.Id == id);
         }
 
-        public async Task<bool> EditAsync(CrfOptionCategory model)
+        public bool Edit(CrfOptionCategory model)
         {
             try
             {
-                _context.Update(model);
-                await _context.SaveChangesAsync();
-                return true;
+                return _context.Update(model);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -94,20 +91,20 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             }
         }
 
-        public async Task<CrfOptionCategory> GetDeleteAsync(int? id)
+        public CrfOptionCategory GetDelete(int? id)
         {
             if (id == null) return null;
-            return await _context.CrfOptionCategories.FirstOrDefaultAsync(m => m.Id == id);
+            return _context.CrfOptionCategories.FirstOrDefault(m => m.Id == id);
         }
 
-        public async Task DeleteConfirmedAsync(int id)
+        public void DeleteConfirmed(int id)
         {
-            var entity = await _context.CrfOptionCategories.FindAsync(id);
-            if (entity != null)
-            {
-                entity.IsDeleted = true;
-                await _context.SaveChangesAsync();
-            }
+            _context.Delete<CrfOptionCategory>(id);
+        }
+
+        public void UnDelete(int id)
+        {
+            _context.Undelete<CrfOptionCategory>(id);
         }
     }
 

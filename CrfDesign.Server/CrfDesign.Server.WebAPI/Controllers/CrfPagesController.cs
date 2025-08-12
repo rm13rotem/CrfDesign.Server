@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using CrfDesign.Server.WebAPI.Models.Managers;
 using CrfDesign.Server.WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using BuisnessLogic.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -21,9 +23,10 @@ namespace CrfDesign.Server.WebAPI.Controllers
     {
         private readonly CrfPageManager _manager;
 
-        public CrfPagesController(UserManager<Investigator> userManager, CrfDesignContext context)
+        public CrfPagesController(UserManager<Investigator> userManager, 
+            IInMemoryCrfDataStore dataStore, IServiceScopeFactory scopeFactory)
         {
-            _manager = new CrfPageManager(context, userManager);
+            _manager = new CrfPageManager(dataStore, userManager, scopeFactory);
         }
 
         public async Task<IActionResult> Index(CrfPageFilter filter)
@@ -49,7 +52,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         {
             try
             {
-                var page = await _manager.GetByIdAsync(id);
+                var page = _manager.GetById(id);
                 await _manager.DuplicateAsync(page);
                 return RedirectToAction("Index", new CrfPageFilter { PartialName = page.Name });
             }
@@ -63,7 +66,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
-            var page = await _manager.GetByIdAsync(id.Value);
+            var page = _manager.GetById(id.Value);
             return page == null ? NotFound() : View(page);
         }
 
@@ -74,66 +77,78 @@ namespace CrfDesign.Server.WebAPI.Controllers
         {
             if (!ModelState.IsValid) return View(page);
             _manager.Update(page); // Handles ModifiedDateTime
-            await _manager.SaveAsync();
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-            var page = await _manager.GetByIdAsync(id.Value);
+            var page = _manager.GetById(id.Value);
             if (page == null) return NotFound();
             if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
             return View(page);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(CrfPage page)
+        public IActionResult Edit(CrfPage page)
         {
-            if (!ModelState.IsValid) return View(page);
             if (page.Id == 0) return NotFound();
-            try
+            if (ModelState.IsValid)
             {
-                _manager.Update(page);
-                await _manager.SaveAsync();
+                bool isSuccess;
+                try
+                {
+                    isSuccess = _manager.Update(page);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_manager.Exists(page.Id)) return NotFound();
+                    isSuccess = false;
+                }
+                if (isSuccess)
+                    return RedirectToAction(nameof(Index));
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_manager.Exists(page.Id)) return NotFound();
-                throw;
-            }
-            return RedirectToAction(nameof(Index));
+            return View(page);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
-            var page = await _manager.GetByIdAsync(id.Value);
+            var page = _manager.GetById(id.Value);
             if (page == null) return NotFound();
             if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
             return View(page);
         }
 
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var page = await _manager.GetByIdAsync(id);
+            var page = _manager.GetById(id);
             if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
             page.IsDeleted = true;
-            await _manager.SaveAsync();
-            return RedirectToAction(nameof(Index));
+            bool isSuccess = _manager.Update(page);
+            if (isSuccess)
+                return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Delete), id);
         }
 
         [HttpPost, ActionName("Undelete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> UndeleteConfirmed(int id)
         {
-            var page = await _manager.GetByIdAsync(id);
-            page.IsDeleted = false;
-            await _manager.SaveAsync();
+            var page = _manager.GetById(id);
             if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            page.IsDeleted = false;
+            _manager.Update(page);
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles="Admin")]
+        public IActionResult ReloadCache()
+        {
+            _manager.StoreRefresh();
+
+            return Ok("Cache reloaded successfully.");
+        }
         public IActionResult ReturnLockedMessage(CrfPage page)
             => View(page);
     }

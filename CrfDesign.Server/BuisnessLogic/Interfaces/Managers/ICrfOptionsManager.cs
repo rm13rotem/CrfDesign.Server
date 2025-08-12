@@ -7,6 +7,6 @@ namespace BuisnessLogic.Interfaces.Managers
 {
     public interface ICrfOptionsManager
     {
-        Task<List<CrfOption>> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter);
+        List<CrfOption> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter);
     }
 }

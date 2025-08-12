@@ -1,20 +1,23 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Interfaces;
 using BuisnessLogic.Models;
+using BuisnessLogic.Repositories;
 using System;
+using System.Linq;
 
 namespace CrfDesign.Server.WebAPI.Models
 {
     public class CrfOptionViewModel : IPersistantEntity
     {
-        public CrfOptionViewModel(CrfOption model, CrfDesignContext _context)
+        public CrfOptionViewModel(CrfOption model, IInMemoryCrfDataStore _context)
         {
            
             Id = model.Id;
             Name = model.Name;
             IsDeleted = model.IsDeleted;
             ModifiedDateTime = model.ModifiedDateTime;
-            CrfOptionCategoryName = _context.CrfOptionCategories.Find(model.CrfOptionCategoryId)?.Name;
+            CrfOptionCategoryName = _context.CrfOptionCategories
+                .FirstOrDefault(x=>x.Id == model.CrfOptionCategoryId)?.Name;
             LastUpdatorUserId = model.LastUpdatorUserId;
         }
         public int Id { get; set; }

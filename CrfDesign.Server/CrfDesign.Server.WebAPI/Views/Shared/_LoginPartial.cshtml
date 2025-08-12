@@ -39,11 +39,13 @@
 
             @if (await UserManager.IsInRoleAsync(investigator, "Admin"))
             {
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" asp-controller="Backup" asp-action="Save">Backup & Restore</a></li>
-            <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Index">User Management</a></li>
-            <li><a class="dropdown-item" asp-controller="Investigators" asp-action="Index">User Details</a></li>
-            }
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" asp-controller="Backup" asp-action="Save">Backup & Restore</a></li>
+                <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Index">User Management</a></li>
+                <li><a class="dropdown-item" asp-controller="Investigators" asp-action="Index">User Details</a></li>
+                <li><a class="dropdown-item" asp-controller="CrfPages" asp-action="ReloadCache">Reload CRF Data Store Cache</a></li>
+                
+           }
         </ul>
     </li>
 }

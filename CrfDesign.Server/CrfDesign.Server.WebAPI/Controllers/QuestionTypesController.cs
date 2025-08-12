@@ -9,6 +9,7 @@ using CrfDesign.Server.WebAPI.Data;
 using BuisnessLogic.Models;
 using BuisnessLogic.DataContext;
 using Microsoft.AspNetCore.Authorization;
+using BuisnessLogic.Repositories;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -16,29 +17,29 @@ namespace CrfDesign.Server.WebAPI.Controllers
     [Authorize(Roles = "Admin")]
     public class QuestionTypesController : Controller
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
 
-        public QuestionTypesController(CrfDesignContext context)
+        public QuestionTypesController(IInMemoryCrfDataStore dataStore)
         {
-            _context = context;
+            _context = dataStore;
         }
 
         // GET: QuestionTypes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.QuestionTypes.ToListAsync());
+            return View(_context.QuestionTypes);
         }
 
         // GET: QuestionTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var questionType = await _context.QuestionTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var questionType = _context.QuestionTypes
+                .FirstOrDefault(m => m.Id == id);
             if (questionType == null)
             {
                 return NotFound();
@@ -58,26 +59,26 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(QuestionType questionType)
+        public IActionResult Create(QuestionType questionType)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(questionType);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                bool isSuccess = _context.Add(questionType);
+                if (isSuccess)
+                    return RedirectToAction(nameof(Index));
             }
             return View(questionType);
         }
 
         // GET: QuestionTypes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var questionType = await _context.QuestionTypes.FindAsync(id);
+            var questionType = _context.QuestionTypes.FirstOrDefault(x => x.Id == id);
             if (questionType == null)
             {
                 return NotFound();
@@ -90,7 +91,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime")] QuestionType questionType)
+        public IActionResult Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime")] QuestionType questionType)
         {
             if (id != questionType.Id)
             {
@@ -102,7 +103,6 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 try
                 {
                     _context.Update(questionType);
-                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,15 +121,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: QuestionTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var questionType = await _context.QuestionTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var questionType = _context.QuestionTypes
+                .FirstOrDefault(m => m.Id == id);
             if (questionType == null)
             {
                 return NotFound();
@@ -141,11 +141,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // POST: QuestionTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var questionType = await _context.QuestionTypes.FindAsync(id);
-            questionType.IsDeleted = true;
-            await _context.SaveChangesAsync();
+            _context.Delete<QuestionType>(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult UnDelete(int id)
+        {
+            _context.Undelete<QuestionType>(id);
             return RedirectToAction(nameof(Index));
         }
 

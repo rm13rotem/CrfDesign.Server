@@ -1,6 +1,7 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Interfaces;
 using BuisnessLogic.Models;
+using BuisnessLogic.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
         public string DB { get; set; }
         public DateTime ModifiedDateTime { get; set; }
 
-        public async Task SaveToDb(CrfDesignContext context)
+        public async Task SaveToDb(IInMemoryCrfDataStore dataStore)
         {
             if (string.IsNullOrWhiteSpace(DB))
                 return; // no info given
@@ -24,13 +25,13 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             if (dataBase == null)
                 return;
 
-            ImportDataIntoDatabase<QuestionType>(context, dataBase);
-            ImportDataIntoDatabase<CrfOptionCategory>(context, dataBase);
-            ImportDataIntoDatabase<CrfOption>(context, dataBase);
-            ImportDataIntoDatabase<CrfPage>(context, dataBase);
+            ImportDataIntoDatabase<QuestionType>(dataStore, dataBase);
+            ImportDataIntoDatabase<CrfOptionCategory>(dataStore, dataBase);
+            ImportDataIntoDatabase<CrfOption>(dataStore, dataBase);
+            ImportDataIntoDatabase<CrfPage>(dataStore, dataBase);
         }
 
-        private void ImportDataIntoDatabase<T>(CrfDesignContext context, DataBaseViewModel dataBase)
+        private void ImportDataIntoDatabase<T>(IInMemoryCrfDataStore dataStore, DataBaseViewModel dataBase)
             where T : class, IPersistantEntity
         {
             List<T> list = null;
@@ -45,19 +46,16 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
 
             foreach (var t in list.OrderBy(x=>x.Id))
             {
-                var existing = context.Set<T>().FirstOrDefault(x => x.Id == t.Id);
-                if (existing != null && IsOverwrite == true)
-                { 
-                    context.Set<T>().Attach(t);
-                    context.SaveChanges();
+                if (IsOverwrite == true)
+                {
+                    dataStore.Update(t);
                 }
-                if (existing == null && IsAppend == true)
+                if (IsAppend == true)
                 {
                     T r = t.ToNewEntity() as T;
                     if (r != null)
                     {
-                        context.Set<T>().Add(r);
-                        context.SaveChanges();
+                        dataStore.Add(r);
                     }
                 }
             }

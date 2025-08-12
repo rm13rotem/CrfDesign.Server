@@ -1,5 +1,6 @@
 ﻿using BuisnessLogic.DataContext;
 using BuisnessLogic.Models;
+using BuisnessLogic.Repositories;
 using CrfDesign.Server.WebAPI.Models;
 using CrfDesign.Server.WebAPI.Models.AdminManagement;
 using Microsoft.AspNetCore.Mvc;
@@ -14,12 +15,12 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
 {
     public class RenderCrfComponentController : Controller
     {
-        private readonly CrfDesignContext _context;
+        private readonly IInMemoryCrfDataStore _context;
         private readonly IRuntimeEnvironment _env;
 
-        public RenderCrfComponentController(CrfDesignContext context, IRuntimeEnvironment env)
+        public RenderCrfComponentController(IInMemoryCrfDataStore dataStore, IRuntimeEnvironment env)
         {
-            _context = context;
+            _context = dataStore;
             _env = env;
         }
         public async Task<IActionResult> Index(int? id)
@@ -68,7 +69,7 @@ namespace CrfDesign.Server.WebAPI.Controllers.RenderControllers
         {
             if (id == null) return null;
 
-            var crfPage = _context.CrfPages.Find(id);
+            var crfPage = _context.CrfPages.FirstOrDefault(x=>x.Id == id);
             if (crfPage == null) return null;
 
             // Preload lookup data into dictionaries for O(1) lookup

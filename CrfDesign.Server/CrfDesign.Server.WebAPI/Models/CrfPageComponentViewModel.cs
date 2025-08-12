@@ -33,7 +33,7 @@ namespace CrfDesign.Server.WebAPI.Models
         public int QuestionTypeId { get; set; }
         public string QuestionType { get; set; }
         public bool IsRequired { get; set; }
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string ValidationPattern { get; set; }
         public string Name { get; set; }

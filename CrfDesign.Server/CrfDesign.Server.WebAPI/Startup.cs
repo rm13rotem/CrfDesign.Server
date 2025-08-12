@@ -1,4 +1,5 @@
 using BuisnessLogic.DataContext;
+using BuisnessLogic.Repositories;
 using CrfDesign.Server.WebAPI.Data;
 using CrfDesign.Server.WebAPI.Models;
 using CrfDesign.Server.WebAPI.Models.AdminManagement;
@@ -41,6 +42,7 @@ namespace CrfDesign.Server.WebAPI
             });
 
             services.AddSingleton<IRuntimeEnvironment, RuntimeEnvironment>();
+            services.AddSingleton<IInMemoryCrfDataStore, InMemoryCrfDataStore>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
