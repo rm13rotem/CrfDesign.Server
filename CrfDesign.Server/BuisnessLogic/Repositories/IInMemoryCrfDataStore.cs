@@ -15,12 +15,11 @@ namespace BuisnessLogic.Repositories
 
         bool Add<T>(T entity) where T : class, IPersistantEntity;
         bool Delete<T>(int id) where T : class, IPersistantEntity;
-        void LoadAllData();
         bool Undelete<T>(int id) where T : class, IPersistantEntity;
         bool Update<T>(T entity) where T : class;
 
         public List<T> GetList<T>() where T : class, IPersistantEntity;
-        public void Refresh(IServiceScopeFactory scopeFactory);
+        public void Refresh();
 
     }
 }

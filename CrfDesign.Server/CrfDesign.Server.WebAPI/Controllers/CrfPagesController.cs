@@ -23,7 +23,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
     {
         private readonly CrfPageManager _manager;
 
-        public CrfPagesController(UserManager<Investigator> userManager, 
+        public CrfPagesController(UserManager<Investigator> userManager,
             IInMemoryCrfDataStore dataStore, IServiceScopeFactory scopeFactory)
         {
             _manager = new CrfPageManager(dataStore, userManager, scopeFactory);
@@ -32,7 +32,10 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> Index(CrfPageFilter filter)
         {
             var pages = await _manager.GetFilteredPagesAsync(filter);
-            ViewBag.filter = filter;
+            ViewBag.filter = filter ?? new CrfPageFilter()
+            {
+                PartialName = string.Empty
+            }; ;
             return View(pages);
         }
 
@@ -111,6 +114,18 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(page);
         }
 
+        public IActionResult Lock(int? id)
+        {
+            if (id == null) return NotFound();
+            var page = _manager.GetById((int)id);
+            _manager.Lock(page);
+            var filter = new CrfPageFilter()
+            {
+                PartialName = page.Name
+            };
+            return RedirectToAction(nameof(Index), filter);
+        }
+
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -142,7 +157,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ReloadCache()
         {
             _manager.StoreRefresh();

@@ -19,33 +19,32 @@ namespace BuisnessLogic.Repositories
         public List<QuestionType> QuestionTypes { get; private set; }
 
         private readonly object _lock = new();
-        private CrfDesignContext _context;
+        private readonly IServiceScopeFactory _scopeFactory;
 
         public InMemoryCrfDataStore(IServiceScopeFactory scopeFactory)
         {
-            Refresh(scopeFactory);
+            _scopeFactory = scopeFactory;
+            Refresh();
         }
 
-        public void Refresh(IServiceScopeFactory scopeFactory)
+        public void Refresh()
         {
-            // Create a temporary scope to get the scoped DbContext
-            using var scope = scopeFactory.CreateScope();
+            using var scope = _scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
-            
+
             lock (_lock)
             {
-                _context = context;
-                LoadAllData();
+                LoadAllData(context);
             }
         }
 
-        public void LoadAllData()
+        private void LoadAllData(CrfDesignContext context)
         {
-            CrfPages = _context.CrfPages.ToList();
-            CrfPageComponents = _context.CrfPageComponents.ToList();
-            CrfOptions = _context.CrfOptions.ToList();
-            CrfOptionCategories = _context.CrfOptionCategories.ToList();
-            QuestionTypes = _context.QuestionTypes.ToList();
+            CrfPages = context.CrfPages.ToList();
+            CrfPageComponents = context.CrfPageComponents.ToList();
+            CrfOptions = context.CrfOptions.ToList();
+            CrfOptionCategories = context.CrfOptionCategories.ToList();
+            QuestionTypes = context.QuestionTypes.ToList();
         }
 
         // ADD
@@ -53,11 +52,17 @@ namespace BuisnessLogic.Repositories
         {
             try
             {
-                _context.Set<T>().Add(entity);
-                _context.SaveChanges();
+                using var scope = _scopeFactory.CreateScope();
+                var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
+
+                context.Set<T>().Add(entity);
+                context.SaveChanges();
 
                 // Add to memory
-                GetList<T>().Add(entity);
+                lock (_lock)
+                {
+                    GetList<T>().Add(entity);
+                }
                 return true;
             }
             catch
@@ -71,12 +76,16 @@ namespace BuisnessLogic.Repositories
         {
             try
             {
-                _context.Set<T>().Update(entity);
-                _context.SaveChanges();
-                return true; // Entity already referenced in memory list
+                using var scope = _scopeFactory.CreateScope();
+                var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
+
+                context.Set<T>().Update(entity);
+                context.SaveChanges();
+                return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -100,7 +109,7 @@ namespace BuisnessLogic.Repositories
             if (entity != null)
             {
                 entity.IsDeleted = false;
-                Update(entity);
+                return Update(entity);
             }
             return false;
         }
@@ -113,7 +122,6 @@ namespace BuisnessLogic.Repositories
             if (typeof(T) == typeof(CrfOption)) return CrfOptions as List<T>;
             if (typeof(T) == typeof(CrfOptionCategory)) return CrfOptionCategories as List<T>;
             if (typeof(T) == typeof(QuestionType)) return QuestionTypes as List<T>;
-
             throw new InvalidOperationException($"Unknown type {typeof(T).Name}");
         }
     }

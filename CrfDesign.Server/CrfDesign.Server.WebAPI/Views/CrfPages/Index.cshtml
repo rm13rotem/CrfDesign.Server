@@ -8,9 +8,9 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Index">
-            
+
             <div class="form-group">
-                <input name="PartialName" class="form-control" value="@ViewBag.filter.PartialName" />
+                <input name="PartialName" class="form-control" value="@(ViewBag.filter?.PartialName ?? "")" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Filter" class="btn btn-primary" />
@@ -38,19 +38,16 @@
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsLockedForChanges)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IsDeleted)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ModifiedDateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsLockedForChanges)
+                @Html.DisplayNameFor(model => model.LastUpdatorUserId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastUpdatorUserId)
+                @Html.DisplayNameFor(model => model.IsLockedForChanges)
             </th>
             <th></th>
         </tr>
@@ -72,19 +69,16 @@
                     @Html.DisplayFor(modelItem => item.CreatedAt)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsLockedForChanges)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.IsDeleted)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ModifiedDateTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsLockedForChanges)
+                    @Html.DisplayFor(modelItem => item.LastUpdatorUserId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LastUpdatorUserId)
+                    @Html.DisplayFor(modelItem => item.IsLockedForChanges)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -94,6 +88,7 @@
                     <a asp-action="RenderCSharpClass" asp-route-id="@item.Id">C Sharp Class</a> |
                     <a asp-action="Duplicate" asp-route-id="@item.Id">Duplicate</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Lock" asp-route-id="@item.Id">Lock for Changes</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

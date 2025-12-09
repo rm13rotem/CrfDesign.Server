@@ -15,20 +15,20 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
 {
     public class CrfPageManager
     {
-        private readonly IInMemoryCrfDataStore _context;
+        private readonly IInMemoryCrfDataStore _dataStore;
         private readonly UserManager<Investigator> _userManager;
         private readonly IServiceScopeFactory _scopeFactory;
         public CrfPageManager(IInMemoryCrfDataStore dataStore, UserManager<Investigator> userManager,
             IServiceScopeFactory scopeFactory)
         {
-            _context = dataStore    ;
+            _dataStore = dataStore    ;
             _userManager = userManager;
             _scopeFactory = scopeFactory;
         }
 
         public async Task<List<CrfPage>> GetFilteredPagesAsync(CrfPageFilter filter)
         {
-            var pages = _context.CrfPages;
+            var pages = _dataStore.CrfPages;
 
             if (!string.IsNullOrEmpty(filter.PartialName))
                 pages = pages.Where(x => x.Name.Contains(filter.PartialName)).ToList();
@@ -47,7 +47,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
 
         public CrfPage GetById(int id)
         {
-            return _context.CrfPages.FirstOrDefault(x => x.Id == id);
+            return _dataStore.CrfPages.FirstOrDefault(x => x.Id == id);
         }
 
         public async Task DuplicateAsync(CrfPage page)
@@ -63,11 +63,11 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
                 ModifiedDateTime = page.ModifiedDateTime
             };
 
-            _context.CrfPages.Add(duplicate);
+            _dataStore.CrfPages.Add(duplicate);
 
-            var page_Components = _context.CrfPageComponents.
+            var page_Components = _dataStore.CrfPageComponents.
                 Where(x => x.CRFPageId == page.Id).ToList();
-            var componentManager = new Manager<CrfPageComponent>(_context);
+            var componentManager = new Manager<CrfPageComponent>(_dataStore);
 
             foreach (var component in page_Components)
             {
@@ -77,25 +77,43 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
                 var newDbEntity = newComponent.ToNewEntity() as CrfPageComponent;
                 if (newDbEntity != null)
                 {
-                    _context.CrfPageComponents.Add(newDbEntity);
+                    _dataStore.CrfPageComponents.Add(newDbEntity);
                 }
             }
         }
 
         public bool Update(CrfPage page)
         {
+            if (page.IsLockedForChanges)
+                return false;
             page.ModifiedDateTime = DateTime.UtcNow;
-            return _context.Update(page);
+            return _dataStore.Update(page);
+        }
+        public bool Lock(CrfPage page)
+        {
+            if (!page.IsLockedForChanges)
+            {
+                page.ModifiedDateTime = DateTime.UtcNow;
+                page.IsLockedForChanges = true;
+                _dataStore.Update(page);
+            }
+
+            var components = page.Components.ToList();
+
+            var componentManger = new CrfPageComponentManager(_dataStore, _userManager, _scopeFactory);
+            components.ForEach(x => componentManger.Lock(x));
+            
+            return _dataStore.Update(page);
         }
 
         public bool Exists(int id)
         {
-            return _context.CrfPages.Any(e => e.Id == id);
+            return _dataStore.CrfPages.Any(e => e.Id == id);
         }
 
         public void StoreRefresh()
         {
-            _context.Refresh(_scopeFactory);
+            _dataStore.Refresh();
         }
     }
 
