@@ -79,15 +79,22 @@ namespace CrfDesign.Server.WebAPI.Controllers
             }
 
             var crfPages = _context.CrfPages.ToList();
+            var crfPagesViews = _context.CrfPages
+                .Select(x => new CrfPageViewModel(x))
+                .ToList();
             for (int i = 0; i < crfPages.Count; i++)
             {
-                crfPages[i].Name = string.Format("{0} - {1}",
+                int CrfNameIndex = crfPages[i].Name.LastIndexOf(" - ");
+                if (CrfNameIndex > 0)
+                    crfPages[i].Name = crfPages[i].Name.Substring(CrfNameIndex);
+                crfPagesViews[i].Name = string.Format("{0} - {1}",
                     crfPages[i].Id, crfPages[i].Name);
             }
-            crfPages.Add(new CrfPage() { Id = 0, Name = "All" });
-            crfPages = crfPages.OrderBy(x => x.Id).ToList();
+            var _all = new CrfPage() { Id = 0, Name = "All" };
+            crfPagesViews.Add(new CrfPageViewModel(_all));
+            crfPagesViews = crfPagesViews.OrderBy(x => x.Id).ToList();
 
-            ViewData["CRFPageId"] = new SelectList(crfPages, "Id", "Name", filter.CrfPageId);
+            ViewData["CRFPageId"] = new SelectList(crfPagesViews, "Id", "Name", filter.CrfPageId);
             return View(uiLines);
         }
 
