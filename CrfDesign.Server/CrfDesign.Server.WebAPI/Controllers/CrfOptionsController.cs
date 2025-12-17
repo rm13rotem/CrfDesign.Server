@@ -13,6 +13,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using BuisnessLogic.Interfaces.Managers;
+using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -21,16 +26,25 @@ namespace CrfDesign.Server.WebAPI.Controllers
     public class CrfOptionsController : Controller
     {
         private readonly IInMemoryCrfDataStore _context;
-        private readonly CrfOptionsManager _manager;
+        private readonly ICrfOptionsManager _manager;
+        private readonly CrfPageManager _pageManager;
         private readonly UserManager<Investigator> _userManager;
+        private readonly ILogger<CrfOptionsController> _logger;
 
-
-        public CrfOptionsController(UserManager<Investigator> userManager,
-            IInMemoryCrfDataStore dataStore)
+        public CrfOptionsController(
+            UserManager<Investigator> userManager,
+            IInMemoryCrfDataStore dataStore,
+            IServiceScopeFactory scopeFactory,
+            IHttpContextAccessor httpContextAccessor,
+            ICrfOptionsManager manager,
+            ILogger<CrfOptionsController> logger)
         {
             _context = dataStore;
-            _manager = new CrfOptionsManager(_context);
+            _logger = logger;
+            _manager = manager;
             _userManager = userManager;
+            _pageManager = new CrfPageManager(dataStore, userManager, scopeFactory, httpContextAccessor);
+
         }
 
         // GET: CrfOptions
@@ -59,14 +73,9 @@ namespace CrfDesign.Server.WebAPI.Controllers
         }
 
         // GET: CrfOptions/Details/5
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var crfOption = _manager.GetById((int)id);
+            var crfOption = _manager.GetById(id);
             if (crfOption == null)
             {
                 return NotFound();
@@ -89,16 +98,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CrfOption crfOption)
+        public async Task<IActionResult> Create(CrfOption crfOption)
         {
-            CrfPage crfPage = GetLockedCrfByCategory(crfOption.CrfOptionCategoryId);
+            CrfPage crfPage = GetLockedCrfByOptionId(crfOption.Id);
             if (crfPage != null)
             {
                 return RedirectToAction("ReturnLockedMessage", crfPage);
             }
             if (ModelState.IsValid)
             {
-                bool isSuccess = _context.Add(crfOption);
+                bool isSuccess = await _context.AddAsync(crfOption);
                 if (isSuccess)
                     return RedirectToAction(nameof(Index));
             }
@@ -110,14 +119,14 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
 
         // GET: CrfOptions/Edit/5
-        public IActionResult Duplicate(int? id, CrfOptionFilter filter)
+        public async Task<IActionResult> Duplicate(int id, CrfOptionFilter filter)
         {
-            CrfPage crfPage = GetLockedCrf(id);
+            CrfPage crfPage = GetLockedCrfByOptionId(id);
             if (crfPage != null)
             {
                 return RedirectToAction("ReturnLockedMessage", crfPage);
             }
-            bool isSuccess = _manager.Duplicate(id);
+            bool isSuccess = await _manager.DuplicateAsync(id);
             if (!isSuccess)
             {
                 return NotFound();
@@ -132,31 +141,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return View(crfPage);
         }
 
-        // GET: CrfOptions/Edit/5
-        [HttpGet]
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var crfOption = _context.CrfOptions.FirstOrDefault(x => x.Id == id);
-            if (crfOption == null)
-            {
-                return NotFound();
-            }
-            CrfPage crfPage = GetLockedCrf(id);
-            if (crfPage != null)
-            {
-                return RedirectToAction("ReturnLockedMessage", crfPage);
-            }
-            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name", crfOption.CrfOptionCategoryId);
-
-            return View(crfOption);
-        }
-
-        private CrfPage GetLockedCrf(int? id)
+        private CrfPage GetLockedCrfByOptionId(int? id)
         {
 
             CrfOption crfOption = _context.CrfOptions.Find(x => x.Id == id);
@@ -164,8 +150,10 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
             var category = _context.CrfOptionCategories.Find(x => x.Id == crfOption.CrfOptionCategoryId);
             if (category == null) return null;
+
             return GetLockedCrfByCategory(category.Id);
         }
+
         private CrfPage GetLockedCrfByCategory(int crfOptionCategoryId)
         {
 
@@ -185,6 +173,30 @@ namespace CrfDesign.Server.WebAPI.Controllers
             return lockedCRF;
         }
 
+
+        // GET: CrfOptions/Edit/5
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var crfOption = _context.CrfOptions.FirstOrDefault(x => x.Id == id);
+            if (crfOption == null)
+            {
+                return NotFound();
+            }
+            CrfPage crfPage = GetLockedCrfByOptionId(id);
+            if (_pageManager.IsPageLockedForChanges(crfPage.Id))
+                return RedirectToAction("ReturnLockedMessage", crfPage);
+
+            ViewData["CrfOptionCategoryId"] = new SelectList(_context.CrfOptionCategories, "Id", "Name", crfOption.CrfOptionCategoryId);
+
+            return View(crfOption);
+        }
+
         // POST: CrfOptions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -196,23 +208,17 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
-            CrfPage crfPage = GetLockedCrf(id);
-            if (crfPage != null)
-            {
+            CrfPage crfPage = GetLockedCrfByOptionId(id);
+            if (_pageManager.IsPageLockedForChanges(crfPage.Id))
                 return RedirectToAction("ReturnLockedMessage", crfPage);
-            }
-            crfPage = GetLockedCrfByCategory(crfOption.CrfOptionCategoryId);
-            if (crfPage != null)
-            {
-                return RedirectToAction("ReturnLockedMessage", crfPage);
-            }
+
             bool isSuccess;
             if (ModelState.IsValid)
             {
                 try
                 {
                     crfOption.ModifiedDateTime = DateTime.UtcNow;
-                    isSuccess = _context.Update(crfOption);
+                    isSuccess = await _context.UpdateAsync(crfOption);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -240,7 +246,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 return NotFound();
             }
-            CrfPage crfPage = GetLockedCrf(id);
+            CrfPage crfPage = GetLockedCrfByOptionId(id);
             if (crfPage != null)
             {
                 return RedirectToAction("ReturnLockedMessage", crfPage);
@@ -258,16 +264,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // POST: CrfOptions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            bool isSuccess = _context.Delete<CrfOption>(id);
+            bool isSuccess = await _context.DeleteAsync<CrfOption>(id);
             if (!isSuccess)
                 return NotFound();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Undelete(int id)
+        public async Task<IActionResult> UndeleteAsync(int id)
         {
-            bool isSuccess = _context.Undelete<CrfOption>(id);
+            bool isSuccess = await _context.UndeleteAsync<CrfOption>(id);
             if (!isSuccess)
                 return NotFound();
             return RedirectToAction(nameof(Index));

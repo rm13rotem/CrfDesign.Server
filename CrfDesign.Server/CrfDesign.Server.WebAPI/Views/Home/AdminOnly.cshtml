@@ -34,7 +34,26 @@ You are an Administrator. Please contact:
             <td>10Aug2025</td>
         </tr>
         <tr><td>v.1.0.1.0</td><td>Embedding DataStore in all CRF Data (CQRS)</td><td>12Aug2025</td></tr>
-        <tr><td></td><td></td></tr>
+        <tr>
+            <td>v.1.0.1.1</td>
+            <td>
+                1. Allow changes (even if locked) for Role=Admin <br />
+                2. Add logger to CrfOptionsManager (and fix its interface). <br />
+                3. Allow reload of just one specific table. <br />
+                4. Cascading Lock on CrfPage (CrfPage locks its <br />
+                components, which lock its categories, which <br />
+                locks its options)
+            </td>
+            <td>14Dec2025</td>
+        </tr>
+        <tr>
+            <td>v.1.0.1.2</td>
+            <td>
+                When it is locked - nothing can be changed.<br />
+                unless you are the SystemAdmin.
+            </td>
+            <td>17Dec2025</td>
+        </tr>
         <tr><td></td><td></td></tr>
     </tbody>
 </table>

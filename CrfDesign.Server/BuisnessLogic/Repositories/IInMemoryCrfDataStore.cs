@@ -2,6 +2,7 @@
 using BuisnessLogic.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BuisnessLogic.Repositories
 {
@@ -13,13 +14,13 @@ namespace BuisnessLogic.Repositories
         List<CrfPage> CrfPages { get; }
         List<QuestionType> QuestionTypes { get; }
 
-        bool Add<T>(T entity) where T : class, IPersistantEntity;
-        bool Delete<T>(int id) where T : class, IPersistantEntity;
-        bool Undelete<T>(int id) where T : class, IPersistantEntity;
-        bool Update<T>(T entity) where T : class;
+        Task<bool> AddAsync<T>(T entity) where T : class, IPersistantEntity;
+        Task<bool> DeleteAsync<T>(int id) where T : class, IPersistantEntity;
+        Task<bool> UndeleteAsync<T>(int id) where T : class, IPersistantEntity;
+        Task<bool> UpdateAsync<T>(T entity) where T : class;
 
-        public List<T> GetList<T>() where T : class, IPersistantEntity;
-        public void Refresh();
-
+        List<T> GetList<T>() where T : class, IPersistantEntity;
+        void Refresh();
+        void LoadData(string typeName);
     }
 }

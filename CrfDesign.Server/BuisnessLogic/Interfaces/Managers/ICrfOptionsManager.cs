@@ -8,5 +8,7 @@ namespace BuisnessLogic.Interfaces.Managers
     public interface ICrfOptionsManager
     {
         List<CrfOption> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter);
+        CrfOption GetById(int id);
+        Task<bool> DuplicateAsync(int id);
     }
 }

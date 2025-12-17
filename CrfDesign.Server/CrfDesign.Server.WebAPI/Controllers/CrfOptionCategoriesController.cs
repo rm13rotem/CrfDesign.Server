@@ -43,13 +43,13 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return View(crfOptionCategory);
 
-            var success = _manager.Create(crfOptionCategory);
+            var success = await _manager.CreateAsync(crfOptionCategory);
             return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var result = await _manager.GetEditAsync(id);
+            var result = await _manager.GetById(id);
             return result == null ? NotFound() : View(result);
         }
 
@@ -63,7 +63,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return View(crfOptionCategory);
 
-            var success = _manager.Edit(crfOptionCategory);
+            var success = await _manager.EditAsync(crfOptionCategory);
             return success ? RedirectToAction(nameof(Index)) : View(crfOptionCategory);
         }
 
@@ -75,7 +75,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             _manager.DeleteConfirmed(id);
             return RedirectToAction(nameof(Index));
@@ -84,6 +84,12 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public IActionResult Duplicate(int? id, CrfOptionCategoriesFilter filter)
         {
             return RedirectToAction(nameof(Index), filter);
+        }
+
+        // GET: CrfOptions/ReturnLockedMessage/5
+        public IActionResult ReturnLockedMessage(CrfPage crfPage)
+        {
+            return View(crfPage);
         }
     }
 }

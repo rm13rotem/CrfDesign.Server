@@ -47,8 +47,25 @@ namespace BuisnessLogic.Repositories
             QuestionTypes = context.QuestionTypes.ToList();
         }
 
+        public void LoadData(string typeName)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
+
+            if (typeName == "CrfPage")
+                CrfPages = context.CrfPages.ToList();
+            if (typeName == "CrfPageComponent")
+                CrfPageComponents = context.CrfPageComponents.ToList();
+            if (typeName == "CrfOption")
+                CrfOptions = context.CrfOptions.ToList();
+            if (typeName == "CrfOptionCategory")
+                CrfOptionCategories = context.CrfOptionCategories.ToList();
+            if (typeName == "QuestionType")
+                QuestionTypes = context.QuestionTypes.ToList();
+        }
+
         // ADD
-        public bool Add<T>(T entity) where T : class, IPersistantEntity
+        public async Task<bool> AddAsync<T>(T entity) where T : class, IPersistantEntity
         {
             try
             {
@@ -56,13 +73,10 @@ namespace BuisnessLogic.Repositories
                 var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
 
                 context.Set<T>().Add(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
 
                 // Add to memory
-                lock (_lock)
-                {
-                    GetList<T>().Add(entity);
-                }
+                LoadData(entity.GetType().Name);
                 return true;
             }
             catch
@@ -72,7 +86,7 @@ namespace BuisnessLogic.Repositories
         }
 
         // UPDATE
-        public bool Update<T>(T entity) where T : class
+        public async Task<bool> UpdateAsync<T>(T entity) where T : class
         {
             try
             {
@@ -80,7 +94,8 @@ namespace BuisnessLogic.Repositories
                 var context = scope.ServiceProvider.GetRequiredService<CrfDesignContext>();
 
                 context.Set<T>().Update(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
+                LoadData(entity.GetType().Name);
                 return true;
             }
             catch (Exception ex)
@@ -91,25 +106,27 @@ namespace BuisnessLogic.Repositories
         }
 
         // DELETE
-        public bool Delete<T>(int id) where T : class, IPersistantEntity
+        public async Task<bool> DeleteAsync<T>(int id) where T : class, IPersistantEntity
         {
             var entity = GetList<T>().FirstOrDefault(e => e.Id == id);
             if (entity != null)
             {
                 entity.IsDeleted = true;
-                return Update(entity);
+                var isSuccess = await UpdateAsync(entity);
+                return isSuccess;
             }
+
             return false;
         }
 
         // UNDELETE
-        public bool Undelete<T>(int id) where T : class, IPersistantEntity
+        public async Task<bool> UndeleteAsync<T>(int id) where T : class, IPersistantEntity
         {
             var entity = GetList<T>().FirstOrDefault(e => e.Id == id);
             if (entity != null)
             {
                 entity.IsDeleted = false;
-                return Update(entity);
+                return await UpdateAsync(entity);
             }
             return false;
         }

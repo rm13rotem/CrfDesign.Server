@@ -39,19 +39,19 @@ namespace BuisnessLogic.Repositories
             return await query.ToListAsync();
         }
 
-        public bool Add(T entity)
+        public async Task<bool> AddAsync(T entity)
         {
-            return _context.Add(entity);
+            return await _context.AddAsync(entity);
         }
 
-        public bool DeleteById(int id)
+        public async Task<bool> DeleteByIdAsync(int id)
         {
-            return _context.Delete<T>(id);
+            return await _context.DeleteAsync<T>(id);
         }
 
-        public bool Update(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
-            return _context.Update<T>(entity);
+            return await _context.UpdateAsync<T>(entity);
         }
 
     }

@@ -24,15 +24,15 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             if (dataBase == null)
                 return;
 
-            ImportDataIntoDatabase<Investigator>(context, dataBase);
-            ImportDataIntoDatabase<IdentityRoleClaim<string>>(context, dataBase);
-            ImportDataIntoDatabase<IdentityUserRole<string>>(context, dataBase);
-            ImportDataIntoDatabase<IdentityUserClaim<string>>(context, dataBase);
-            ImportDataIntoDatabase<IdentityUserLogin<string>>(context, dataBase);
-            ImportDataIntoDatabase<IdentityUserToken<string>>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<Investigator>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<IdentityRoleClaim<string>>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<IdentityUserRole<string>>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<IdentityUserClaim<string>>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<IdentityUserLogin<string>>(context, dataBase);
+            await ImportDataIntoDatabaseAsync<IdentityUserToken<string>>(context, dataBase);
         }
 
-        private void ImportDataIntoDatabase<T>(ApplicationDbContext context, LoginUserViewModel dataBase)
+        private async Task ImportDataIntoDatabaseAsync<T>(ApplicationDbContext context, LoginUserViewModel dataBase)
             where T : class
         {
             List<T> list = null;
@@ -56,12 +56,12 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
                 if (!isExisting && IsOverwrite == true)
                 {
                     existing.State = EntityState.Modified;
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                 }
                 else if (!isExisting && IsAppend == true)
                 {
                     existing.State = EntityState.Added;
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                 }
                
             }

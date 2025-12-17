@@ -59,11 +59,11 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(QuestionType questionType)
+        public async Task<IActionResult> Create(QuestionType questionType)
         {
             if (ModelState.IsValid)
             {
-                bool isSuccess = _context.Add(questionType);
+                bool isSuccess = await _context.AddAsync(questionType);
                 if (isSuccess)
                     return RedirectToAction(nameof(Index));
             }
@@ -91,7 +91,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime")] QuestionType questionType)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsDeleted,ModifiedDateTime")] QuestionType questionType)
         {
             if (id != questionType.Id)
             {
@@ -102,7 +102,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             {
                 try
                 {
-                    _context.Update(questionType);
+                    await _context.UpdateAsync(questionType);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -141,15 +141,15 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // POST: QuestionTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _context.Delete<QuestionType>(id);
+            await _context.DeleteAsync<QuestionType>(id);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult UnDelete(int id)
+        public async Task<IActionResult> UnDelete(int id)
         {
-            _context.Undelete<QuestionType>(id);
+            await _context.UndeleteAsync<QuestionType>(id);
             return RedirectToAction(nameof(Index));
         }
 

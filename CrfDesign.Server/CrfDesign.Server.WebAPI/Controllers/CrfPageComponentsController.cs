@@ -13,6 +13,8 @@ using CrfDesign.Server.WebAPI.Models.Filters;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using BuisnessLogic.Repositories;
+using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -21,82 +23,41 @@ namespace CrfDesign.Server.WebAPI.Controllers
     public class CrfPageComponentsController : Controller
     {
         private readonly IInMemoryCrfDataStore _context;
-        private readonly Manager<CrfPageComponent> _manager;
+        private readonly CrfPageComponentManager _manager;
         private readonly UserManager<Investigator> _userManager;
 
         public CrfPageComponentsController(UserManager<Investigator> userManager,
-            IInMemoryCrfDataStore dataStore)
+            IInMemoryCrfDataStore dataStore, IServiceScopeFactory scopedFactory)
         {
             _context = dataStore;
-            _manager = new Manager<CrfPageComponent>(_context);
+            _manager = new CrfPageComponentManager(_context, userManager, scopedFactory);
             _userManager = userManager;
         }
 
         // GET: CrfPageComponents
         public async Task<IActionResult> Index(CrfPageComponentFilter filter)
         {
-            List<CrfPageComponent> dblines = null;
-            if (filter.CrfPageId > 0)
-                dblines = _context.CrfPageComponents
-                    .Where(x => x.CRFPageId == filter.CrfPageId).ToList();
-            else dblines = _context.CrfPageComponents;
+            filter = _manager.GetDefaultFilter(filter);
 
-            if (!string.IsNullOrEmpty(filter.PartialName))
-                dblines = dblines
-                    .Where(x => x.Name.Contains(filter.PartialName) == true)
-                    .ToList();
 
-            List<CrfPageComponentViewModel> uiLines = dblines.Select(crfComponent =>
+            var items = await _manager.GetFilteredComponents(filter);
+
+            filter.TotalLines = items.Count; // if you support paging
+
+            ViewData["CRFPageId"] = new SelectList(_context.CrfPages.OrderBy(x => x.Id).ToList(),
+                "Id", "Name", filter?.CrfPageId);
+
+            var vm = new CrfPageComponentIndexViewModel
             {
-                var crfPageName = _context.CrfPages.FirstOrDefault(x => x.Id == crfComponent.CRFPageId)?.Name ?? "Not Selected";
-                var questionType = _context.QuestionTypes.FirstOrDefault(x => x.Id == crfComponent.QuestionTypeId)?.Name ?? "Not Selected";
-                var category = _context.CrfOptionCategories.FirstOrDefault(x => x.Id == crfComponent.CategoryId);
-                string categoryName = string.Empty;
-                List<string> categoryOptions = new();
-                if (category != null)
-                {
-                    categoryName = category.Name;
-                    categoryOptions = _context.CrfOptions.
-                    Where(x => x.CrfOptionCategoryId == crfComponent.CategoryId)
-                    .Select(x => x.Name).ToList();
-                    if (!categoryOptions.Any())
-                        categoryOptions.Add("**" + categoryName);
-                }
+                Filter = filter,
+                Items = items
+            };
 
-                return new CrfPageComponentViewModel(crfComponent,
-                     crfPageName, questionType, categoryName, categoryOptions);
-            }).ToList();
-
-            foreach (var component in uiLines)
-            {
-                if (!string.IsNullOrEmpty(component.LastUpdatorUserId))
-                {
-                    var user = await _userManager.FindByIdAsync(component.LastUpdatorUserId);
-                    if (user != null)
-                        component.LastUpdatorUserId = $"{user.FirstName} {user.LastName}";
-                    else component.LastUpdatorUserId = "Unknown";
-                }
-            }
-
-            var crfPages = _context.CrfPages.ToList();
-            var crfPagesViews = _context.CrfPages
-                .Select(x => new CrfPageViewModel(x))
-                .ToList();
-            for (int i = 0; i < crfPages.Count; i++)
-            {
-                int CrfNameIndex = crfPages[i].Name.LastIndexOf(" - ");
-                if (CrfNameIndex > 0)
-                    crfPages[i].Name = crfPages[i].Name.Substring(CrfNameIndex);
-                crfPagesViews[i].Name = string.Format("{0} - {1}",
-                    crfPages[i].Id, crfPages[i].Name);
-            }
-            var _all = new CrfPage() { Id = 0, Name = "All" };
-            crfPagesViews.Add(new CrfPageViewModel(_all));
-            crfPagesViews = crfPagesViews.OrderBy(x => x.Id).ToList();
-
-            ViewData["CRFPageId"] = new SelectList(crfPagesViews, "Id", "Name", filter.CrfPageId);
-            return View(uiLines);
+            return View(vm);
         }
+
+
+
 
         // GET: CrfPageComponents/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -116,7 +77,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (crfPageComponent.ModifiedDateTime < new DateTime(1900, 1, 1))
             {
                 crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
-                _context.Update(crfPageComponent);
+                await _context.UpdateAsync(crfPageComponent);
             }
             var Options = _context.CrfOptionCategories.ToList();
             Options.Add(new CrfOptionCategory() { Id = 0, Name = "None" });
@@ -145,7 +106,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (ModelState.IsValid)
             {
                 crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
-                bool isSuccess = _context.Add(crfPageComponent);
+                bool isSuccess = await _context.AddAsync(crfPageComponent);
                 if (isSuccess)
                     return RedirectToAction(nameof(Index));
             }
@@ -169,7 +130,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 return NotFound();
             }
 
-            _manager.Duplicate(crfPageComponent);
+            _manager.DuplicateAsync(crfPageComponent);
             var crfPageFilter = new CrfPageComponentFilter() { PartialName = crfPageComponent.Name };
             return RedirectToAction("Index", crfPageFilter);
         }
@@ -217,7 +178,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 {
                     crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
                     crfPageComponent.FixByRenderType(_context);
-                    isSuccess = _context.Update(crfPageComponent);
+                    isSuccess = await _context.UpdateAsync(crfPageComponent);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -233,10 +194,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
                 }
                 if (isSuccess)
                     return RedirectToAction(nameof(Index),
-                        new CrfPageComponentFilter
-                        {
-                            CrfPageId = crfPageComponent.CRFPageId
-                        });
+                        new CrfPageComponentFilter { CrfPageId = crfPageComponent.CRFPageId });
             }
             ViewData["CRFPageId"] = new SelectList(_context.CrfPages, "Id", "Name", crfPageComponent.CRFPageId);
             ViewData["QuestionTypeId"] = new SelectList(_context.QuestionTypes, "Id", "Name", crfPageComponent.QuestionTypeId);
@@ -268,11 +226,11 @@ namespace CrfDesign.Server.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            _context.Delete<CrfPageComponent>(id);
+            _context.DeleteAsync<CrfPageComponent>(id);
             var crfPageComponent = _context.CrfPageComponents
                 .FirstOrDefault(x => x.Id == id);
             crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
-            _context.Update(crfPageComponent);
+            _context.UpdateAsync(crfPageComponent);
             return RedirectToAction(nameof(Index));
         }
 
@@ -281,7 +239,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             var crfPageComponent = _context.CrfPageComponents
                    .FirstOrDefault(x => x.Id == id);
             crfPageComponent.ModifiedDateTime = DateTime.UtcNow;
-            _context.Update(crfPageComponent);
+            _context.UpdateAsync(crfPageComponent);
             var backToPageFilter = new CrfPageComponentFilter()
             {
                 CrfPageId = crfPageComponent.CRFPageId

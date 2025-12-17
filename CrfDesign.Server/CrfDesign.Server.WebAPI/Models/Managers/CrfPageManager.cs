@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using BuisnessLogic.Models.Managers;
 using BuisnessLogic.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 
 namespace CrfDesign.Server.WebAPI.Models.Managers
 {
@@ -17,13 +18,18 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
     {
         private readonly IInMemoryCrfDataStore _dataStore;
         private readonly UserManager<Investigator> _userManager;
-        private readonly IServiceScopeFactory _scopeFactory;
-        public CrfPageManager(IInMemoryCrfDataStore dataStore, UserManager<Investigator> userManager,
-            IServiceScopeFactory scopeFactory)
+        private readonly IServiceScopeFactory _scopeFactory; 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public CrfPageManager(IInMemoryCrfDataStore dataStore, 
+            UserManager<Investigator> userManager,
+            IServiceScopeFactory scopeFactory, 
+            IHttpContextAccessor httpContextAccessor)
         {
-            _dataStore = dataStore    ;
+            _dataStore = dataStore;
             _userManager = userManager;
             _scopeFactory = scopeFactory;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<List<CrfPage>> GetFilteredPagesAsync(CrfPageFilter filter)
@@ -71,7 +77,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
 
             foreach (var component in page_Components)
             {
-                var newComponent = componentManager.Duplicate(component);
+                var newComponent = await componentManager.DuplicateAsync(component);
                 newComponent.CRFPageId = duplicate.Id;// belongs to new CRFPage
                 //newComponent.CrfPage = duplicate;
                 var newDbEntity = newComponent.ToNewEntity() as CrfPageComponent;
@@ -82,28 +88,45 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             }
         }
 
-        public bool Update(CrfPage page)
+        public async Task<bool> UpdateAsync(CrfPage page)
         {
-            if (page.IsLockedForChanges)
+            if (IsPageLockedForChanges(page.Id))
                 return false;
             page.ModifiedDateTime = DateTime.UtcNow;
-            return _dataStore.Update(page);
+            return await _dataStore.UpdateAsync(page);
         }
-        public bool Lock(CrfPage page)
+
+        public bool IsPageLockedForChanges(int? id)
+        {
+            var page = _dataStore.CrfPages.Find(x => x.Id == id);
+            if (page == null)
+                return false;
+
+            // Get user + roles once (do not call per-entity)
+            var user = _httpContextAccessor.HttpContext?.User;
+            bool isSystemAdmin = user?.IsInRole("Admin") ?? false;
+
+            // Page is locked ONLY if:
+            // 1. IsLockedForChanges == true
+            // 2. AND user is NOT SystemAdmin ("Admin")
+            return page.IsLockedForChanges && !isSystemAdmin;
+        }
+
+        public async Task<bool> LockAsync(CrfPage page)
         {
             if (!page.IsLockedForChanges)
             {
                 page.ModifiedDateTime = DateTime.UtcNow;
                 page.IsLockedForChanges = true;
-                _dataStore.Update(page);
+                await _dataStore.UpdateAsync(page);
             }
 
             var components = page.Components.ToList();
 
             var componentManger = new CrfPageComponentManager(_dataStore, _userManager, _scopeFactory);
-            components.ForEach(x => componentManger.Lock(x));
-            
-            return _dataStore.Update(page);
+            components.ForEach(async x => await componentManger.LockAsync(x));
+
+            return await _dataStore.UpdateAsync(page);
         }
 
         public bool Exists(int id)
@@ -111,7 +134,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             return _dataStore.CrfPages.Any(e => e.Id == id);
         }
 
-        public void StoreRefresh()
+        public void DataStore_Refresh()
         {
             _dataStore.Refresh();
         }

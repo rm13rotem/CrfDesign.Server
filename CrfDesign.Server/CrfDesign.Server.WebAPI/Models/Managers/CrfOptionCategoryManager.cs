@@ -35,7 +35,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
                     .ToList();
 
                 if (!categories.Any())
-                    categories =  _context.CrfOptionCategories;
+                    categories = _context.CrfOptionCategories;
 
                 foreach (var item in categories)
                 {
@@ -61,26 +61,26 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             return _context.CrfOptionCategories.FirstOrDefault(m => m.Id == id);
         }
 
-        public bool Create(CrfOptionCategory model)
+        public async Task<bool> CreateAsync(CrfOptionCategory model)
         {
             try
             {
-                return _context.Add(model);
+                return await _context.AddAsync(model);
             }
             catch { return false; }
         }
 
-        public async Task<CrfOptionCategory> GetEditAsync(int? id)
+        public async Task<CrfOptionCategory> GetById(int? id)
         {
             if (id == null) return null;
-            return _context.CrfOptionCategories.FirstOrDefault(x=> x.Id == id);
+            return _context.CrfOptionCategories.FirstOrDefault(x => x.Id == id);
         }
 
-        public bool Edit(CrfOptionCategory model)
+        public async Task<bool> EditAsync(CrfOptionCategory model)
         {
             try
             {
-                return _context.Update(model);
+                return await _context.UpdateAsync(model);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -99,12 +99,12 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
 
         public void DeleteConfirmed(int id)
         {
-            _context.Delete<CrfOptionCategory>(id);
+            _context.DeleteAsync<CrfOptionCategory>(id);
         }
 
         public void UnDelete(int id)
         {
-            _context.Undelete<CrfOptionCategory>(id);
+            _context.UndeleteAsync<CrfOptionCategory>(id);
         }
     }
 

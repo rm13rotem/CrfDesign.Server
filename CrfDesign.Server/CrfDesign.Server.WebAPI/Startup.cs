@@ -1,4 +1,6 @@
 using BuisnessLogic.DataContext;
+using BuisnessLogic.Interfaces.Managers;
+using BuisnessLogic.Models.Managers;
 using BuisnessLogic.Repositories;
 using CrfDesign.Server.WebAPI.Data;
 using CrfDesign.Server.WebAPI.Models;
@@ -57,6 +59,7 @@ namespace CrfDesign.Server.WebAPI
                                     .AddDefaultUI();
 
             services.AddScoped<CrfOptionCategoryManager>();
+            services.AddScoped<ICrfOptionsManager, CrfOptionsManager>();
 
         }
 

@@ -23,7 +23,7 @@ namespace BuisnessLogic.Models.Managers
 
         public async Task<bool> Delete(int id)
         {
-            return _context.Delete<T>(id);
+            return await _context.DeleteAsync<T>(id);
         }
 
         public T GetById(int id)
@@ -43,7 +43,7 @@ namespace BuisnessLogic.Models.Managers
         {
             try
             {
-                return Insert(entity);
+                return await InsertAsync(entity);
             }
             catch (System.Exception)
             {
@@ -52,7 +52,7 @@ namespace BuisnessLogic.Models.Managers
                     try
                     {
                         Task.Delay(i * 5000).Wait();
-                        return Insert(entity);
+                        return await InsertAsync(entity);
                     }
                     catch (System.Exception)
                     {
@@ -63,27 +63,29 @@ namespace BuisnessLogic.Models.Managers
             return false;
         }
 
-        private bool Insert(T entity)
+        private async Task<bool> InsertAsync(T entity)
         {
-            return _context.Add(entity);
+            return await _context.AddAsync(entity);
         }
 
-        public bool TryUndelete(int id)
+        public async Task<bool> TryUndeleteAsync(int id)
         {
-            return _context.Undelete<T>(id);
+            return await _context.UndeleteAsync<T>(id);
         }
 
-        public bool Update(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
-            return _context.Update(entity);
+            return await _context.UpdateAsync(entity);
         }
 
    
-        public virtual T Duplicate(T entity)
+        public virtual async Task<T> DuplicateAsync(T entity)
         {
             entity.Id = 0;
-            _context.Add(entity);
+            await _context.AddAsync(entity);
             return entity; // new entity
         }
+
+        
     }
 }

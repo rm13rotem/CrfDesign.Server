@@ -38,25 +38,28 @@ namespace BuisnessLogic.DataContext
             var modifiedEntries = ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Modified && e.Entity is IPersistantEntity);
 
+            // Get user + roles once (do not call per-entity)
+            var httpContext = _httpContextAccessor?.HttpContext;
+            var user = httpContext?.User;
+
+            bool isSystemAdmin = user?.IsInRole("Admin") ?? false;
+            var userId = user?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
             foreach (var entry in modifiedEntries)
             {
                 var entity = (IPersistantEntity)entry.Entity;
 
-                // Prevent changes if locked
-                if (entity.IsLockedForChanges)
+                // If the record is locked, only System Administrator ("Admin") can update it
+                if (entity.IsLockedForChanges && !isSystemAdmin)
                     throw new InvalidOperationException("This record is locked and cannot be modified.");
 
-                // Log who made the update
+                // Log update info
                 entity.ModifiedDateTime = DateTime.UtcNow;
-
-                // Access user ID
-                var httpContextAccessor = this.GetService<IHttpContextAccessor>();
-                var userId = httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 entity.LastUpdatorUserId = userId;
             }
 
             return await base.SaveChangesAsync(cancellationToken);
-        }
+            }
     }
 }
 

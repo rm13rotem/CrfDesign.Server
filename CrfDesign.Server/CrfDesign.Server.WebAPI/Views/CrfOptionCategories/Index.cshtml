@@ -17,10 +17,6 @@
     <div class="col-md-4">
         <form asp-action="Index">
             <div class="form-group">
-                <label for="CategoryId">Category Id</label>
-                <select name="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
                 <label for="PartialName">Partial Name</label>
                 <input name="PartialName" class="form-control" value="@filter?.PartialName" />
             </div>
@@ -35,6 +31,7 @@
             <div class="form-group">
                 <input type="submit" value="Filter" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>

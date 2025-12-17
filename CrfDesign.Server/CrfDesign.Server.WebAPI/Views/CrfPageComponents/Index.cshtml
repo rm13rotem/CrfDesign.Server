@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CrfDesign.Server.WebAPI.Models.CrfPageComponentViewModel>
+﻿@model CrfDesign.Server.WebAPI.Models.CrfPageComponentIndexViewModel
+
 
 @{
     ViewData["Title"] = "Index";
@@ -9,14 +10,35 @@
     <div class="col-md-4">
         <form asp-action="Index">
             <div class="form-group">
-                <select name="CRFPageId" class="form-control" asp-items="ViewBag.CRFPageId"></select>
+                <label for="Filter.CrfPageId">Crf Page Id</label>
+                <select asp-for="Filter.CrfPageId"
+                        class="form-control"
+                        asp-items="ViewBag.CRFPageId">
+                    <option value="">-- All Pages --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Filter.PartialName">Partial Component Name</label>
+                <input asp-for="Filter.PartialName" class="form-control"
+                       placeholder="Partial Name...." />
+            </div>
+
+            <div class="form-group">
+                <label for="Filter.Page">Page (1,2,3....) of @Model.Filter.TotalPages</label>
+                <input asp-for="Filter.Page" class="form-control"
+                       placeholder="Page (1,2,3....)" />
             </div>
             <div class="form-group">
-                <input name="PartialName" class="form-control" />
+                <label for="Filter.NLines"># of Lines</label>
+                <input asp-for="Filter.NLines" class="form-control"
+                       placeholder="# of Lines (per page)" />
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Filter" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>
@@ -26,99 +48,73 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuestionText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RenderType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuestionType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsRequired)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryOptions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValidationPattern)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CRFPageName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsLockedForChanges)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdatorUserId)
-            </th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().Id)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().QuestionText)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().RenderType)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().QuestionType)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().IsRequired)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().CategoryName)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().CategoryOptions)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().ValidationPattern)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().CRFPageName)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().ModifiedDateTime)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().IsLockedForChanges)</th>
+            <th>@Html.DisplayNameFor(m => m.Items.First().LastUpdatorUserId)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RenderType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionType)
-            </td>
-            <td>
-                @Html.CheckBoxFor(modelItem => item.IsRequired)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryOptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValidationPattern)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CRFPageName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsLockedForChanges)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdatorUserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Refresh" asp-route-id="@item.Id">Refresh</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="Duplicate" asp-route-id="@item.Id">Duplicate</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RenderType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionType)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.IsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryOptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidationPattern)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CRFPageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsLockedForChanges)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdatorUserId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Refresh" asp-route-id="@item.Id">Refresh</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="Duplicate" asp-route-id="@item.Id">Duplicate</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

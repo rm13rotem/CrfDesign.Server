@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace BuisnessLogic.Models.Managers
 {
@@ -15,14 +16,14 @@ namespace BuisnessLogic.Models.Managers
     {
         private readonly IInMemoryCrfDataStore _context;
 
-        public CrfOptionsManager(IInMemoryCrfDataStore dataStore)
+        public CrfOptionsManager(IInMemoryCrfDataStore dataStore, ILogger<CrfOptionsManager> _logger)
         {
             _context = dataStore;
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            return _context.Delete<CrfOption>(id);
+            return await _context.DeleteAsync<CrfOption>(id);
         }
 
         public CrfOption GetById(int id)
@@ -33,7 +34,7 @@ namespace BuisnessLogic.Models.Managers
 
         public List<CrfOption> GetCrfOptionsAsync(CrfOptionFilter crfOptionFilter)
         {
-            var result =  _context.CrfOptions;
+            var result = _context.CrfOptions;
             if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialName))
                 result = result.Where(x => x.Name.Contains(crfOptionFilter.PartialName)).ToList();
             if (!string.IsNullOrWhiteSpace(crfOptionFilter.PartialCategoryName))
@@ -46,14 +47,14 @@ namespace BuisnessLogic.Models.Managers
             if (crfOptionFilter.CategoryId > 0)
                 result = result.Where(x => x.CrfOptionCategoryId == crfOptionFilter.CategoryId).ToList();
 
-            return result.OrderBy(x=>x.CrfOptionCategoryId).ToList();
+            return result.OrderBy(x => x.CrfOptionCategoryId).ToList();
         }
 
         public async Task<bool> TryInsert(CrfOption entity)
         {
             try
             {
-                return Insert(entity);
+                return await InsertAsync(entity);
             }
             catch (System.Exception)
             {
@@ -61,36 +62,33 @@ namespace BuisnessLogic.Models.Managers
                 {
                     try
                     {
-                        Task.Delay(i * 5000).Wait();
-                        return Insert(entity);
+                        await Task.Delay(i * 5000);
+                        return await InsertAsync(entity);
                     }
                     catch (System.Exception)
                     {
-
+                        // todo : add _logger.LogException(...)
                     }
                 }
             }
             return false;
         }
 
-        private bool Insert(CrfOption entity)
+        private async Task<bool> InsertAsync(CrfOption entity)
         {
             entity.Id = _context.CrfOptions.Any() ?
                 _context.CrfOptions.Max(x => x.Id) + 1 :
                 1;
-            return _context.Add(entity);
+            return await _context.AddAsync(entity);
         }
 
-        public bool TryUndelete(int id)
+        public async Task<bool> TryUndeleteAsync(int id)
         {
-            return _context.Undelete<CrfOption>(id);
+            return await _context.UndeleteAsync<CrfOption>(id);
         }
 
-        public bool Duplicate(int? id)
+        public async Task<bool> DuplicateAsync(int id)
         {
-            if (id == null)
-                return false;
-
             try
             {
                 var crfOption = _context.CrfOptions.FirstOrDefault(x => x.Id == id);
@@ -103,9 +101,10 @@ namespace BuisnessLogic.Models.Managers
                     CrfOptionCategoryId = crfOption.CrfOptionCategoryId,
                     Name = crfOption.Name,
                     ModifiedDateTime = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsLockedForChanges = false
                 };
-                return _context.Add(crfOptionNew);
+                return await _context.AddAsync(crfOptionNew);
             }
             catch (System.Exception e)
             {
@@ -115,9 +114,18 @@ namespace BuisnessLogic.Models.Managers
             return false;
         }
 
-        public bool Update(CrfOption entity)
+        public async Task<bool> UpdateAsync(CrfOption entity)
         {
-            return _context.Update(entity);
+            try
+            {
+                return await _context.UpdateAsync(entity);
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine("Failed to Update CrfOption id=" + entity?.Id.ToString());
+                Console.WriteLine(e.Message);
+            }
+            return false;
         }
     }
 }

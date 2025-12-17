@@ -25,13 +25,13 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             if (dataBase == null)
                 return;
 
-            ImportDataIntoDatabase<QuestionType>(dataStore, dataBase);
-            ImportDataIntoDatabase<CrfOptionCategory>(dataStore, dataBase);
-            ImportDataIntoDatabase<CrfOption>(dataStore, dataBase);
-            ImportDataIntoDatabase<CrfPage>(dataStore, dataBase);
+            ImportDataIntoDatabaseAsync<QuestionType>(dataStore, dataBase);
+            ImportDataIntoDatabaseAsync<CrfOptionCategory>(dataStore, dataBase);
+            ImportDataIntoDatabaseAsync<CrfOption>(dataStore, dataBase);
+            ImportDataIntoDatabaseAsync<CrfPage>(dataStore, dataBase);
         }
 
-        private void ImportDataIntoDatabase<T>(IInMemoryCrfDataStore dataStore, DataBaseViewModel dataBase)
+        private async Task ImportDataIntoDatabaseAsync<T>(IInMemoryCrfDataStore dataStore, DataBaseViewModel dataBase)
             where T : class, IPersistantEntity
         {
             List<T> list = null;
@@ -48,14 +48,14 @@ namespace CrfDesign.Server.WebAPI.Models.Backup
             {
                 if (IsOverwrite == true)
                 {
-                    dataStore.Update(t);
+                    await dataStore.UpdateAsync(t);
                 }
                 if (IsAppend == true)
                 {
                     T r = t.ToNewEntity() as T;
                     if (r != null)
                     {
-                        dataStore.Add(r);
+                        await dataStore.AddAsync(r);
                     }
                 }
             }

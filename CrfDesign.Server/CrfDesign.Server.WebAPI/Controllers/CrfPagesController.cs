@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CrfDesign.Server.WebAPI.Data;
-using BuisnessLogic.Models;
-using BuisnessLogic.DataContext;
-using CrfDesign.Server.WebAPI.Models.Filters;
-using Microsoft.AspNetCore.Identity;
-using CrfDesign.Server.WebAPI.Models.Managers;
-using CrfDesign.Server.WebAPI.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using BuisnessLogic.Models;
 using BuisnessLogic.Repositories;
+using CrfDesign.Server.WebAPI.Models;
+using CrfDesign.Server.WebAPI.Models.Filters;
+using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers
 {
@@ -22,11 +19,16 @@ namespace CrfDesign.Server.WebAPI.Controllers
     public class CrfPagesController : Controller
     {
         private readonly CrfPageManager _manager;
+        private readonly ILogger<CrfPagesController> _logger;
 
         public CrfPagesController(UserManager<Investigator> userManager,
-            IInMemoryCrfDataStore dataStore, IServiceScopeFactory scopeFactory)
+            IInMemoryCrfDataStore dataStore,
+            IServiceScopeFactory scopeFactory,
+            IHttpContextAccessor httpContextAccessor,
+            ILogger<CrfPagesController> logger)
         {
-            _manager = new CrfPageManager(dataStore, userManager, scopeFactory);
+            _manager = new CrfPageManager(dataStore, userManager, scopeFactory, httpContextAccessor);
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index(CrfPageFilter filter)
@@ -35,7 +37,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
             ViewBag.filter = filter ?? new CrfPageFilter()
             {
                 PartialName = string.Empty
-            }; ;
+            };
             return View(pages);
         }
 
@@ -62,11 +64,13 @@ namespace CrfDesign.Server.WebAPI.Controllers
             catch (Exception ex)
             {
                 // log error, optionally show UI error message
+                var errorMsg = string.Format("Duplication of page {0} failed", id);
+                _logger.LogError(ex, errorMsg);
                 return BadRequest(ex.Message);
             }
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null) return NotFound();
             var page = _manager.GetById(id.Value);
@@ -75,41 +79,54 @@ namespace CrfDesign.Server.WebAPI.Controllers
 
         public IActionResult Create() => View();
 
+
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CrfPage page)
+        public IActionResult Create(CrfPage page)
         {
-            if (!ModelState.IsValid) return View(page);
-            _manager.Update(page); // Handles ModifiedDateTime
+            if (!ModelState.IsValid)
+                return View(page);
+            _manager.UpdateAsync(page); // Handles ModifiedDateTime
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            if (id == null) return NotFound();
-            var page = _manager.GetById(id.Value);
+            var page = _manager.GetById(id);
             if (page == null) return NotFound();
-            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            if (_manager.IsPageLockedForChanges(id))
+                return RedirectToAction("ReturnLockedMessage", page);
             return View(page);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Edit(CrfPage page)
+        public async Task<IActionResult> Edit(CrfPage page)
         {
-            if (page.Id == 0) return NotFound();
+            if (page?.Id == 0 || page?.Id == null) return NotFound();
+            if (_manager.IsPageLockedForChanges(page.Id))
+                return RedirectToAction("ReturnLockedMessage", page);
+
             if (ModelState.IsValid)
             {
                 bool isSuccess;
                 try
                 {
-                    isSuccess = _manager.Update(page);
+                    isSuccess = await _manager.UpdateAsync(page);
+                    if (isSuccess)
+                        return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException ex)
                 {
-                    if (!_manager.Exists(page.Id)) return NotFound();
+                    _logger.LogError(ex, "DbUpdate Concurrency Exception in CrfPageController");
+                    if (!_manager.Exists(page.Id))
+                        return NotFound();
                     isSuccess = false;
                 }
-                if (isSuccess)
-                    return RedirectToAction(nameof(Index));
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Unknown Exception in CrfPageController");
+                    isSuccess = false;
+                }
             }
             return View(page);
         }
@@ -118,7 +135,7 @@ namespace CrfDesign.Server.WebAPI.Controllers
         {
             if (id == null) return NotFound();
             var page = _manager.GetById((int)id);
-            _manager.Lock(page);
+            _manager.LockAsync(page);
             var filter = new CrfPageFilter()
             {
                 PartialName = page.Name
@@ -131,17 +148,19 @@ namespace CrfDesign.Server.WebAPI.Controllers
             if (id == null) return NotFound();
             var page = _manager.GetById(id.Value);
             if (page == null) return NotFound();
-            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            if (_manager.IsPageLockedForChanges(id.Value))
+                return RedirectToAction("ReturnLockedMessage", page);
             return View(page);
         }
 
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var page = _manager.GetById(id);
-            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            if (_manager.IsPageLockedForChanges(id))
+                return RedirectToAction("ReturnLockedMessage", page);
             page.IsDeleted = true;
-            bool isSuccess = _manager.Update(page);
+            bool isSuccess = await _manager.UpdateAsync(page);
             if (isSuccess)
                 return RedirectToAction(nameof(Index));
             return RedirectToAction(nameof(Delete), id);
@@ -151,19 +170,23 @@ namespace CrfDesign.Server.WebAPI.Controllers
         public async Task<IActionResult> UndeleteConfirmed(int id)
         {
             var page = _manager.GetById(id);
-            if (page.IsLockedForChanges) return RedirectToAction("ReturnLockedMessage", page);
+            if (_manager.IsPageLockedForChanges(id))
+                return RedirectToAction("ReturnLockedMessage", page);
             page.IsDeleted = false;
-            _manager.Update(page);
-            return RedirectToAction(nameof(Index));
+
+            await _manager.UpdateAsync(page);
+            var filter = new CrfPageFilter() { PartialName = page.Name };
+            return RedirectToAction(nameof(Index), filter);
         }
 
         [Authorize(Roles = "Admin")]
         public IActionResult ReloadCache()
         {
-            _manager.StoreRefresh();
+            _manager.DataStore_Refresh();
 
             return Ok("Cache reloaded successfully.");
         }
+
         public IActionResult ReturnLockedMessage(CrfPage page)
             => View(page);
     }
