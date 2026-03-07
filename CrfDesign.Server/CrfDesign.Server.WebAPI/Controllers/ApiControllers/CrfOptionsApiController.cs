@@ -5,6 +5,7 @@ using BuisnessLogic.Repositories;
 using CrfDesign.Server.WebAPI.Models;
 using CrfDesign.Server.WebAPI.Models.ApiControllerResponses;
 using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,9 @@ using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers.ApiControllers
 {
+    [Route("v1/api/[controller]")]
+    [ApiController]
+    [Authorize]
     public class CrfOptionsApiController : ControllerBase
     {
         private readonly IInMemoryCrfDataStore _context;

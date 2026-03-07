@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 
 namespace CrfDesign.Server.WebAPI.Controllers.ApiControllers
 {
+    [Route("v1/api/[controller]")]
+    [ApiController]
     [Authorize]
     public class CrfPagesApiController : ControllerBase
     {

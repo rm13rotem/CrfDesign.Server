@@ -2,6 +2,7 @@
 using BuisnessLogic.Models;
 using CrfDesign.Server.WebAPI.Models.ApiControllerResponses;
 using CrfDesign.Server.WebAPI.Models.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace CrfDesign.Server.WebAPI.Controllers.ApiControllers
 {
     [Route("v1/api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CrfOptionCategoryApiController : ControllerBase
     {
         private readonly CrfOptionCategoryManager _manager;
