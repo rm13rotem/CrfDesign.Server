@@ -102,10 +102,11 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             _context.DeleteAsync<CrfOptionCategory>(id);
         }
 
-        public void UnDelete(int id)
+        public async Task<bool> UnDelete(int id)
         {
-            _context.UndeleteAsync<CrfOptionCategory>(id);
+            return await _context.UndeleteAsync<CrfOptionCategory>(id);
         }
+
     }
 
 }

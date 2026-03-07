@@ -37,8 +37,8 @@ namespace CrfDesign.Server.WebAPI.Controllers
         // GET: CrfPageComponents
         public async Task<IActionResult> Index(CrfPageComponentFilter filter)
         {
-            filter = _manager.GetDefaultFilter(filter);
-
+            if (filter == null)
+                filter = _manager.GetDefaultFilter(filter);
 
             var items = await _manager.GetFilteredComponents(filter);
 

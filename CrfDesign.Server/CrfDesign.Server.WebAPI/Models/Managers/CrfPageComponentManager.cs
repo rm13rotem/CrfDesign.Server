@@ -64,7 +64,7 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             {
                 filter = new CrfPageComponentFilter();
             }
-            if (filter.NLines == 0)
+            if (filter.NLines <= 0)
                 filter.NLines = 20;
             // if filter.page = 0 --> ok
             if (filter.PartialName == null)
@@ -100,31 +100,16 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
         }
 
         public async Task<List<CrfPageComponentViewModel>> GetFilteredComponents(
-    CrfPageComponentFilter filter)
+            CrfPageComponentFilter filter)
         {
-            filter ??= new CrfPageComponentFilter();
-
-            // Base query
-            var query = _dataStore.CrfPageComponents;
-
-            // Filter by page
-            if (filter.CrfPageId > 0)
-            {
-                query = query.Where(x => x.CRFPageId == filter.CrfPageId).ToList();
-            }
-
-            // Filter by name
-            if (!string.IsNullOrEmpty(filter.PartialName))
-            {
-                query = query.Where(x => x.Name.Contains(filter.PartialName)).ToList();
-            }
+            var query = GetItems(filter);
 
             // Total before paging
             var totalCount = query.Count();
 
             // Paging (optional – safe even if you don't use it yet)
             query = query
-                .Skip((filter.Page-1) * filter.NLines)
+                .Skip((filter.Page - 1) * filter.NLines)
                 .Take(filter.NLines).ToList();
 
             // Load lookup tables ONCE
@@ -178,5 +163,27 @@ namespace CrfDesign.Server.WebAPI.Models.Managers
             return result;
         }
 
+        public List<CrfPageComponent> GetItems(CrfPageComponentFilter filter)
+        {
+            filter ??= new CrfPageComponentFilter();
+
+            // Base query
+            var query = _dataStore.CrfPageComponents;
+
+            // Filter by page
+            if (filter.CrfPageId > 0)
+            {
+                query = query.Where(x => x.CRFPageId == filter.CrfPageId).ToList();
+            }
+
+            // Filter by name
+            if (!string.IsNullOrEmpty(filter.PartialName))
+            {
+                query = query.Where(x => x.Name.Contains(filter.PartialName)).ToList();
+            }
+
+
+            return query;
+        }
     }
 }

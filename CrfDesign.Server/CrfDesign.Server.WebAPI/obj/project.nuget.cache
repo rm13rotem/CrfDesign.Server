@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WbxrXkaM8u9v3sGXkpw/baARtUfWS+l7BtVzCB945Bxp9ekKfAY4DpO2CJTFd9eKjFgPdxlqI1tBeq/qxGehjQ==",
+  "dgSpecHash": "7u4k9GG7tpQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rm13r\\source\\repos\\CrfDesign.Server\\CrfDesign.Server\\CrfDesign.Server.WebAPI\\CrfDesign.Server.WebAPI.csproj",
+  "projectFilePath": "C:\\repos\\CrfDesign.Server\\CrfDesign.Server\\CrfDesign.Server.WebAPI\\CrfDesign.Server.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rm13r\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rm13r\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
